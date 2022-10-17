@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>docker - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "docker";
+        var mkdocs_page_input_path = "docker.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">docker</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">命令</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dockerfile">Dockerfile</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-dockerfile">1.什么是 Dockerfile？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2">2.实例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3dockerfile">3.Dockerfile指令说明简洁版</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-compose">docker-compose</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1compose">1.Compose 安装</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2_1">2.实例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3">3.常用命令</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-registry">Docker Registry</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">搭建</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registry-web-ui">Registry Web UI</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker_1">Docker安装</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1docker">1、安装docker</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2docker">2、启动docker</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3docker">3、查看docker是否启动成功</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker-mysql">Docker mysql</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1mysql">1、安装mysql</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2mysql">2、启动mysql容器</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3mysql">3、进入mysql容器，并登陆</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4">4、开启远程访问权限</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker_2">查看docker日志</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker_3">Docker数据卷</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1">1.创建数据卷</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2_2">2.查看数据卷的详细信息</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3_1">3.查看全部数据卷</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4_1">4.删除数据卷</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5">5.应用数据卷</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker_4">配置Docker中国官方镜像加速</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>docker</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="docker">Docker</h1>
+<p>运行测试工具：https://labs.play-with-docker.com/</p>
+<p><strong>Docker 架构</strong></p>
+<p>Docker 包括三个基本概念:</p>
+<ul>
+<li><strong>镜像（Image）</strong>：Docker 镜像（Image），就相当于是一个 root 文件系统。比如官方镜像 ubuntu:16.04 就包含了完整的一套 Ubuntu16.04 最小系统的 root 文件系统。</li>
+<li><strong>容器（Container）</strong>：镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的类和实例一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</li>
+<li><strong>仓库（Repository）</strong>：仓库可看成一个代码控制中心，用来保存镜像。</li>
+</ul>
+<h2 id="_1">命令</h2>
+<p>更多命令参考：<a href="https://www.runoob.com/docker/docker-command-manual.html">Docker 命令大全 | 菜鸟教程 (runoob.com)</a></p>
+<pre><code>docker run -p 86:80 -v /data:/data --name mynginx -d nginx:latest
+</code></pre>
+<ul>
+<li><strong><code>docker run</code></strong>  创建一个新的容器并运行一个命令； </li>
+<li><code>-p</code>  格式为：<code>-p 86:80</code>，主机(宿主)端口:容器端口如；</li>
+<li><code>-v</code>或<code>--volume</code>   格式为：<code>-v A:B</code>，A是主机地址，B是容器地址，两数据卷如果不存在会创建。容器运行，AB数据会完全同步；</li>
+<li><code>--name</code>  格式为：<code>--name mynginx</code>，为容器指定一个名称；</li>
+<li><code>-d</code>  后台运行容器，并返回容器ID； </li>
+<li><code>nginx:latest</code>    指定使用镜像与版本，不加参数默认最新 latest ;</li>
+<li><code>--link=[]</code>   添加链接到另一个容器，不推荐使用。推荐networks实现容器间通信；</li>
+</ul>
+<pre><code>docker rm -f db01 db02 
+</code></pre>
+<ul>
+<li><strong><code>docker rm</code></strong>   删除一个或多个容器；-f 通过 SIGKILL 信号强制删除一个运行中的容器；db01 db02 指定ID一个或多个；</li>
+<li><code>-f</code>  通过 SIGKILL 信号强制删除一个运行中的容器。</li>
+<li><code>-l</code>  移除容器间的网络连接，而非容器本身。</li>
+<li><code>-v</code>  删除与容器关联的卷。</li>
+<li><strong><code>docker rmi</code></strong>  移除镜像；</li>
+</ul>
+<pre><code>docker exec -it ID bash
+</code></pre>
+<ul>
+<li><strong><code>docker exec</code></strong> 在运行的容器中执行命令；-i 即使没有附加也保持STDIN 打开；-t 分配一个伪终端；bash 通过该方式；</li>
+<li><code>-it</code> 开启一个交互模式的终端，通常一起使用</li>
+<li><code>-i</code>  即使没有附加也保持STDIN 打开</li>
+<li><code>-t</code>  分配一个伪终端</li>
+<li><code>bash</code>    通过 exec 命令对指定的容器执行 bash</li>
+</ul>
+<pre><code>docker cp nginx:/etc/nginx/nginx.conf /home/heng/nginx/ 
+# 拷贝容器内 Nginx 默认配置文件，到本地
+
+docker cp /www/runoob 96f7f14e99ab:/www/
+将主机/www/runoob目录拷贝到容器96f7f14e99ab的/www目录下。
+
+docker cp /www/runoob 96f7f14e99ab:/www
+将主机/www/runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。
+
+docker cp 96f7f14e99ab:/www /tmp/
+将容器96f7f14e99ab的/www目录拷贝到主机的/tmp目录中。
+</code></pre>
+<p><strong><code>docker cp</code></strong> 将主机目标拷贝到容器某目录(或重命名)；或将容器目标拷贝到主机某目录。</p>
+<pre><code>docker pull nginx
+// docker pull 从镜像仓库中拉取或者更新指定镜像；
+
+docker commit ID IMAGE    
+// docker commit 从容器创建一个新的镜像；ID 指定容器id；IMAGE 指定新的镜像名称；
+
+docker ps
+// docker ps 列出容器；
+
+docker images
+// docker images 列出本地镜像；
+
+docker build -t IMAGENAME:v1 .    
+// docker build 命令用于使用 Dockerfile 创建镜像；-t 镜像的名字及标签；IMAGENAME 指定新的镜像名称；. 使用当前目录的 Dockerfile 创建镜像；
+
+docker save nginx &gt; IMAGE.tar    
+// docker save 将指定镜像保存成 tar 归档文件；nginx 指定镜像； IMAGE.tar 归档文件；
+
+docker load &lt; image.tar
+// docker load 导入使用 docker save 命令导出的镜像;
+</code></pre>
+<h2 id="dockerfile">Dockerfile</h2>
+<h4 id="1-dockerfile">1.什么是 Dockerfile？</h4>
+<p>Dockerfile 是一个用来<strong><code>构建镜像</code></strong>的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。</p>
+<p>详情链接：<a href="https://www.runoob.com/docker/docker-dockerfile.html">Docker Dockerfile | 菜鸟教程 (runoob.com)</a></p>
+<h4 id="2">2.实例</h4>
+<pre><code># 建立 python3.9 环境
+FROM python:3.9
+
+# 设置 python 环境变量
+ENV PYTHONUNBUFFERED 1
+
+# 设置容器内工作目录，没有则创建
+WORKDIR /var/www/html/webdjango
+
+# 将当前目录文件加入到容器工作目录中（前.是当前宿主机目录，后.是WORKDIR目录）
+ADD . .
+
+# 可选，更新pip
+
+# 使用清华镜像源 pip 安装依赖
+RUN pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+
+# 可选，移除pip，以节省空间
+</code></pre>
+<p>在 Dockerfile 文件的存放目录下，执行构建动作。通过目录下的 Dockerfile 构建一个 nginx:v3（镜像名称:镜像标签）。</p>
+<p><code>docker build -t nginx:v3 .</code></p>
+<p><strong>Dockerfile 实例内容解释：</strong></p>
+<p><code>FROM python:3.7-alpine</code>    # 从 Python 3.7 映像开始构建镜像。</p>
+<p><code>WORKDIR /code</code> # 将工作目录设置为 /code。</p>
+<p><code>ENV FLASK_APP app.py</code>  # 设置 flask 命令使用的环境变量。# 定义 Flask 应用   app.py</p>
+<p><code>ENV FLASK_RUN_HOST 0.0.0.0</code>    # 设置 flask 命令使用的环境变量。# 允许外部访问  </p>
+<p><code>RUN apk add --no-cache gcc musl-dev linux-headers</code> # 安装 gcc，以便诸如 MarkupSafe 和 SQLAlchemy 之类的 Python 包可以编译加速。</p>
+<p><code>COPY requirements.txt requirements.txt</code>    # 复制 requirements.txt</p>
+<p><code>RUN pip install -r requirements.txt</code>   # 安装 Python 依赖项。</p>
+<p><code>COPY . .</code>  # 将 . 项目中的当前目录复制到 . 镜像中的工作目录。</p>
+<p><code>CMD ["flask", "run"]</code>  # 容器提供默认的执行命令为：flask run。# 启动 Flask 应用</p>
+<h4 id="3dockerfile">3.Dockerfile指令说明简洁版</h4>
+<p><strong><code>FROM</code></strong>  # 构建镜像基于哪个镜像，唯一必不可少项；</p>
+<p><code>MAINTAINER</code>    # 镜像维护者姓名或邮箱地址；</p>
+<p><code>RUN</code>   # 构建镜像时运行的指令；</p>
+<p><code>CMD</code>   # 运行容器时执行的shell环境；</p>
+<p><code>VOLUME</code>    # 指定容器挂载点到宿主机自动生成的目录或其他容器；</p>
+<p><code>USER</code>  # 为RUN、CMD、和 ENTRYPOINT 执行命令指定运行用户；</p>
+<p><code>WORKDIR</code>   # 为 RUN、CMD、ENTRYPOINT、COPY 和 ADD 设置工作目录，就是切换目录；</p>
+<p><code>HEALTHCHECH</code>   # 健康检查；</p>
+<p><code>EXPOSE</code>    # 声明容器的服务端口（仅仅是声明）；</p>
+<p><code>ENV</code>   # 设置容器环境变量；</p>
+<p><code>ARG</code>   # 仅构建时指定的一些参数；</p>
+<p><code>ADD</code>   # 拷贝文件或目录到容器中，如果是URL或压缩包便会自动下载或自动解压；</p>
+<p><code>COPY</code>  # 拷贝文件或目录到容器中，跟ADD类似，但不具备自动下载或解压的功能；推荐；</p>
+<p><code>ENTRYPOINT</code>    # 运行容器时执行的shell命令；</p>
+<h2 id="docker-compose">docker-compose</h2>
+<p><strong>Compose 简介</strong></p>
+<p>Docker Compose是一个用来<strong><code>管理容器</code></strong>，定义和运行复杂应用的Docker工具。一个使用Docker容器的应用，通常由多个容器组成。使用Docker Compose不再需要使用shell脚本来启动容器。 
+Compose 通过一个配置文件来管理多个Docker容器，在配置文件中，所有的容器通过services来定义，然后使用docker-compose脚本来启动，停止和重启应用，和应用中的服务以及所有依赖服务的容器，非常适合组合使用多个容器进行开发的场景。</p>
+<p>详情链接：<a href="https://www.runoob.com/docker/docker-compose.html">Docker Compose | 菜鸟教程 (runoob.com)</a></p>
+<h4 id="1compose">1.Compose 安装</h4>
+<p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：https://github.com/docker/compose/releases。</p>
+<p>运行以下命令以下载 Docker Compose 的当前稳定版本：</p>
+<pre><code>sudo curl -L &quot;https://github.com/docker/compose/releases/download/v2.2.2/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+</code></pre>
+<p>将可执行权限应用于二进制文件：</p>
+<pre><code>sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>创建软链：</p>
+<pre><code>sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+</code></pre>
+<p>测试是否安装成功：</p>
+<pre><code>docker-compose --version
+</code></pre>
+<p>cker-compose version 1.24.1, build 4667896b</p>
+<h4 id="2_1">2.实例</h4>
+<pre><code class="language-yaml"># 已验证可行
+version: &quot;3&quot;
+services:
+  mysql:
+    restart: always
+    # 选择镜像，这里用的是最新mysql8，低版本mysql需要修改配置文件映射地址
+    image: mysql:latest
+    container_name: mysql_web
+    volumes:
+      # 文件挂载
+      - ./mysql/mydir:/mydir
+      # 挂载目录
+      - ./mysql/datadir:/var/lib/mysql
+      # 挂载 my.cnf 配置文件
+      - ./mysql/conf/my.cnf:/etc/mysql/my.cnf
+      - ./mysql/source:/docker-entrypoint-initdb.d
+    environment:
+      # 设置密码
+      - &quot;MYSQL_ROOT_PASSWORD=123456&quot;
+      # 设置默认数据库
+      - &quot;MYSQL_DATABASE=webdb&quot;
+      # 设置时区
+      - &quot;TZ=Asia/Shanghai&quot;
+    ports:
+      - &quot;3306:3306&quot;  
+    networks:  
+      - web_network
+
+  # 服务名称，不能重复，名称必须是小写，且不能包含空格
+  django:
+    # 重启策略，可选 always no，默认为 always 跟随启动，如果为 no，则不会重启
+    restart: always
+    # 使用当前目录的Dockerfile
+    build: .
+    # container_name 容器名称
+    container_name: webdjango
+    # command 容器启动命令
+    command:  bash -c &quot;python3 manage.py makemigrations &amp;&amp; python3 manage.py migrate &amp;&amp; python3 manage.py runserver 0.0.0.0:8000&quot;
+    # 宿主机与docker文件映射同步。最好只修改宿主机的文件。
+    volumes:
+      - .:/var/www/html/webdjango
+    # 端口映射
+    ports:
+      - &quot;86:8000&quot;
+    # network 该配置可以让django在多个容器之间通信。
+    networks:
+      - web_network
+    # depends_on 可以让django依赖mysql
+    depends_on:
+      - mysql
+    # 重要！！实际验证中出现报错 &quot;exited with code 0&quot; 加上 stdin_open: true 和 tty: true 可解决
+    # tty 相当于 run 命令中的 -i
+    tty: true
+    # stdin_open 相当于 run 命令中的 -d
+    stdin_open: true
+
+# 创建一个网络，可以让多个容器之间通信。
+networks:
+  web_network:
+</code></pre>
+<pre><code class="language-python"># 上述实例验证，关联django配置
+# django 连接 mysql 数据库配置
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',   # 数据库引擎
+        'NAME': 'webdb',                        # 数据库名
+        'USER': 'root',                         # 用户名
+        'PASSWORD': '123456',                   # 密码&quot;MYSQL_ROOT_PASSWORD=123456&quot;
+        'HOST': 'mysql',                        # 服务名称
+        'PORT': '3306',                         # 数据库端口
+    }
+}
+</code></pre>
+<h4 id="3">3.常用命令</h4>
+<pre><code>docker-compose up -d
+</code></pre>
+<p><strong><code>up</code></strong>    # 启动所有服务，docker-compose.yaml 修改后用命令重构启动
+<code>-d</code>    # 在后台运行服务容器，推荐加上
+<code>-–remove-orphans</code>  # 删除服务中没有在compose文件中定义的容器</p>
+<pre><code>docker-compose down
+</code></pre>
+<p><strong><code>down</code></strong>  # 停止和删除容器、网络、卷、镜像。
+<code>–rmi type</code> # 删除镜像，类型必须是：all，删除compose文件中定义的所有镜像；local，删除镜像名为空的镜像
+<code>-v, –volumes</code>  # 删除已经在compose文件中定义的和匿名的附在容器上的数据卷</p>
+<pre><code>docker-compose build
+</code></pre>
+<p><strong><code>build</code></strong> # 构建镜像</p>
+<h2 id="docker-registry">Docker Registry</h2>
+<p>Docker Registry 是一个无状态，高度可扩展的服务器端应用程序，它存储并允许您分发Docker映像。</p>
+<h3 id="_2">搭建</h3>
+<p><strong>启动注册表</strong></p>
+<pre><code class="language-bash">docker run -d -p 5000:5000 --name registry registry:2
+</code></pre>
+<p><code>--restart=always</code>  # 跟随docker启动</p>
+<p><strong>镜像标记</strong></p>
+<pre><code class="language-bash">docker tag IMAGENAME[:TAG] [REGISTRY_HOST[:REGISTRY_PORT]/]REPOSITORY[:TAG]。
+docker tag nginx:v1.0 127.0.0.1:5000/nginx:v1.0
+</code></pre>
+<p><strong>上传已标记镜像</strong></p>
+<pre><code class="language-bash">docker push 127.0.0.1:5000/镜像文件
+</code></pre>
+<p><strong>下载</strong></p>
+<pre><code>docker pull 127.0.0.1:5000/镜像文件
+</code></pre>
+<p><strong>查看仓库中的镜像</strong></p>
+<pre><code>curl 127.0.0.1:5000/v2/_catalog
+curl -X GET 127.0.0.1:5000/v2/_catalog
+</code></pre>
+<h3 id="registry-web-ui"><strong>Registry Web UI</strong></h3>
+<p><strong>搜索镜像</strong></p>
+<pre><code>docker search dockerfly
+</code></pre>
+<p><strong>下载镜像</strong>
+根据镜像使用排名(一般情况下拉取使用率最高的镜像名)，我这里使用的是阿里云镜像地址</p>
+<pre><code>docker pull registry.cn-hangzhou.aliyuncs.com/voovan/dockerfly:20170227
+</code></pre>
+<p><strong>打tag</strong>
+查看镜像是否拉取成功(镜像名太长，打了tag)</p>
+<pre><code>docker tag registry.cn-hangzhou.aliyuncs.com/voovan/dockerfly:20170227 dockerfly
+</code></pre>
+<p><strong>启动镜像(镜像-容器-运行)</strong></p>
+<pre><code>docker run --name dockerfly --restart=always -d -v /var/run/docker.sock:/var/run/docker.sock -p 2735:2735 -p 28083:28083 dockerfly
+</code></pre>
+<p>浏览器访问 http://dockerserviceip:28083
+这是就可以看到我们所以镜像的状态</p>
+<p><img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200225211130600.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zODkzNzg0MA==,size_16,color_FFFFFF,t_70" /></p>
+<h2 id="docker_1">Docker安装</h2>
+<p>Docker 教程地址：https://www.runoob.com/docker/centos-docker.install.html</p>
+<h4 id="1docker">1、安装docker</h4>
+<pre><code>yum install docker
+</code></pre>
+<h4 id="2docker">2、启动docker</h4>
+<pre><code>service docker start
+</code></pre>
+<h4 id="3docker">3、查看docker是否启动成功</h4>
+<pre><code>ps -ef|grep docker
+</code></pre>
+<h2 id="docker-mysql">Docker mysql</h2>
+<h4 id="1mysql">1、安装mysql</h4>
+<pre><code>docker pull mysql
+</code></pre>
+<h4 id="2mysql">2、启动mysql容器</h4>
+<pre><code>docker run --name mysql -e MYSQL_ROOT_PASSWORD=123456 -d -i -p 3306:3306 mysql
+</code></pre>
+<h4 id="3mysql">3、进入mysql容器，并登陆</h4>
+<pre><code>docker exec -it mysql bash
+mysql -uroot -p
+</code></pre>
+<h4 id="4">4、开启远程访问权限</h4>
+<pre><code>use mysql;
+select host,user from user;
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '123456';
+flush privileges;
+</code></pre>
+<p>镜像里面 root用户已经有远程连接权限在里面，所以不需要去设置，只是模式不一样才导致无法连接，把root用户的密码改成 mysql_native_password 模式，即可远程连接</p>
+<h2 id="docker_2">查看docker日志</h2>
+<pre><code>docker logs -f --tail 10 a4dac74d48f7
+</code></pre>
+<h2 id="docker_3">Docker数据卷</h2>
+<p>为了部署我们的demo工程，需要使用到<code>cp</code>的命令将宿主机内的demo文件复制到容器内部。</p>
+<p>数据卷：将宿主机的一个目录，映射到容器的一个目录中，可以在宿主机中操作目录中的内容，那么容器内部映射的文件，也会跟着一起改变。</p>
+<h4 id="1">1.创建数据卷</h4>
+<pre><code>docker volume create 数据卷名称
+# 创建数据卷之后，默认会存放在一个目录下 /var/lib/docker/volumes/数据卷名称/_data
+</code></pre>
+<h4 id="2_2">2.查看数据卷的详细信息</h4>
+<pre><code>docker volume inspect 数据卷名称
+</code></pre>
+<h4 id="3_1">3.查看全部数据卷</h4>
+<pre><code>docker volume ls
+</code></pre>
+<h4 id="4_1">4.删除数据卷</h4>
+<pre><code>docker volume rm 数据卷名称
+</code></pre>
+<h4 id="5">5.应用数据卷</h4>
+<p>当你映射数据卷时，如果数据卷不存在。Docker会自动帮你创建，会将容器内部自带的文件，存储在默认的存放路径中。</p>
+<pre><code>docker run -v A地址:B地址 nginx // 推荐
+docker run -v A数据卷名称:B数据卷内部的路径 nginx    // 不推荐
+</code></pre>
+<h2 id="docker_4">配置Docker中国官方镜像加速</h2>
+<p>新建或编辑daemon.json</p>
+<pre><code class="language-javascript">vim /etc/docker/daemon.json
+</code></pre>
+<p>添加镜像代码(Docker中国官方镜像加速)</p>
+<pre><code class="language-javascript">{
+  &quot;registry-mirrors&quot;: [&quot;https://registry.docker-cn.com&quot;]
+}
+</code></pre>
+<p>其他更多镜像地址</p>
+<pre><code class="language-javascript">{
+  &quot;registry-mirrors&quot;: [
+    &quot;https://hub-mirror.c.163.com&quot;,
+    &quot;https://mirror.baidubce.com&quot;,
+    &quot;https://registry.docker-cn.com&quot;,
+    &quot;https://reg-mirror.qiniu.com&quot;,
+    &quot;https://dockerhub.azk8s.cn&quot;,
+    &quot;https://docker.mirrors.ustc.edu.cn&quot;
+  ]
+}
+</code></pre>
+<p>重新加载daemon.json</p>
+<pre><code class="language-javascript">sudo systemctl daemon-reload
+</code></pre>
+<p>重启Docker</p>
+<pre><code class="language-javascript">sudo systemctl restart docker
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../django%E8%AF%AD%E5%8F%A5/" class="btn btn-neutral float-left" title="django语句"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ExpressNode.Js/" class="btn btn-neutral float-right" title="ExpressNode.Js">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../django%E8%AF%AD%E5%8F%A5/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ExpressNode.Js/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

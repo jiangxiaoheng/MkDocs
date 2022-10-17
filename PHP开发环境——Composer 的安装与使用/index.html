@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>PHP开发环境——Composer 的安装与使用 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "PHP\u5f00\u53d1\u73af\u5883\u2014\u2014Composer \u7684\u5b89\u88c5\u4e0e\u4f7f\u7528";
+        var mkdocs_page_input_path = "PHP\u5f00\u53d1\u73af\u5883\u2014\u2014Composer \u7684\u5b89\u88c5\u4e0e\u4f7f\u7528.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">PHP开发环境——Composer 的安装与使用</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#php">一、检查 PHP 环境</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#composer">二、下载 Composer。</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#composer_1">三、全局安装 composer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#composer_2">四、配置 composer 源地址</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#composer-laravel">五、用 composer 配置 Laravel 项目示例</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">六、问题排除</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#composer_3">八、Composer 的使用</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>PHP开发环境——Composer 的安装与使用</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="phpcomposer">PHP开发环境——Composer 的安装与使用</h1>
+<p>Composer 是 PHP 的包管理（依赖管理）工具，类似 node.js 的 npm 。如果在一个PHP项目中一些库依赖于其他库，就声明所依赖的库，Composer 就会找出相应版本的包并安装，默认情况下下载到项目的某个目录中（例如 vendor）进行安装。使用 Composer 可以很轻松的使用一个命令将其他人的优秀代码引用到我们的项目中来。</p>
+<h2 id="php">一、检查 PHP 环境</h2>
+<p>首先要确保已经安装好了 PHP 环境，在命令行输入命令：<code>php -v</code> 要能正确输出版本号信息。</p>
+<p>然后在Linux系统中下载 composer.phar ，移动到全局目录中并改名为 composer ，就可以全局调用 composer 了。</p>
+<h2 id="composer">二、下载 Composer。</h2>
+<p>首先下载安装脚本 composer-setup.php 到当前目录，然后执行安装，简单地检测 php.ini 中的参数设置，如果某些参数未正确设置则会给出警告。</p>
+<pre><code class="language-text">php -r &quot;copy('https://install.phpcomposer.com/installer', 'composer-setup.php');&quot;
+php composer-setup.php
+php -r &quot;unlink('composer-setup.php');&quot;
+</code></pre>
+<h2 id="composer_1">三、全局安装 composer</h2>
+<p>在 Linux 环境中，用以下命令下载最新版本的 composer.phar 文件到当前目录。然后移动到 /usr/local/bin 目录并更改名称为 composer ，这样就可以全局运行 composer 了。</p>
+<pre><code class="language-text">curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+</code></pre>
+<p>用 <code>composer --version</code> 命令查看 composer 版本，或直接用 <code>composer</code> 命令查看。</p>
+<h2 id="composer_2">四、配置 composer 源地址</h2>
+<p>由于网络原因，默认的官方 php 源码包在国内速度很慢，需要更换为国内镜像，参数 -g 表示全局配置。按自己的网络情况选择一个速度比较快的。</p>
+<pre><code class="language-text">#阿里云
+composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
+#腾讯云
+composer config -g repos.packagist composer https://mirrors.cloud.tencent.com/composer/
+#中国全量镜像
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+</code></pre>
+<p>查看 composer 全局配置命令：</p>
+<pre><code class="language-text">composer config -l -g
+</code></pre>
+<p>查看全局配置，可以看到仓库 URL 地址 <code>repositories.packagist.org.url</code> 已经变成了阿里云的镜像。</p>
+<p><img alt="img" src="https://pic1.zhimg.com/80/v2-8c16d1d428c1d04e8f7f102fe71ca2b4_720w.png" /></p>
+<p>如果需要解除镜像并恢复到 packagist 官方仓库，就用 composer 默认值重置源地址。命令如下：</p>
+<pre><code class="language-text">composer config -g --unset repos.packagist
+</code></pre>
+<h2 id="composer-laravel">五、用 composer 配置 Laravel 项目示例</h2>
+<pre><code class="language-text">composer create-project --prefer-dist laravel/laravel my_site_dir &quot;7.2.*&quot;
+</code></pre>
+<p>laravel/laravel：composer 安装包的名称，表示创建一个 laravel 项目</p>
+<p>my_site_dir：项目目录</p>
+<p>--prefer-dist：使用压缩版</p>
+<p>7.2.*：表示要安装的 laravel 版本</p>
+<h2 id="_1">六、问题排除</h2>
+<p><strong>1、警告信息：</strong></p>
+<blockquote>
+<p>Do not run Composer as root/super user! See <a href="https://link.zhihu.com/?target=https%3A//getcomposer.org/root">https://getcomposer.org/root</a> for details</p>
+</blockquote>
+<p><strong>解决方法：</strong></p>
+<p>某些 Composer 命令（包括exec，install和update）允许第三方代码在您的系统上执行。 这来自其“插件”和“脚本”功能。 插件和脚本对运行Composer的用户帐户具有完全访问权限。 因此，强烈建议避免以超级用户/ root身份运行Composer。</p>
+<p>您可以在包安装或更新期间使用以下语法禁用插件和脚本，以便只执行Composer的代码，而不执行第三方代码</p>
+<pre><code class="language-text">composer install --no-plugins --no-scripts ...
+composer update --no-plugins --no-scripts ...
+</code></pre>
+<p>官方文档：<a href="https://link.zhihu.com/?target=https%3A//getcomposer.org/doc/faqs/how-to-install-untrusted-packages-safely.md">https://getcomposer.org/doc/faqs/how-to-install-untrusted-packages-safely.md</a></p>
+<p><strong>2、警告信息：</strong></p>
+<blockquote>
+<p>As there is no 'unzip' command installed zip files are being unpacked using the PHP zip extension.
+This may cause invalid reports of corrupted archives. Besides, any UNIX permissions (e.g. executable) defined in the archives will be lost.
+Installing 'unzip' may remediate them.</p>
+</blockquote>
+<p><strong>解决方法：</strong></p>
+<p>表示系统需要安装 unzip ，在 CentOS 中安装命令：<code>yum install -y unzip zip</code></p>
+<h2 id="composer_3">八、Composer 的使用</h2>
+<p>1、composer 包依赖关系</p>
+<p>项目目录下的 composer.json 文件，其中必须的是 require 项，描述了项目的依赖关系。此时只要运行 <code>composer install</code> 就可以安装 requiere 项中所有的依赖包。冒号后的符号及数字是版本约束。</p>
+<pre><code class="language-text">// laravel项目的 composer.js 示例 
+ {
+    &quot;require&quot;: {
+        &quot;php&quot;: &quot;^7.1.3&quot;,
+        &quot;barryvdh/laravel-debugbar&quot;: &quot;^3.2&quot;,
+        &quot;barryvdh/laravel-ide-helper&quot;: &quot;^2.6&quot;,
+        &quot;fideloper/proxy&quot;: &quot;^4.0&quot;,
+        &quot;fruitcake/laravel-cors&quot;: &quot;^2.0&quot;,
+        &quot;kalnoy/nestedset&quot;: &quot;^5.0&quot;,
+        &quot;laravel/framework&quot;: &quot;^6.0&quot;,
+        &quot;laravel/passport&quot;: &quot;^7.2&quot;
+    }
+ }
+</code></pre>
+<p>2、require 命令</p>
+<p>如果没有在 composer.json 文件手动添加某个依赖包信息，但是要快速安装此依赖包时，可以使用 <code>require</code> 命令。</p>
+<pre><code class="language-text"># requier 命令示例 
+composer require fruitcake/laravel-cors
+</code></pre>
+<p>3、update 更新包命令</p>
+<pre><code class="language-text"># 按照 composer.json 文件，更新所有的依赖包
+composer update
+# 更新指定的包
+composer update laravel/passport
+# 更新指定的多个包
+composer update laravel/passport fruitcake/laravel-cors
+# 通过通配符匹配包,即更新 Laravel/ 下的项目依赖的所有的包
+composer update laravel/*
+</code></pre>
+<p>4、remove 命令</p>
+<p>移除一个包及其依赖，如果依赖被其他包使用，则无法移除。</p>
+<p>5、search 命令：</p>
+<p>搜索包，输出包及其描述信息，如果只想输出包名可以使用 --only-name 参数</p>
+<p>6、show 命令</p>
+<p>列出当前项目使用到包的信息：</p>
+<pre><code class="language-text"># 列出所有已经安装的包
+composer show
+# 通过通配符进行筛选
+composer show laravel/*
+# 显示具体某个包的信息
+composer show laravel/passport
+</code></pre>
+<p>7、清除缓存命令</p>
+<pre><code class="language-text">composer clearcache
+</code></pre>
+<h1 id="call-to-undefined-function-mysql_connect">Call to undefined function mysql_connect() 解决方法</h1>
+<h2 id="_2"><strong>方式一：</strong></h2>
+<p>在PHP代码中使用phpinfo()函数查看PHP基本信息</p>
+<p>从PHP5.0开始mysql_connect()就不推荐使用了，到PHP7.0就直接被废弃了，如果PHP为7.0及以上版本的话用mysqli_connect()代替</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Nginx/" class="btn btn-neutral float-left" title="Nginx"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="btn btn-neutral float-right" title="Python 虚拟环境">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Nginx/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

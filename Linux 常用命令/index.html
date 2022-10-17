@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Linux 常用命令 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux \u5e38\u7528\u547d\u4ee4";
+        var mkdocs_page_input_path = "Linux \u5e38\u7528\u547d\u4ee4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux 常用命令</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#ls">ls命令</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cd">cd 命令</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pwd">pwd 命令</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#touch">touch（创建文件）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mkdir">mkdir 命令（创建目录）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rm">rm 命令（删）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rmdir">rmdir 命令（删目录）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mv">mv 命令（移动，改）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rename">rename（重命名文件）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cp">cp 命令（复制）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cat">cat 命令（显示，创建，合并）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chmod">chmod 命令（权限）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chown">chown 命令（改变文件或目录的属主和属组）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ps">ps 命令（查看进程）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kill">kill 命令（结束进程）</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Linux 常用命令</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="linux">Linux 常用命令</h1>
+<h3 id="ls">ls命令</h3>
+<p>就是 list 的缩写，通过 ls 命令不仅可以查看 linux 文件夹包含的文件，而且可以查看文件权限(包括目录、文件夹、文件权限)查看目录信息等等。</p>
+<p><strong>常用参数搭配：</strong></p>
+<pre><code>ls -a 列出目录所有文件，包含以.开始的隐藏文件
+ls -A 列出除.及..的其它文件
+ls -r 反序排列
+ls -t 以文件修改时间排序
+ls -S 以文件大小排序
+ls -h 以易读大小显示
+ls -l 除了文件名之外，还将文件的权限、所有者、文件大小等信息详细列出来
+ls --help ls帮助文档
+</code></pre>
+<p><strong>实例：</strong></p>
+<p>(1) 按易读方式按时间反序排序，并显示文件详细信息</p>
+<pre><code>ls -lhrt
+</code></pre>
+<p>(2) 按大小反序显示文件详细信息</p>
+<pre><code>ls -lrS
+</code></pre>
+<p>(3)列出当前目录中所有以"t"开头的目录的详细内容</p>
+<pre><code>ls -l t*
+</code></pre>
+<p>(4) 列出文件绝对路径（不包含隐藏文件）</p>
+<pre><code>ls | sed &quot;s:^:`pwd`/:&quot;
+</code></pre>
+<p>(5) 列出文件绝对路径（包含隐藏文件）</p>
+<pre><code>find $pwd -maxdepth 1 | xargs ls -ld
+</code></pre>
+<h3 id="cd">cd 命令</h3>
+<p>cd(changeDirectory) 命令语法：</p>
+<pre><code>cd [目录名]
+</code></pre>
+<p>说明：切换当前目录至 dirName。</p>
+<p><strong>实例：</strong></p>
+<p>（1）进入要目录</p>
+<pre><code>cd /
+</code></pre>
+<p>（2）进入 "home" 目录</p>
+<pre><code>cd ~
+</code></pre>
+<p>（3）进入上一次工作路径</p>
+<pre><code>cd -
+</code></pre>
+<p>（4）返回上一级目录</p>
+<pre><code>cd ..
+</code></pre>
+<p>（5）返回上上级目录</p>
+<pre><code>cd ../../
+</code></pre>
+<p>（6）把上个命令的参数作为cd参数使用。</p>
+<pre><code>cd !$
+</code></pre>
+<h3 id="pwd">pwd 命令</h3>
+<p>pwd 命令用于查看当前工作目录路径。</p>
+<p><strong>实例：</strong></p>
+<p>（1）查看当前路径</p>
+<pre><code>pwd
+</code></pre>
+<p>（2）查看软链接的实际路径</p>
+<pre><code>pwd -P
+</code></pre>
+<h3 id="touch">touch（创建文件）</h3>
+<p>（1）创建文件,加入后缀更好识别,不加也可</p>
+<pre><code>touch file.py
+</code></pre>
+<p>（2）同时创建多个文件</p>
+<pre><code>touch file2.py file3.py file4.py
+</code></pre>
+<h3 id="mkdir">mkdir 命令（创建目录）</h3>
+<p>mkdir 命令用于创建文件夹。</p>
+<p>可用选项：</p>
+<ul>
+<li><strong>-m</strong>: 对新建目录设置存取权限，也可以用 chmod 命令设置;</li>
+<li><strong>-p</strong>: 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后，系统将自动建立好那些尚不在的目录，即一次可以建立多个目录。</li>
+</ul>
+<p><strong>实例：</strong></p>
+<p>（1）当前工作目录下创建名为 t的文件夹</p>
+<pre><code>mkdir t
+</code></pre>
+<p>（2）在 tmp 目录下创建路径为 test/t1/t 的目录，若不存在，则创建：</p>
+<pre><code>mkdir -p /tmp/test/t1/t
+</code></pre>
+<h3 id="rm">rm 命令（删）</h3>
+<p>删除一个目录中的一个或多个文件或目录，如果没有使用 -r 选项，则 rm 不会删除目录。如果使用 rm 来删除文件，通常仍可以将该文件恢复原状。</p>
+<pre><code>rm [选项] 文件…
+</code></pre>
+<p><strong>实例：</strong></p>
+<p>（1）删除所有文件，删除前逐一询问确认(y/n)：</p>
+<pre><code>rm -i *
+</code></pre>
+<p>（2）递归删除 test 子目录及子目录中所有档案删除，并且不用一一确认：</p>
+<pre><code>rm -rf test
+</code></pre>
+<p>（3）删除以 -abc 开头的文件</p>
+<pre><code>rm -- -abc*
+</code></pre>
+<h3 id="rmdir">rmdir 命令（删目录）</h3>
+<p>从一个目录中删除一个或多个子目录项，删除某目录时也必须具有对其父目录的写权限。</p>
+<p><strong>注意</strong>：不能删除非空目录</p>
+<p><strong>实例：</strong></p>
+<p>（1）当 parent 子目录被删除后使它也成为空目录的话，则顺便一并删除：</p>
+<pre><code>rmdir -p parent/child/child11
+</code></pre>
+<h3 id="mv">mv 命令（移动，改）</h3>
+<p>移动文件或修改文件名，根据第二参数类型（如目录，则移动文件；如为文件则重命令该文件）。</p>
+<p>当第二个参数为目录时，第一个参数可以是多个以空格分隔的文件或目录，然后移动第一个参数指定的多个文件到第二个参数指定的目录中。</p>
+<p><strong>实例：</strong></p>
+<p>（1）将文件 test.log 重命名为 test1.txt</p>
+<pre><code>mv test.log test1.txt
+</code></pre>
+<p>（2）将文件 log1.txt,log2.txt,log3.txt 移动到根的 test3 目录中</p>
+<pre><code>mv llog1.txt log2.txt log3.txt /test3
+</code></pre>
+<p>（3）将文件 file1 改名为 file2，如果 file2 已经存在，则询问是否覆盖</p>
+<pre><code>mv -i log1.txt log2.txt
+</code></pre>
+<p>（4）移动当前文件夹下的所有文件到上一级目录</p>
+<pre><code>mv * ../
+</code></pre>
+<h3 id="rename">rename（重命名文件）</h3>
+<h3 id="cp">cp 命令（复制）</h3>
+<p>将源文件复制至目标文件，或将多个源文件复制至目标目录。</p>
+<p>注意：命令行复制，如果目标文件已经存在会提示是否覆盖，而在 shell 脚本中，如果不加 -i 参数，则不会提示，而是直接覆盖！</p>
+<pre><code>-i 提示
+-r 复制目录及目录内所有项目
+-a 复制的文件与原文件时间一样
+</code></pre>
+<p><strong>实例：</strong></p>
+<p>（1）复制文件。如果fileCopy已经存在,会被file复制内容重新覆盖</p>
+<pre><code>cp file.txt fileCopy.txt
+</code></pre>
+<p>（2）问询是否复制(或者覆盖)(y/n)</p>
+<pre><code>cp -i file fileCopy
+</code></pre>
+<p>（3）加入/符号,表示文件夹。将file复制到dir文件夹中</p>
+<pre><code>cp file dir/
+</code></pre>
+<p>（3）-R递归,将dir/中所有文件复制到dir2/中, 不加-R会报错</p>
+<pre><code>cp -R dir/ dir2/
+</code></pre>
+<p>（4）将file开头的文件,都复制到dir/目录中</p>
+<pre><code>cp file* dir/
+</code></pre>
+<p>（5）将5结尾的文件,都复制到dir/目录中</p>
+<pre><code>cp *5 dir/
+</code></pre>
+<p>（6）默认最后为复制到的目录, 前面为复制的文件</p>
+<pre><code>cp file1 file2 dir/
+</code></pre>
+<p>（7）为 a.txt 建立一个链接（快捷方式）</p>
+<pre><code>cp -s a.txt link_a.txt
+</code></pre>
+<h3 id="cat">cat 命令（显示，创建，合并）</h3>
+<p>cat 主要有三大功能：</p>
+<p><strong>显示</strong></p>
+<p>一次显示整个文件:</p>
+<pre><code>cat filename.py
+</code></pre>
+<p><strong>创建</strong></p>
+<p>从键盘创建一个文件:</p>
+<pre><code>cat &gt; filename.py
+</code></pre>
+<ul>
+<li>只能创建新文件，不能编辑已有文件。</li>
+</ul>
+<p><strong>合并</strong></p>
+<p>将几个文件合并为一个文件:</p>
+<p>a.py 和 b.py 数据合并放到 c.py</p>
+<pre><code>cat a.py b.py &gt; c.py
+</code></pre>
+<p>将 a.py 数据补充放到 b.py 后面</p>
+<pre><code>cat a.py &gt;&gt; b.py
+</code></pre>
+<ul>
+<li>-b 对非空输出行号</li>
+<li>-n 输出所有行号</li>
+</ul>
+<p><strong>实例：</strong></p>
+<p>（1）把 log2012.log 的文件内容加上行号后输入 log2013.log 这个文件里</p>
+<pre><code>cat -n log2012.log log2013.log
+</code></pre>
+<p>（2）把 log2012.log 和 log2013.log 的文件内容加上行号（空白行不加）之后将内容附加到 log.log 里</p>
+<pre><code>cat -b log2012.log log2013.log log.log
+</code></pre>
+<p>（3）使用 here doc 生成新文件</p>
+<pre><code>cat &gt;log.txt &lt;&lt;EOF
+&gt;Hello
+&gt;World
+&gt;PWD=$(pwd)
+&gt;EOF
+ls -l log.txt
+cat log.txt
+Hello
+World
+PWD=/opt/soft/test
+</code></pre>
+<p>（4）反向列示</p>
+<pre><code>tac log.txt
+PWD=/opt/soft/test
+World
+Hello
+</code></pre>
+<h3 id="chmod">chmod 命令（权限）</h3>
+<p>用于改变 linux 系统文件或目录的访问权限。用它控制文件或目录的访问权限。该命令有两种用法。一种是包含字母和操作符表达式的文字设定法；另一种是包含数字的数字设定法。</p>
+<p>每一文件或目录的访问权限都有三组，每组用三位表示，分别为文件属主的读、写和执行权限；与属主同组的用户的读、写和执行权限；系统中其他用户的读、写和执行权限。可使用 ls -l test.txt 查找。</p>
+<p>以文件 log2012.log 为例，其中的括号()只为分隔含义，实际中不存在：</p>
+<pre><code>(-)((rw-)(r--)(r--)) 1 root root 296K 11-13 06:03 log2012.log
+</code></pre>
+<p>第一部分： (-) 或 (d) </p>
+<ul>
+<li>第一个字符指定了文件类型。在通常意义上，一个目录也是一个文件。如果第一个字符是横线，表示是一个非目录的文件。如果是 d，表示是一个目录。</li>
+</ul>
+<p>第二部分： ((rw-)(r--)(r--))</p>
+<ul>
+<li>
+<p>从第二个字符开始到第十个 9 个字符，3 个字符一组，分别表示了 3 组用户对文件或者目录的权限。权限字符用横线代表空许可，r 代表只读，w 代表写，x 代表可执行。依次是：</p>
+</li>
+<li>
+<p>属主的读、写和执行权限；</p>
+</li>
+<li>属主同组的用户的读、写和执行权限；</li>
+<li>其他用户的读、写和执行权限；</li>
+</ul>
+<p>常用参数：</p>
+<pre><code>-c 当发生改变时，报告处理信息
+-R 处理指定目录以及其子目录下所有文件
+</code></pre>
+<p>权限范围：</p>
+<pre><code>u ：目录或者文件的当前的用户
+g ：目录或者文件的当前的群组
+o ：除了目录或者文件的当前用户或群组之外的用户或者群组
+a ：所有的用户及群组
+</code></pre>
+<p>权限代号：</p>
+<pre><code>r ：读权限，用数字4表示
+w ：写权限，用数字2表示
+x ：执行权限，用数字1表示
+- ：删除权限，用数字0表示
+s ：特殊权限
+</code></pre>
+<p>实例：</p>
+<p>（1）增加文件 t.log 所有用户可执行权限</p>
+<pre><code>chmod a+x t.log
+</code></pre>
+<p>（2）撤销原来所有的权限，然后使拥有者具有可读权限,并输出处理信息</p>
+<pre><code>chmod u=r t.log -c
+</code></pre>
+<p>（3）给 file 的属主分配读、写、执行(7)的权限，给file的所在组分配读、执行(5)的权限，给其他用户分配执行(1)的权限</p>
+<pre><code>chmod 751 t.log -c（或者：chmod u=rwx,g=rx,o=x t.log -c)
+</code></pre>
+<p>（4）将 test 目录及其子目录所有文件添加可读权限</p>
+<pre><code>chmod u+r,g+r,o+r -R text/ -c
+</code></pre>
+<h3 id="chown">chown 命令（改变文件或目录的属主和属组）</h3>
+<p>chown 将指定文件的拥有者改为指定的用户或组，用户可以是用户名或者用户 ID；组可以是组名或者组 ID；文件是以空格分开的要改变权限的文件列表，支持通配符。</p>
+<pre><code>-c 显示更改的部分的信息
+-R 处理指定目录及子目录
+</code></pre>
+<p><strong>实例：</strong></p>
+<p>（1）改变拥有者和群组 并显示改变信息</p>
+<pre><code>chown -c mail:mail log2012.log
+</code></pre>
+<p>（2）改变文件群组</p>
+<pre><code>chown -c :mail t.log
+</code></pre>
+<p>（3）改变文件夹及子文件目录属主及属组为 mail</p>
+<pre><code>chown -cR mail: test/
+</code></pre>
+<h3 id="ps">ps 命令（查看进程）</h3>
+<p>ps(process status)，用来查看当前运行的进程状态，一次性查看，如果需要动态连续结果使用 top</p>
+<p>linux上进程有5种状态:</p>
+<ul>
+<li>\1. 运行(正在运行或在运行队列中等待)</li>
+<li>\2. 中断(休眠中, 受阻, 在等待某个条件的形成或接受到信号)</li>
+<li>\3. 不可中断(收到信号不唤醒和不可运行, 进程必须等待直到有中断发生)</li>
+<li>\4. 僵死(进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放)</li>
+<li>\5. 停止(进程收到SIGSTOP, SIGSTP, SIGTIN, SIGTOU信号后停止运行运行)</li>
+</ul>
+<p>ps 工具标识进程的5种状态码:</p>
+<pre><code>D 不可中断 uninterruptible sleep (usually IO)
+R 运行 runnable (on run queue)
+S 中断 sleeping
+T 停止 traced or stopped
+Z 僵死 a defunct (”zombie”) process
+</code></pre>
+<p><strong>命令参数：</strong></p>
+<pre><code>-A 显示所有进程
+a 显示所有进程
+-a 显示同一终端下所有进程
+c 显示进程真实名称
+e 显示环境变量
+f 显示进程间的关系
+r 显示当前终端运行的进程
+-aux 显示所有包含其它使用的进程
+</code></pre>
+<p><strong>实例：</strong></p>
+<p>（1）显示当前所有进程环境变量及进程间关系</p>
+<pre><code>ps -ef
+</code></pre>
+<p>（2）显示当前所有进程</p>
+<pre><code>ps -A
+</code></pre>
+<p>（3）与grep联用查找某进程</p>
+<pre><code>ps -aux | grep apache
+</code></pre>
+<p>（4）找出与 cron 与 syslog 这两个服务有关的 PID 号码</p>
+<pre><code>ps aux | grep '(cron|syslog)'
+</code></pre>
+<h3 id="kill">kill 命令（结束进程）</h3>
+<p>发送指定的信号到相应进程。不指定型号将发送SIGTERM（15）终止指定进程。如果任无法终止该程序可用"-KILL" 参数，其发送的信号为SIGKILL(9) ，将强制结束进程，使用ps命令或者jobs 命令可以查看进程号。root用户将影响用户的进程，非root用户只能影响自己的进程。</p>
+<p><strong>常用参数：</strong></p>
+<pre><code>-l  信号，若果不加信号的编号参数，则使用“-l”参数会列出全部的信号名称
+-a  当处理当前进程时，不限制命令名和进程号的对应关系
+-p  指定kill 命令只打印相关进程的进程号，而不发送任何信号
+-s  指定发送信号
+-u  指定用户
+</code></pre>
+<p><strong>实例：</strong></p>
+<p>（1）先使用ps查找进程pro1，然后用kill杀掉</p>
+<pre><code>kill -9 $(ps -ef | grep pro1)
+</code></pre>
+<p>（2）杀死进程</p>
+<pre><code>kill 进程PID
+</code></pre>
+<p>（3）强制杀死进程</p>
+<pre><code>kill 9 进程PID
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/" class="btn btn-neutral float-left" title="HTML，CSS语句"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/" class="btn btn-neutral float-right" title="Linux语句命令">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

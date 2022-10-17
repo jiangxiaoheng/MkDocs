@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>SQL语句 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SQL\u8bed\u53e5";
+        var mkdocs_page_input_path = "SQL\u8bed\u53e5.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">SQL语句</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">登录</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">命令</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">密码</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">操作数据库（文件夹）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">查</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_6">增</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">删</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">改</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_9">操作表（文件）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">切换表（文件）:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_11">查看所在表（文件）:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_12">查</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_13">增</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_14">删</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_15">改</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_16">操作表记录内容</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_17">查</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_18">增</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_19">删</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_20">改</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>SQL语句</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sql">SQL 命令语句</h1>
+<h2 id="_1">登录</h2>
+<h3 id="_2">命令</h3>
+<pre><code class="language-sql">mysql -u root -p
+</code></pre>
+<h3 id="_3">密码</h3>
+<pre><code class="language-sql">zzy520
+</code></pre>
+<h2 id="_4">操作数据库（文件夹）</h2>
+<h3 id="_5">查</h3>
+<pre><code class="language-sql">show create database db1;
+show databases;
+</code></pre>
+<h3 id="_6">增</h3>
+<pre><code class="language-sql">create database db1;
+create database db1 default character set utf8;
+create database db1 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+# 按行输入
+mysql&gt; CREATE DATABASE IF NOT EXISTS test_db_char
+    -&gt; DEFAULT CHARACTER SET utf8
+    -&gt; DEFAULT COLLATE utf8_chinese_ci;
+</code></pre>
+<h3 id="_7">删</h3>
+<pre><code class="language-sql">drop database db1;
+</code></pre>
+<h3 id="_8">改</h3>
+<pre><code class="language-sql">alter database db1 default character set gbk;
+
+# 按行输入
+ALTER DATABASE [数据库名] { 
+[ DEFAULT ] CHARACTER SET &lt;字符集名&gt; |
+[ DEFAULT ] COLLATE &lt;校对规则名&gt;}
+</code></pre>
+<h2 id="_9">操作表（文件）</h2>
+<h3 id="_10">切换表（文件）:</h3>
+<pre><code class="language-sql">use db1;
+</code></pre>
+<h3 id="_11">查看所在表（文件）:</h3>
+<pre><code class="language-sql">select database();
+</code></pre>
+<h3 id="_12">查</h3>
+<pre><code class="language-sql">show create table tb1;
+show tables;
+desc tb1;
+</code></pre>
+<h3 id="_13">增</h3>
+<pre><code class="language-sql">create table tb1(id int,name char) default charset=utf8;
+</code></pre>
+<pre><code class="language-sql">create table tb1(
+    id int primary key auto_increment,  -- 主键（不允许为空，不允许重复）,自增（不传值且自维护）
+    name varchar(16) not null,  -- 不允许为空
+    age int null,   -- 允许为空（默认）
+    lv int default 3    -- 插入数据时，lv列的值默认为3
+) default charset=utf8; # 字符集
+</code></pre>
+<p>通常情况下，以下方式创建表【标准】</p>
+<pre><code class="language-sql">create table tb1(
+    id int primary key auto_increment,
+    name varchar(16) not null,
+    age int null,
+    lv int default 3
+) default charset=utf8;
+</code></pre>
+<p>常用数据类型</p>
+<ul>
+<li>tinyint</li>
+</ul>
+<p><code>sql
+  # tinyint             有符号，取值范围 -128 ~ 127 （有正有负）【默认】
+  # tinyint unsigned        无符号，取值范围 0 ~ 255 （只有正）
+  create table t2(
+      id int primary key auto_increment,
+      name char,
+      age tinyint,  # 有符号：取值范围 -128 ~ 127
+      lv tinyint unsigned   # 无符号：取值范围 0 ~ 255
+  ) default charset=utf8;</code></p>
+<ul>
+<li>int</li>
+</ul>
+<p><code>sql
+  # int             有符号，取值范围： -2147483648 ~ 2147483647
+  # int unsigned        有符号，取值范围：0 ~ 4294967295</code></p>
+<ul>
+<li>bigint</li>
+</ul>
+<p><code>sql
+  # bigint          有符号，取值范围： 
+  # bigint unsigned 有符号，取值范围：</code></p>
+<ul>
+<li>
+<p>float（不常用）</p>
+</li>
+<li>
+<p>double（不常用）</p>
+</li>
+<li>
+<p>decimal（更精准，常用）</p>
+</li>
+</ul>
+<p><code>sql
+  # 精准的小数值，m是数字的总个数（负号不算），d是小数点后个数。m最大值为65，d最大值为30。
+  # 例如：
+  create table tb3(
+      id int primary key auto_increment,
+      salary decimal(10,2)
+  ) default charset=utf8;</code></p>
+<ul>
+<li>char （速度快）</li>
+</ul>
+<p><code>sql
+  # 定长字符串，m代表字符串长度，最多可容纳255个字符。
+  char(11)  # 定长字符串，固定字符进行存储。没有11个字符，也会按照11个储存
+  create table tb4(
+      id int primary key auto_increment,
+      mobile char(11)
+  ) default charset=utf8;</code></p>
+<ul>
+<li>varchar （节省空间)</li>
+</ul>
+<p><code>sql
+  # 变字符串，m代表字符串长度。最多可容纳 65535字节，中文则需要 /3 为最大m。
+  varchar(64)   # 变字符串，真实数据长度进行存储
+  create table tb5(
+      id int primary key auto_increment,
+      mobile varchar(64)
+  ) default charset=utf8;</code></p>
+<ul>
+<li>text</li>
+</ul>
+<p><code>sql
+  # 存放最大长度为 65,535 个字符的字符串。
+  #通常，长文本会用text类型。例如：文章，新闻等。
+  create table tb6(
+      id int primary key auto_increment,
+      title varchar(64)
+      content text
+  ) default charset=utf8;</code></p>
+<ul>
+<li>mediumtext （不太用）</li>
+</ul>
+<p><code>存放最大长度为 16,777,215 个字符的字符串。</code></p>
+<ul>
+<li>longtext （不太用）</li>
+</ul>
+<p><code>用于 BLOBs (Binary Large OBjects)。存放最多 4,294,967,295 字节的数据。</code></p>
+<ul>
+<li>datetime</li>
+</ul>
+<p><code>sql
+  日期和时间的组合。格式：YYYY-MM-DD HH:MM:SS
+  注释：支持的范围是从 '1000-01-01 00:00:00' 到 '9999-12-31 23:59:59'</code></p>
+<ul>
+<li>date</li>
+</ul>
+<p><code>sql
+  日期。格式：YYYY-MM-DD
+  注释：支持的范围是从 '1000-01-01' 到 '9999-12-31'</code></p>
+<p>案例一</p>
+<pre><code class="language-sql">create table tb7(
+    id int primary key auto_increment,
+    name varchar(64) not null,
+    email varchar(64) not null,
+    password varchar(64) not null,
+    age tinyint,
+    salary decimal(10,2),
+    ctime date
+) default charset=utf8;
+
+insert into tb7(name,email,password,age,salary,ctime) value('hh','122522509@qq.com','root123',33,9999.99,'2014-12-12');
+insert into tb7(name,email,password,age,salary,ctime) value('hh','122522509@qq.com','root123',null,null,null);
+</code></pre>
+<h3 id="_14">删</h3>
+<pre><code class="language-sql">drop table tb1;
+</code></pre>
+<h3 id="_15">改</h3>
+<pre><code class="language-sql"># 更改列属性 modify: 
+alter table 表名 modify 列名 新类型
+alter table test modify name_new int(10);
+
+# 更改列名 change: 
+alter table 表名 change 旧列名 新列名 类型
+alter table test change name name_new varchar(32);
+
+# 只更改列属性 
+change: alter table 表名 列名 列名 新类型 相同的列名要写两次.
+alter table test change  name_new name_new int(32);
+
+</code></pre>
+<h2 id="_16">操作表记录内容</h2>
+<h3 id="_17">查</h3>
+<pre><code class="language-sql">select * from 数据库.表名称;  # 完整地址查询，在其他数据中也可查询
+select * from 表名称;
+select 列名称,列名称 from 表名称;
+select 列名称,列名称 from 表名称 where 条件;   # 条件查询
+
+select * from tb7;
+select id,name from db2.tb7;
+select * from db2.tb7;
+select * from db2.tb7 where id&gt;3;
+</code></pre>
+<h3 id="_18">增</h3>
+<pre><code class="language-sql">insert into 表名(列,列) value(数据,数据),(数据,数据),(数据,数据);
+
+insert into tb1(name,age) values('hengheng',33),('john',50),('jj',60);  # 插入多行数据
+
+insert into tb1 values(1,'heng1'),(2,'xiao2'),(3,'jiang3'); # 按默认循序
+insert into tb1(name,id) values(1,'heng1'),(2,'xiao2'),(3,'jiang3');    # 设置循序
+</code></pre>
+<h3 id="_19">删</h3>
+<pre><code class="language-sql">delete from 表名;
+delete from 表名 where 条件;
+
+delete from tb7;    #删除表
+delete from tb7 where id = 3;   # 条件删除
+delete from tb7 where id = 3 and name = 'heng'; # 条件删除
+delete from tb7 where id = 3 or name = 'hh';    # 条件删除
+delete from tb7 where id in (1,5);  # 条件删除
+</code></pre>
+<h3 id="_20">改</h3>
+<pre><code class="language-sql">update 表名 set 列=值, 列=值;
+update 表名 set 列=值, where 条件;
+
+update db2.tb7 set name='GOD';  # 批量修改
+update db2.tb7 set name='heng' where id=3;  # 条件修改
+update tb7 set age=age+1;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="btn btn-neutral float-left" title="Python 虚拟环境"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/" class="btn btn-neutral float-right" title="UnityWebRequest 与 Web 服务器通讯">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

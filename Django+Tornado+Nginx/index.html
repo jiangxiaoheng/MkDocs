@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Django+Tornado+Nginx - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Django+Tornado+Nginx";
+        var mkdocs_page_input_path = "Django+Tornado+Nginx.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Django+Tornado+Nginx</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">各模块作用</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#django">Django</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#uwsgi">uWSGI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">安装</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">配置</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">命令</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tornado">Tornado</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nginx">Nginx</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Django+Tornado+Nginx</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="nginxuwsgitornadodjango">Nginx→uWSGI/Tornado→Django</h1>
+<p>Nginx：反向代理、负载均衡、动静分离</p>
+<p>uWSGI/Tornado：Http服务器</p>
+<p>Django：Web框架</p>
+<h2 id="_1">各模块作用</h2>
+<ul>
+<li><strong>nginx：</strong>是对外的服务器，外部浏览器通过url访问nginx，nginx主要处理静态请求</li>
+<li><strong>uWSGI：</strong>是对内的服务器，主要用来处理动态请求</li>
+<li><strong>uwsgi：</strong>是一种web协议，接收到请求之后将包进行处理，处理成wsgi可以接受的格式，并发给wsgi</li>
+<li><strong>wsgi：</strong>是python专用的web协议，根据请求调用应用程序（django）的某个文件，某个文件的某个函数</li>
+<li><strong>django：</strong>Web框架，查询数据等资源，把处理的结果再次返回给WSGI， WSGI 将返回值进行打包，打包成uwsgi能够接收的格式</li>
+<li>uwsgi接收wsgi发送的请求，并转发给nginx,nginx最终将返回值返回给浏览器</li>
+</ul>
+<h2 id="django">Django</h2>
+<p><strong>settings.py 设置 STATIC_ROOT</strong></p>
+<pre><code>STATIC_URL = 'static/'              # 静态文件路径
+STATIC_ROOT = BASE_DIR / 'static'   # 静态文件存储路径
+</code></pre>
+<p><strong>收集 static</strong></p>
+<p>简介：动静分离使用，将项目中所有 static 收集到 STATIC_ROOT 中，再用 nginx 动静分离，指定该 STATIC_ROOT 目录</p>
+<p>执行 <code>python manage.py collectstatic</code> </p>
+<p>执行该命令后，Django将项目中所有静态文件 复制到 STATIC_ROOT 中 ，包括Django内建的静态文件【如admin后台的样式】</p>
+<h2 id="uwsgi">uWSGI</h2>
+<blockquote>
+<p>uWSGI # web服务器;用于翻译http让django读懂
+uwsgi   # 协议;全小写
+uWSGI替代python3 manage.py runserver 0.0.0.0:800
+django的manage.py runserver是测试服务工具, 正式并发环境需要部署uWSGI</p>
+</blockquote>
+<h4 id="_2"><strong>安装</strong></h4>
+<pre><code>pip3 install uwsgi
+</code></pre>
+<blockquote>
+<p>错误：Exception: you need a C compiler to build uWSGI
+解决：yum install gcc
+错误：plugins/python/uwsgi_python.h:2:10: fatal error: Python.h: No such file or directory
+解决：yum install python3-devel</p>
+</blockquote>
+<h4 id="_3">配置</h4>
+<p><strong>新建配置uwsgi.ini路径</strong></p>
+<pre><code>myproject/myproject/uwsgi_myproject.ini 与 settings.py 配置同级
+</code></pre>
+<pre><code class="language-python">[uwsgi]
+#配置开头,用于识别配置
+
+socke = 127.0.0.1:8080
+# http = 0.0.0.0:3309
+# 配置服务器的监听ip和端口，让uWSGI作为nginx的支持服务器的话，设置socke就行；如果要让uWSGI作为单独的web-server，用http
+
+chdir = /var/www/html/myproject
+# 配置项目目录（此处设置为项目的根目录）
+
+wsgi-file = myproject/wsgi.py
+# 配置入口模块 (django的入口函数的模块，即setting同级目录下的wsgi.py)
+
+master = True
+# 开启master, 将会多开一个管理进程, 管理其他服务进程
+
+daemonize = wsgi.log
+# 以守护进程方式提供服, 输出信息将会打印到log中
+
+pidfile = uwsgi.pid
+# 进程pid
+
+processes = 1
+# 服务器进程数(不大于核心数)
+
+threads = 4
+# 服务器进程开启的线程数量
+</code></pre>
+<h4 id="_4">命令</h4>
+<pre><code class="language-python"># 启动
+uwsgi
+
+# 启动项目中uwsgi;cd到项目uWSGI所在目录进行
+uwsgi --ini uwsgi.ini
+
+# 停止;cd到项目uWSGI所在目录进行
+uwsgi --stop uwsgi.pid
+
+# 重启;cd到项目uWSGI所在目录进行(不知道是否有效,没必要用)
+uwsgi --reload uwsgi.pid
+
+# 启动和关闭都要看看有没有相应的进程
+ps -aux | grep uwsgi
+
+# 先停止,再启动
+django中代码有任何修改,需要重新启动uwsgi
+</code></pre>
+<p><strong>常见问题</strong></p>
+<blockquote>
+<p>错误: realpath() of uwsgi.ps failed: No such file or directory [core/utils.c line 3654]
+解决: 删除uwsgi.pid，然后重新执行uwsgi --ini uwsgi.ini。然后会重新生成一个uwsgi.pid。这时候在查看uwsgi进程，就正常了。</p>
+</blockquote>
+<h2 id="tornado">Tornado</h2>
+<p>Tornado属于全栈框架，这里只作为http服务器使用</p>
+<pre><code class="language-python">import os
+
+from tornado import httpserver, wsgi    # wsgi模块：用于构建WSGI应用，httpserver模块：用于构建HTTP服务器
+from tornado.options import options, define  # options模块：用于解析命令行参数，define模块：用于定义命令行参数
+from tornado.ioloop import IOLoop    # IOLoop模块：用于提供I/O事件循环机制
+from django.core.wsgi import get_wsgi_application   # get_wsgi_application模块：用于构建WSGI应用
+
+port = 8000 # 默认端口
+projectName = &quot;webdjango&quot;   # django项目名称
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'{projectName}.settings')  # 设置环境变量，指定django的配置文件
+os.environ[&quot;DJANGO_ALLOW_ASYNC_UNSAFE&quot;] = &quot;true&quot;    # 允许django异步操作，不安全，不建议使用，但是可以使用，因为tornado是单线程模型
+
+application = get_wsgi_application()    # 构建WSGI应用，用于提供tornado服务，这里的application是Django的WSGI应用，即Django的WSGI服务器
+define('port', default=port, type=int)    # 定义命令行参数，port：端口号，type：数据类型，help：帮助信息
+
+if __name__ == '__main__':
+    options.parse_command_line()    # 解析命令行参数，如果没有指定端口号，默认使用8000端口，如果指定了端口号，则使用指定的端口号
+    app = wsgi.WSGIContainer(application)    # 构建WSGI应用，用于提供tornado服务，这里的application是Django的WSGI应用，即Django的WSGI服务器
+    http_server = httpserver.HTTPServer(app, xheaders=True)    # 构建HTTP服务器，xheaders：允许跨域访问，即跨域访问
+    http_server.listen(options.port)    # 监听指定端口号
+    IOLoop.instance().start()    # 启动I/O事件循环机制，用于提供tornado服务，这里的IOLoop.instance()是tornado的IOLoop单例对象
+
+</code></pre>
+<h2 id="nginx">Nginx</h2>
+<p>反向代理，可以拦截一些web攻击，保护后端的web服务器</p>
+<p>负载均衡，根据轮询算法，分配请求到多节点web服务器</p>
+<p>缓存静态资源，加快访问速度，释放web服务器的内存占用，专项专用</p>
+<pre><code># 全局配置
+#user  nobody;
+# 启动进程,通常设置成和cpu的数量相等
+worker_processes  1;
+
+# 全局错误日志及PID文件
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+# 工作模式及连接数上限
+events {
+    # 单个后台worker process进程的最大并发链接数
+    worker_connections  1024;
+}
+
+# 设定http服务器，利用它的反向代理功能提供负载均衡支持
+http {
+    # 设定mime类型,类型由mime.type文件定义
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                  '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+    # 设定日志格式
+    #access_log  logs/access.log  main;
+
+    # sendfile 指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，对于普通应用，
+    # 必须设为 on,如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，以平衡磁盘与网络I/O处理速度，降低系统的uptime.
+    sendfile        on;
+    #tcp_nopush     on;
+
+    # 连接超时时间
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    # 开启gzip压缩
+    #gzip  on;
+
+    # 设定负载均衡的服务器列表
+    upstream tornados{
+        # weigth参数表示权值
+        server 127.0.0.1:8000 weight=3;
+        server 127.0.0.1:8001;
+        server 127.0.0.1:8002;
+    }
+
+    server {    # server配置
+        listen       80;
+        # 定义使用www.xx.com访问
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        # 动静分离，静态文件，nginx自己处理
+        # location ~ ^/(images|javascript|js|css|flash|media|static)/{
+        #     root J:\Python\venvs\webdjango\webdjango\web\static;
+        #     # 过期30天，静态文件不怎么更新，过期可以设大一点，如果频繁更新，则可以设置得小一点。
+        #     expires 1h;
+        # }
+
+        location /static {
+            # alias 别名，指向的目录为指定目录，不需要再指定路径
+            alias J:/Python/venvs/webdjango/webdjango/static;
+        }
+
+        location / {
+            # 定义服务器的默认网站根目录位置
+            # root   html;
+            # 定义首页索引文件的名称
+            # index  index.html index.htm;
+            proxy_pass http://tornados; # 设置到负载均衡的服务器列表
+            # 没下列配置，访问会403，拒绝访问，具体原因待考证
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        # 定义错误提示页面
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {  # 错误页面
+            root   html;    # 根目录
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+
+        # PHP 脚本请求全部转发到 FastCGI处理. 使用FastCGI默认配置.
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+
+        # 禁止访问 .htxxx 文件
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" class="btn btn-neutral float-left" title="Python 虚拟环境"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../django%E8%AF%AD%E5%8F%A5/" class="btn btn-neutral float-right" title="django语句">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../django%E8%AF%AD%E5%8F%A5/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

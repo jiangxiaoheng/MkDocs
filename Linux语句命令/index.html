@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Linux语句命令 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Linux\u8bed\u53e5\u547d\u4ee4";
+        var mkdocs_page_input_path = "Linux\u8bed\u53e5\u547d\u4ee4.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux语句命令</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#cd">cd</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ls">ls</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#touch">touch</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mkdir">mkdir</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rm">rm</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cp">cp</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mv">mv</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rmdir">rmdir</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vim">vim</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#cat">cat</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chmod">chmod</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chown">chown</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#ps">ps</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#kill">kill</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#init">init</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#su">su</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#-t">-t</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Linux语句命令</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="linux">Linux 语句命令</h1>
+<h2 id="cd">cd</h2>
+<p>返回上一级目录</p>
+<pre><code>cd ..
+</code></pre>
+<p>返回上上级目录</p>
+<pre><code>cd ../../
+</code></pre>
+<p>进入目录下指定目录</p>
+<pre><code>cd documents/file/
+</code></pre>
+<p>返回家目录</p>
+<pre><code>cd ~
+</code></pre>
+<p>返回上个所在目录</p>
+<pre><code>cd -
+</code></pre>
+<p>进入绝对路径</p>
+<pre><code>cd /root/*/*/
+</code></pre>
+<h2 id="ls">ls</h2>
+<p>展示当前目录文件(文件包括文件夹)</p>
+<pre><code>ls
+</code></pre>
+<p>检视目录文件全部信息(包括权限rwx,文件大小,文件时间信息)</p>
+<pre><code>ls -l
+</code></pre>
+<p>列出文件的同时查看文件的大小</p>
+<pre><code>ls -lh
+</code></pre>
+<p>显示全部文件包括隐藏文件</p>
+<pre><code>ls -a
+</code></pre>
+<p>ls帮助文档</p>
+<pre><code>ls --help
+</code></pre>
+<h2 id="touch">touch</h2>
+<p>创建文件,加入后缀更好识别,不加也可</p>
+<pre><code>touch file.py
+</code></pre>
+<p>同时创建多个文件</p>
+<pre><code>touch file2.py file3.py file4.py
+</code></pre>
+<h2 id="mkdir">mkdir</h2>
+<p>创建文件夹dir</p>
+<pre><code>mkdir dir/
+</code></pre>
+<p>创建dir目录以及在dir目录下创建dir2目录</p>
+<pre><code>mkdir dir/dir2/
+</code></pre>
+<h2 id="rm">rm</h2>
+<p>移除文件file</p>
+<pre><code>rm file
+</code></pre>
+<p>谨慎 移除目录下所以文件</p>
+<pre><code>rm *
+</code></pre>
+<p>询问是否移除(y/n)</p>
+<pre><code>rm -i *
+</code></pre>
+<p>逐句询问是否移除file1 file2 file3</p>
+<pre><code>rm -i file1 file2 file3
+</code></pre>
+<p>大于3个文件才会询问</p>
+<pre><code>rm -I *
+</code></pre>
+<p>递归删除dir文件夹(包括内部所以文件)</p>
+<pre><code>rm -r dir/
+</code></pre>
+<h2 id="cp">cp</h2>
+<p>复制文件。如果fileCopy已经存在,会被file复制内容重新覆盖</p>
+<pre><code>cp file.txt fileCopy.txt
+</code></pre>
+<p>问询是否复制(或者覆盖)(y/n)</p>
+<pre><code>cp -i file fileCopy
+</code></pre>
+<p>加入/符号,表示文件夹。将file复制到dir文件夹中</p>
+<pre><code>cp file dir/
+</code></pre>
+<p>-R递归,将dir/中所有文件复制到dir2/中, 不加-R会报错</p>
+<pre><code>cp -R dir/ dir2/
+</code></pre>
+<p>将file开头的文件,都复制到dir/目录中</p>
+<pre><code>cp file* dir/
+</code></pre>
+<p>将5结尾的文件,都复制到dir/目录中</p>
+<pre><code>cp *5 dir/
+</code></pre>
+<p>默认最后为复制到的目录, 前面为复制的文件</p>
+<pre><code>cp file1 file2 dir/
+</code></pre>
+<h2 id="mv">mv</h2>
+<p>file移动到dir/</p>
+<pre><code>mv file dir/
+</code></pre>
+<p>移动file到fileReName,相当于重命名</p>
+<pre><code>mv file fileReName
+</code></pre>
+<h2 id="rmdir">rmdir</h2>
+<p>仅可移除空文件夹</p>
+<pre><code>rmdir dir/
+</code></pre>
+<h2 id="vim">vim</h2>
+<p>vim 文本编辑器,可用于读写文件</p>
+<pre><code>vim file.py
+</code></pre>
+<h2 id="cat">cat</h2>
+<p>显示 a.py 内容,可用于读文件</p>
+<pre><code>cat a.py
+</code></pre>
+<p>将 a.py 数据放到 b.py 相当于复制</p>
+<pre><code>cat a.py &gt; b.py
+</code></pre>
+<p>a.py b.py 数据合并放到 c.py</p>
+<pre><code>cat a.py b.py &gt; c.py
+</code></pre>
+<p>将 a.py 数据补充放到 b.py 后面</p>
+<pre><code>cat a.py &gt;&gt; b.py
+</code></pre>
+<h2 id="chmod">chmod</h2>
+<p>(u或与g或与a)                       (+或-)                   (r或与w或与x)               file.py
+(用户 或与 组 或与 所有人)    (憎加 或 减少)   (读 或与 写 或与 执行)  (目标)
+权限
+(d)(rwx)(r-x)(rwx)
+(-)(rwx)(-wx)(rw-)
+有4个组成部分以括号隔开;d表示文件夹,-表示文件;r表示读;w表示写;x表示执行;
+第1个部分文件类型;第2个部分拥有者权限;第3个部分所在组权限;第4个部分其他者权限</p>
+<pre><code>chmod a+rwx file.py
+</code></pre>
+<h2 id="chown">chown</h2>
+<h2 id="ps">ps</h2>
+<p>查看进程</p>
+<pre><code>ps -aux | grep uwsgi
+</code></pre>
+<p>查看端口</p>
+<pre><code>netstat -lnp|grep 80
+</code></pre>
+<h2 id="kill">kill</h2>
+<p>杀死进程</p>
+<pre><code>kill 进程PID
+</code></pre>
+<p>强制杀死进程</p>
+<pre><code>kill 9 进程PID
+</code></pre>
+<p>查找uwsgi位置</p>
+<pre><code>find / -name uwsgi
+</code></pre>
+<h2 id="init">init</h2>
+<p>进入图形界面</p>
+<pre><code>init 5
+</code></pre>
+<p>退出图形界面</p>
+<pre><code>init 3
+</code></pre>
+<h2 id="su">su</h2>
+<p>切换用户</p>
+<pre><code>su root
+</code></pre>
+<h2 id="-t">-t</h2>
+<p>可以验证语法</p>
+<pre><code>httpd -t
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="btn btn-neutral float-left" title="Linux 常用命令"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Nginx/" class="btn btn-neutral float-right" title="Nginx">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Nginx/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
