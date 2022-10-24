@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Unity中数据存储的方法 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Unity\u4e2d\u6570\u636e\u5b58\u50a8\u7684\u65b9\u6cd5";
+        var mkdocs_page_input_path = "Unity\u4e2d\u6570\u636e\u5b58\u50a8\u7684\u65b9\u6cd5.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">Addressable使用心得</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Unity中数据存储的方法</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#playerprefs">PlayerPrefs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-playerprefs">1. PlayerPrefs是什么？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-playerprefs">2. PlayerPrefs有什么用？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-playerprefs">3. PlayerPrefs如何用？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-playerprefs">4. PlayerPrefs数据存在哪里？</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">二进制方法</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#json">Json</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xml">XML存储</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Unity中数据存储的方法</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="unity">Unity中数据存储的方法</h1>
+<h2 id="playerprefs">PlayerPrefs</h2>
+<pre><code class="language-c#">干货：PlayerPrefs：数据持久化方案。
+    采用键值对的方式对数据进行存储。
+    eg:PlayerPrefs.SetInt(&quot;Index&quot;,1); 
+可以存储Int, Float, String类型的数据。
+    eg:PlayerPrefs.SetFloat(&quot;Height&quot;,183.5f); 
+PlayerPrefs.SetString(&quot;Name&quot;,&quot;Tom&quot;);
+获取数据：
+    eg:PlayerPrefs.GetInt(&quot;Index&quot;);
+Serialization(序列化)，可以用来将对象转化为字节流。
+    Deserialization(反序列化)，可以用来将字节流转换为对象。
+</code></pre>
+<p>unity3d提供了一个用于本地持久化保存与读取的类-------PlayerPrefs.工作原理很简单，以键值对的形式将数据保存在文件中，然后程序可以根据这个名称取出上次保存的数值（注：PlayerPrefs运用起来很方便，随时都可以存取与读取）。
+Playerprefs类支持3中数据类型的保存和读取，分别是浮点型、整型和字符串型：
+PlayerPrefs.SetInt();保存整型数据
+PlayerPrefs.SetFloat();保存浮点型数据
+PlayerPrefs.SetString();保存字符串型数据
+PlayerPrefs.GetInt();读取整型数据
+PlayerPrefs.GetFloat();读取浮点型数据
+PlayerPrefs.GetString();读取字符串型数据</p>
+<h4 id="1-playerprefs">1. PlayerPrefs是什么？</h4>
+<p>PlayerPrefs是Unity3d提供了一个用于数据本地持久化保存与读取的类。工作原理十分简单，就是以key-value的形式将数据保存在本地，然后在代码中可以写入、读取、更新数据。</p>
+<h4 id="2-playerprefs">2. PlayerPrefs有什么用？</h4>
+<p>可用于存储一些非关键性的数据，尤其在没有服务器的单机游戏中，游戏存档、分数排名等都需要用到数据存储，可以使用PlayerPrefs轻松实现数据存储。</p>
+<h4 id="3-playerprefs">3. PlayerPrefs如何用？</h4>
+<ul>
+<li><strong>存储数据：</strong></li>
+</ul>
+<pre><code class="language-csharp">//存储整型数据
+PlayerPrefs.SetInt(&quot;intKey&quot;,999); 
+//存储浮点型数据
+PlayerPrefs.SetFloat(&quot;floatKey&quot;,1.11f); 
+//存储字符串数据
+PlayerPrefs.SetString(&quot;strKey&quot;,&quot;I am Plane&quot;);
+</code></pre>
+<ul>
+<li><strong>取出数据：</strong></li>
+</ul>
+<pre><code class="language-csharp">//取出key为&quot;intKey&quot;的整型数据
+int intVal = PlayerPrefs.GetInt(&quot;intKey&quot;); 
+//取出key为&quot;floatKey&quot;的浮点型数据
+float floatVal = PlayerPrefs.GetFloat(&quot;floatKey&quot;); 
+//获取key为&quot;strKey&quot;的字符串数据
+string strVal = PlayerPrefs.GetString(&quot;strKey&quot;);
+</code></pre>
+<ul>
+<li><strong>删除数据与查数据:</strong></li>
+</ul>
+<pre><code class="language-csharp">//删除所有存储数据
+PlayerPrefs.DeleteAll();
+//删除key为&quot;score&quot;的数据
+PlayerPrefs.DeleteKey(&quot;score&quot;);
+//查找是否存在key为&quot;score&quot;的数据
+bool exist = PlayerPrefs.HasKey(&quot;score&quot;)
+</code></pre>
+<ul>
+<li>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>数据以键值对的形式存储，可以看做一个字典。</li>
+<li>数据通过键名来读取，当值不存在时，返回默认值。</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-playerprefs">4. PlayerPrefs数据存在哪里？</h4>
+<ol>
+<li>在Mac OS X平台下，存储在~/Library/Preferences文件夹，名为unity.[company name].[product name].plist。</li>
+<li>在Windows平台下，存储在注册表的 HKEY_CURRENT_USER\Software[company name][product name]键下。</li>
+</ol>
+<h2 id="_1">二进制方法</h2>
+<pre><code>     干货：二进制方法（Binary Formatter）
+     序列化：新建或打开一个二进制文件，通过二进制格式器将对象写入该二进制文件。
+     反序列化：打开待反序列化的二进制文件，通过二进制格式器将文件解析成对象。
+</code></pre>
+<h2 id="json">Json</h2>
+<p>1.JSON 语法规则
+（1）对象表示为键值对
+（2）数据由逗号分隔
+{“firstName”: “Jack”,“middleName”:“Nigulas”}
+（3）花括号保存对象
+（4）方括号保存数组</p>
+<h2 id="xml">XML存储</h2>
+<pre><code>   Xml 干货：扩展标记语言，用于标记电子文件使其具有结构性的标记语言。
+            可以用来标记数据、定义数据类型。
+            序列化与反序列化的方式与二进制方法十分类似。
+</code></pre>
+<p>1）XML 被设计用来传输和存储数据。</p>
+<p>2）XML 标签没有被预定义。您需要自行定义标签。</p>
+<p>3）XML 数据以纯文本格式进行存储，因此提供了一种独立于软件和硬件的数据存储方法。</p>
+<h1 id="_2">游戏服务器存储系统设计</h1>
+<h2 id="_3">数据存储基础</h2>
+<h3 id="_4"><strong>什么是数据存储？</strong></h3>
+<p><strong>运行数据保存到硬盘上形成持久化数据。</strong></p>
+<p>data——&gt;file（database）——&gt;file system——&gt;hard driver</p>
+<p>数据变为文件，存入文件系统，文件系统通过OS这一层落到硬盘上面。</p>
+<h3 id="-">数据库 - <a href="https://so.csdn.net/so/search?q=关系型数据库&amp;spm=1001.2101.3001.7020">关系型数据库</a></h3>
+<p>数据库表设计与范式</p>
+<ul>
+<li>1NF,2NF,3NF</li>
+</ul>
+<p>优点</p>
+<ul>
+<li>减少数据冗余</li>
+<li>保证数据完整性</li>
+<li>SQL语言提供了强大的查询功能</li>
+</ul>
+<p>问题</p>
+<ul>
+<li>数据结构复杂情况下表结构难以维护</li>
+<li>性能一般，容易产生性能瓶颈</li>
+<li>可扩展性较差</li>
+</ul>
+<h3 id="-nosql">数据库 - NoSQL数据库</h3>
+<p>NoSQL数据库特点</p>
+<ul>
+<li>Key - Value结构</li>
+<li>支持结构化查询</li>
+</ul>
+<p>优点</p>
+<ul>
+<li>易于维护</li>
+<li>性能较高</li>
+<li>可扩展性好</li>
+</ul>
+<p>问题</p>
+<ul>
+<li>容易产生数据冗余</li>
+<li>不支持SQL查询</li>
+</ul>
+<h2 id="_5">游戏服务器<a href="https://so.csdn.net/so/search?q=架构&amp;spm=1001.2101.3001.7020">架构</a>与数据存储设计</h2>
+<h3 id="_6">游戏业务的特点</h3>
+<p>响应速度要求非常高</p>
+<ul>
+<li>100ms以上的延迟玩家就会有感知</li>
+</ul>
+<p>数据更新频率高</p>
+<ul>
+<li>玩家数据每时每刻都在变化</li>
+<li>获取经验，获取金钱，获取成就</li>
+<li>update &gt; read &gt; insert &gt; delete</li>
+</ul>
+<p>解决方案</p>
+<ul>
+<li>为了实现高速响应，玩家数据全部在内存中</li>
+<li>在登录时从DB加载进内存</li>
+<li>游戏过程中的数据变更通过操作内存数据完成</li>
+</ul>
+<h3 id="_7">游戏服务器架构介绍</h3>
+<h4 id="_8">分区分服服务器架构（天涯明月刀、梦幻西游）</h4>
+<p>Player 1——&gt;Game Server 1——&gt;Database 1</p>
+<p>Player 2——&gt;Game Server 2——&gt;Database 1</p>
+<p>Player 3——&gt;Game Server 3——&gt;Database 1</p>
+<p>每个玩家可以选择不同的服务器进行游戏，每个服务器后面的存储都是相互独立的，这样每个服务器的存储压力也会变得比较小。</p>
+<h4 id="_9">全区全服服务器架构（王者荣耀、皇室战争、吃鸡）</h4>
+<p>Player 1——&gt;Game Server Cluster——&gt;Database</p>
+<p>Player 2——&gt;Game Server Cluster——&gt;Database</p>
+<p>Player 3——&gt;Game Server Cluster——&gt;Database</p>
+<h3 id="_10">游戏服务器数据库选型</h3>
+<p>分区分服存储特点——&gt;选择 <a href="https://en.wikipedia.org/wiki/Relational_database_management_system">RDBM</a>（关系型数据库）</p>
+<ul>
+<li>单服数据量较少</li>
+<li>请求量少</li>
+<li>无需动态在线扩容</li>
+</ul>
+<p>全区全服存储特点——&gt;选择 NoSQL</p>
+<ul>
+<li>数据量大</li>
+<li>请求量大</li>
+<li>需要动态在线扩容</li>
+</ul>
+<p>使用MySQL作为游戏数据库</p>
+<p><img alt="img" src="https://images2018.cnblogs.com/blog/922928/201808/922928-20180816003402004-1306922150.jpg" /></p>
+<p>软件工程思想：分离稳定和不稳定</p>
+<p>稳定，使用MySQL表字段，例如：NAME、职业、角色的性别、等级；</p>
+<p>不稳定，打包放入GAMEBLOB里面，再通过DR技术进行版本控制和管理，例如：道具、学会的技能；</p>
+<p>混合式存储设计</p>
+<p>REDIS高速缓存，MySQL真实落地。</p>
+<h3 id="_11">游戏服务器存盘策略设计</h3>
+<p><strong>Player——&gt;Game Server 1（Player Runtime Data）&lt;——(load)DB</strong></p>
+<p>游戏存盘需求特点：update &gt; read &gt; insert &gt; delete</p>
+<p>定期自动存盘：3分钟自动存盘</p>
+<p>重要操作即时存盘：升级/下线/关服；获得高价值道具</p>
+<p>存储缓冲队列：削峰填谷</p>
+<h3 id="_12">游戏服务器存储容灾介绍</h3>
+<p>热备：主从热备，自动切换</p>
+<p>冷备：每日全量备份；关键操作前全量备份</p>
+<p><img alt="img" src="https://images2018.cnblogs.com/blog/922928/201808/922928-20180816002208900-1141568112.png" /></p>
+<p>注：此模型较简单，真正设计时会比这个复杂的多。</p>
+<h3 id="_13">运营日志存储</h3>
+<p>什么是运营日志？</p>
+<ul>
+<li>游戏中玩家重要行为的记录</li>
+<li>诸如登录记录，等级变更，财产变化流水，交易记录等信息</li>
+</ul>
+<p>运营日志的用途有哪些？</p>
+<ul>
+<li>运营分析游戏中玩家的动态，做出运营决策的数据基础</li>
+<li>当发生异常时，追查玩家在游戏内的活动轨迹的重要依据</li>
+</ul>
+<p>运营日志的存储</p>
+<ul>
+<li>数据量巨大，单服每日约5~10G（未压缩）</li>
+<li>永久存档，涉及到游戏收入，需要永久存档备查</li>
+<li>需要便于分析统计</li>
+</ul>
+<p>存储流程：<strong>Game Server——&gt;Database——&gt;磁带</strong>。</p>
+<h1 id="_14"><a href="https://www.cnblogs.com/rexue/p/7197366.html">手游服务端框架之配置与玩家数据库设计 </a></h1>
+<p>一款网络游戏的设计，至少需要两种<a href="http://lib.csdn.net/base/mysql">数据库</a>。策划数据库是表示游戏玩法规则的数据库；用户数据库是表示玩家个人信息的数据库。除了这两类基本的数据库以外，还有其他数据库。例如有些跨服玩法需要配置数据库来寻找其他服务节点的链路地址；有些<a href="http://lib.csdn.net/base/architecture">架构</a>把日志放到独立的日志数据库进行统一管理，等等。</p>
+<p>本文主要介绍玩法配置数据库与玩家用户数据库。</p>
+<h2 id="_15">策划数据库的概念</h2>
+<p>策划数据库，顾名思义，是策划童鞋用于描述他心目中理想游戏世界的手段，是游戏的规则。例如，玩家当前级别可拥有的最大体力值是多少，长到下一级别需要获得多少经验，各种游戏规则的设定都是通过该数据库里的各种数据表进行控制。也就是说，策划配置表是游戏的玩法，因此，除了策划童鞋之外，绝不允许开发人员乱修改表内容。我曾呆过的一家游戏项目，经常看到开发新手不小心在代码里修改了策划数值，导致游戏规则被修改了。这可是要扣绩效的啊！！</p>
+<h2 id="_16">用户数据库的概念</h2>
+<p>以前玩街机游戏的时候，玩家的数据是无法保存的，一旦断电了，那么就GameOver了。在网络游戏时代，游戏数据三是长时间保存的，那么就需要数据库来保存玩家的个人信息。打个比方，今天运气非常好，打野怪刷到了一把极品装备，如果没有持久化机制，那么玩家下线后再来玩，装备就不见了。玩家数据是玩家的私有财产，如果代码不小心把玩家的数据弄脏了，那么就一定要想方设法来帮助玩家恢复数据或进行游戏道具补偿。玩家数据库除了保存个人数据之外，还会保存一些公共数据，比如帮派数据是整个帮派成员共有的。</p>
+<h2 id="orm">数据库ORM方案</h2>
+<p>不管是什么数据库，都会涉及到数据的增删查改操作。ORM（对象关系映射）是解决这些繁琐重复工作的利器。需要注意的是，策划配置表属于游戏规则，开发人员一般只有读取的权限，而没有修改的权限。</p>
+<p>本文所采用的ORM框架在之前的文章<a href="http://blog.csdn.net/littleschemer/article/details/63251870"> 自定义orm框架解决玩家数据持久化问题</a> 已有详细介绍，这里不作详细介绍。</p>
+<p>需要说明的是，orm工具这里采用的数据库连接池改为Proxool库；为了统一处理策划库与用户库，DbUtils工具类的多个方法增加一个参数，表示对应的数据库别名。例如：</p>
+<pre><code class="language-java">/** 
+* 查询返回一个bean实体 
+* @param alias 数据库别名 
+* @param sql 
+* @param entity 
+* @return 
+*/ 
+
+@SuppressWarnings(&quot;unchecked&quot;)
+public static &lt;T&gt; T queryOne(String alias, String sql, Class&lt;?&gt; entity)
+{ 
+} 
+</code></pre>
+<h2 id="_17">配置数据库的设计</h2>
+<p>从策划童鞋的角度上看，配置数据就是一张一张的excel表格。开发人员根据策划的表设计，转化成对应的数据库表格式。程序启动的时候，就会将所有的数据库表读取到缓存里，这样程序的逻辑就会按给定的数值进行运行。当然，策划表格不一样只能从数据库读取，有些项目连数据库都取消了。策划配置的表格，通过一种导表程序，转换为xml文件或者csv文件，程序一样可以读取到内存。但个人感觉，还是采用数据库处理配置比较方便，毕竟数据库对开发人员来说比较友好。</p>
+<p>下边说明一下建立一张配置表的步骤：</p>
+<ol>
+<li><strong>建立数据表结构（这个结果及即可以有程序制定，也可以由策划制定，看项目），并加入若干<a href="http://lib.csdn.net/base/softwaretest">测试</a>数据</strong></li>
+</ol>
+<pre><code class="language-sql">DROP TABLE IF EXISTS `configplayerlevel`;
+CREATE TABLE `configplayerlevel` (
+    `level` int(11) DEFAULT NULL,
+    `needExp` bigint(20) DEFAULT NULL,
+    `vitality` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of configplayerlevel 
+-- ----------------------------
+
+INSERT INTO `configplayerlevel` VALUES ('1', '2345', '100');  
+INSERT INTO `configplayerlevel` VALUES ('2', '23450', '105');  
+</code></pre>
+<ol>
+<li><strong>定义数据实体</strong></li>
+</ol>
+<p>```java
+ // 玩家等级配置表 
+ // @author kingston 
+ @Entity(readOnly = true)<br />
+ public class ConfigPlayerLevel {<br />
+     // 等级 
+     @Column<br />
+     private int level;  </p>
+<pre><code> // 升到下一级别需要的经验 
+ @Column  
+ private long needExp;
+
+ // 最大体力 
+ @Column  
+ private int vitality;
+
+ public int getLevel() {
+     return level;
+ }
+
+ public void setLevel(int level) {  
+     this.level = level;
+ }
+
+ public long getNeedExp() {  
+     return needExp;
+ }
+
+ public void setNeedExp(long needExp) {  
+     this.needExp = needExp;  
+ }
+
+ public int getVitality() {  
+     return vitality;  
+ }
+
+ public void setVitality(int vitality) {  
+     this.vitality = vitality;  
+ }
+</code></pre>
+<p>}<br />
+ ```</p>
+<ol>
+<li><strong>为了方便管理表数据，对于每一张表都定义一个容器</strong></li>
+</ol>
+<p>```java
+ // 玩家等级配置表 
+ // @author kingston 
+ public class ConfigPlayerLevelContainer implements Reloadable
+ {
+     private Map<Integer, ConfigPlayerLevel> levels = new HashMap&lt;&gt;();  </p>
+<pre><code> @Override  
+ public void reload()
+ {
+     String sql = "SELECT * FROM ConfigPlayerLevel";  
+     List&lt;ConfigPlayerLevel&gt; datas = DbUtils.queryMany(DbUtils.DB_DATA, sql, ConfigPlayerLevel.class);  
+     // 使用jdk8，将list转为map  
+     levels = datas.stream().collect(Collectors.toMap(ConfigPlayerLevel::getLevel, e -&gt; e));  
+ }
+
+ public ConfigPlayerLevel getConfigBy(int level)
+ {
+     return levels.get(level);
+ }
+</code></pre>
+<p>}
+ ```</p>
+<ol>
+<li><strong>容器表都实现Reloadable接口，该接口只有一个抽象方法，这样方便服务启动的时候能统一管理</strong></li>
+</ol>
+<p><code>java
+ public interface Reloadable {
+     // 重载数据
+     void reload();
+ }</code></p>
+<ol>
+<li><strong>为了方便管理所有表数据，我们再定义一个配置数据池，每一个配置容器都在这里进行申明。这样做可以很方便在生产环境进行热更新配置，关于热更新配置的做法，后面文章再详细介绍。该数据池还需要提供一个公有方法用于读取全部配置数据。</strong></li>
+</ol>
+<p>```java</p>
+<p>// 所有策划配置的数据池 
+ // @author kingston 
+ public class ConfigDatasPool {  </p>
+<pre><code> private static ConfigDatasPool instance = new ConfigDatasPool();
+
+ private ConfigDatasPool() {}
+
+ public static ConfigDatasPool getInstance() {  
+     return instance;  
+ }
+
+ public ConfigPlayerLevelContainer configPlayerLevelContainer = new ConfigPlayerLevelContainer();
+
+ // 起服读取所有的配置数据 
+ public void loadAllConfigs() {  
+     Field[] fields = ConfigDatasPool.class.getDeclaredFields();  
+     ConfigDatasPool instance = getInstance();  
+     for (Field f:fields) {  
+         try {  
+         if (Reloadable.class.isAssignableFrom(f.getType())) {  
+             Reloadable container = (Reloadable) f.getType().newInstance();  
+             System.err.println(f.getType());  
+             container.reload();  
+             f.set(instance, container);  
+         }  
+         }catch (Exception e) {  
+             LoggerUtils.error("策划配置数据有误，请检查", e);  
+             System.exit(0);  
+         }  
+     }
+
+ }
+</code></pre>
+<p>}<br />
+ ```</p>
+<h2 id="_18">用户数据库设计</h2>
+<ol>
+<li>用户数据表的设计是由开发人员在实现业务需求时自行设计的。以前的一篇文章<a href="http://blog.csdn.net/littleschemer/article/details/53037275">游戏服务器关于玩家数据的解决方案</a> 详细说明了两种用户数据设计策略。由于当前涉及的用户信息非常少，作为演示，我们只用到一张数据表。（针对不同业务所需要的用户信息保存方式，以后再作详细展开）。用户表的设计如下</li>
+</ol>
+<p><code>sql
+ DROP TABLE IF EXISTS `player`;  
+ CREATE TABLE `player` (  
+   `id` bigint(20) NOT NULL,  
+   `name` varchar(255) DEFAULT NULL  COMMENT '昵称',  
+   `job` tinyint(4) DEFAULT NULL  COMMENT '职业',  
+   `level` int(11) DEFAULT '1' COMMENT '等级',  
+   `exp` bigint(20) DEFAULT 0  COMMENT '经验' ,  
+   PRIMARY KEY (`id`)  
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;</code></p>
+<ol>
+<li><strong>用户数据是需要持久化的，所以我们需要借助orm框架的 AbstractCacheable类。同时为了能够将用户数据放入哈希容器，我们有必要重写object类的equals()和hashCode()方法。于是，有了下面的抽象类</strong></li>
+</ol>
+<p>```java</p>
+<p>// db实体基类 
+ // @author kingston 
+ public abstract class BaseEntity<Id extends Comparable\<Id>> extends AbstractCacheable <br />
+             implements Serializable {  </p>
+<pre><code> private static final long serialVersionUID = 5416347850924361417L;
+
+ public abstract Id getId() ;
+
+ @Override  
+ public int hashCode() {  
+     final int prime = 31;  
+     int result = 1;  
+     result = prime * result + ((getId()==null)?0:getId().hashCode());  
+     return result;  
+ }
+
+ @SuppressWarnings("rawtypes")  
+ @Override  
+ public boolean equals(Object obj) {  
+     if (this == obj)  
+         return true;  
+     if (obj == null)  
+         return false;  
+     if (getClass() != obj.getClass())  
+         return false;  
+     BaseEntity other = (BaseEntity) obj;  
+     if (getId() != other.getId())  
+         return false;  
+     return true;  
+ }
+</code></pre>
+<p>}<br />
+ ```</p>
+<ol>
+<li><strong>定义用户模型Player类，该类只需要继承上面的BaseEntity抽象类即可。是不是很方便 ^_^</strong></li>
+</ol>
+<p>```java
+ @Entity<br />
+ public class Player extends BaseEntity<Long>{  </p>
+<pre><code> private static final long serialVersionUID = 8913056963732639062L;
+
+ @Id  
+ @Column  
+ private long id;
+
+ @Column  
+ private String name;
+
+
+ // 职业
+ @Column   
+ private int job;
+
+ @Column  
+ private int level;
+
+ @Column  
+ private long exp;
+
+ public Player() {  
+     this.id = IdGenerator.getUid();  
+ }
+
+ @Override  
+ public Long getId() {  
+     return id;  
+ }
+
+ public void setId(long id) {  
+     this.id = id;  
+ }
+
+ public String getName() {  
+     return name;  
+ }
+
+ public void setName(String name) {  
+     this.name = name;  
+ }
+
+ public int getJob() {  
+     return job;  
+ }
+
+ public void setJob(int job) {  
+     this.job = job;  
+ }
+
+ public int getLevel() {  
+     return level;  
+ }
+
+ public void setLevel(int level) {  
+     this.level = level;  
+ }
+
+ public long getExp() {  
+     return exp;  
+ }
+
+ public void setExp(long exp) {  
+     this.exp = exp;  
+ }
+
+ @Override  
+ public String toString() {  
+     return "Player [id=" + id + ", name=" + name + ", job=" + job  
+             + ", level=" + level + ", exp=" + exp + "]";  
+ }
+</code></pre>
+<p>} 
+ ```</p>
+<h2 id="_19">用户数据异步持久化</h2>
+<p>当玩家的数据发生变动时，我们需要将最新的数据保存到数据库。这里有一个问题，当玩家数据有部分变动的时候，我们不可能即使保存到数据库的，这样对数据库的压力太大。所以，我们需要有独立线程来完成数据的异步保存。这里又要搬出我们可爱的生产者消费者模型啦。</p>
+<pre><code class="language-java">// 用户数据异步持久化的服务 
+// @author kingston 
+public class DbService {  
+
+    private static volatile DbService instance;  
+
+    public static DbService getInstance() {  
+        if (instance ==  null) {  
+            synchronized (DbService.class) {  
+                if (instance ==  null) {  
+                    instance = new DbService();  
+                }  
+            }  
+        }  
+        return instance;  
+    }  
+
+    // 启动消费者线程 
+    public void init() {  
+        new Thread(new Worker()).start();  
+    }  
+
+    @SuppressWarnings(&quot;rawtypes&quot;)  
+    private BlockingQueue&lt;BaseEntity&gt; queue = new BlockingUniqueQueue&lt;&gt;();  
+
+    private final AtomicBoolean run = new AtomicBoolean(true);  
+
+    public void add2Queue(BaseEntity&lt;?&gt; entity) {  
+        this.queue.add(entity);  
+    }
+
+    private class Worker implements Runnable {
+        @Override
+        public void run() {
+            while(run.get()) {
+                try {
+                    BaseEntity&lt;?&gt; entity = queue.take();
+                    saveToDb(entity);
+                } catch (InterruptedException e) {
+                    LoggerUtils.error(&quot;&quot;, e);
+                }
+            }
+        }
+    }
+
+    // 数据真正持久化
+    // @param entity
+    private void saveToDb(BaseEntity&lt;?&gt; entity) {
+        entity.save();
+    }
+}
+</code></pre>
+<h1 id="_20">从零开始搭建游戏服务器框架</h1>
+<h2 id="_21">游戏服务端开发之基础概念扫盲篇</h2>
+<p>13年毕业后，做了一年多外包web开发，因为受不了在客户现场工作的氛围，愤然辞职。转行做了一名手游服务端开发。</p>
+<p>在广州，据我所知，选择java作为服务端开发语言的公司大概有37互娱，百田，银汉，易娱，要玩等等。其实游戏服务端开发语言可说是百花齐放，c++、java、python、elang，不一而足。</p>
+<p>记得刚入坑的时候，我连策划数据和玩家数据都傻傻分不清，服务进程还天真地认为是tomcat启动的。被策划与测试联手虐待了近3年后，我终于成为一名有经验的“业务狗” （=。 =）</p>
+<p>下面说一下手游开发中碰到的一些名词。这些概念都是自己理解的。刚入坑的朋友可以草率看一看，瞧一瞧。(^-^)</p>
+<p>架构是简单的服务器架构，也就是说，大部分业务处理都是在同一个进程。没有分布式服务的概念。</p>
+<ul>
+<li><strong>996</strong></li>
+</ul>
+<p>提起游戏公司，比较受众人认可的便是它高强度的工作时间。从刚开始的996制度（每天上午9点上班，晚上9点下班，中间休息2个小时，每周6个工作日），到后来的9106，甚至9116，简直是残暴剥削从业者的剩余价值啊。不过，不加班的游戏公司估计也没多少人敢去上班，工资能不能按时发都是未知数了。也许有些人会说，游戏行业工资高，奖金多。说点心里说，虽然游戏行业普遍工资是比较高，但综合工作时间考虑，性价比奇低。近几年来，手游行业发展迅速，每年都有非常多的手游工作室成立，当然，也有很多手游公司倒闭。总体来说，手游这块大蛋糕已被市场瓜分所剩无几，特别是腾讯和网易两个大厂就拿了七成左右。利润减少，人力成本增大，导致很多手游项目的奖金已悄悄地被砍掉了，大部分项目成员最多就是年底拿个双薪。(=。=)</p>
+<ul>
+<li><strong>策划数据与玩家数据</strong></li>
+</ul>
+<p>简单说来，策划数据就是游戏的规则，是由策划配置的。玩家数据就是玩家在游戏过程中产生的用于持久化状态的数据，需要保存在数据库里。关于策划数据，有一点需要说明的是，策划数据是不能被代码修改的。一般说来，当服务进程一启动的时候，所有策划相关数据都会被load进内存。一些新手在开始做业务功能的时候，经常发生代码不小心修改到策划数据，导致游戏规则被无意修改了。这种情况对游戏的影响非常严重，一旦出现，必定会被老大狂屌。当然，策划职位也有可能填错数据。曾经有项目因为策划不小心把投放XX个银币填成XX个钻石，短时间就发生了严重后果，据说后来数据是采用“回档”残暴解决。</p>
+<ul>
+<li><strong>pve与pvp</strong></li>
+</ul>
+<p>简单来说，pve(player vs environment)，就是玩家与电脑ai对战，包括各种关卡、副本等；pvp(player vs player)，就是玩家与玩家之间真枪实火地对战。一个游戏，如果只有纯pve，是不能长期吸引玩家的，毕竟打电脑打多了就会没意思。pvp一般都是一个游戏的核心玩法，也是最不好设计的，要综合平衡网络延迟及战斗表现。时下很流行的一款休闲游戏“贪吃蛇大作战”倒是挺有意思的，明明是一款单机游戏，居然能作出类似联网对战的效果。一开始，我还在惊讶于它的实时同步如此之屌，玩家的一个扭头能够及时同步到其他玩家的屏幕。然后，我试着把网络给断了，一切依旧运行得那么完美！！整个游戏除了排行榜分数是定时刷新的之外，其他都是在本地客户端跑，不过，能把ai做得这么逼真，却是非常有料的。</p>
+<ul>
+<li><strong>Socket服</strong></li>
+</ul>
+<p>游戏主进程，游戏的所有业务逻辑都在这里执行。维持着所有在线用户的<a href="https://so.csdn.net/so/search?q=socket&amp;spm=1001.2101.3001.7020">socket</a>链接。单进程的服务器负责玩家所有业务处理，数据持久化等等。一般是采用多线程来处理用户的请求，为了减少玩家请求的锁竞争，精心设计的线程模型非常关键。</p>
+<ul>
+<li><strong>网关</strong></li>
+</ul>
+<p>网关就是用于服务端与客户端进行通信。跟socket服在同一个进程。用户请求从客户端发出之后，来到服务端，服务端经过业务逻辑处理，把数据返回给客户端。网关做的事情就是处理发包，解包，以及各种粘包情况。网关代码一般都比较复杂，一旦稳定就不会轻易修改。业务代码一般不需要跟网关打交道。</p>
+<ul>
+<li><strong>登录服</strong></li>
+</ul>
+<p>现在大部分游戏都是分成很多个小区，以便在单进程的环境里容纳更多的玩家同时在线。客户端手机通过渠道sdk验证后，就需要在登录服中根据平台与角色id找到玩家所在的服务分区。登录服一般是web项目，客户端通过http请求，查询玩家所在服务区的ip地址以及端口信息。有了socket地址后，客户端就可以直连socket服，完成登录逻辑。</p>
+<ul>
+<li><strong>gm工具</strong></li>
+</ul>
+<p>gm工具对于一款上线产品来说，具有不可或缺的重要性。既可以实现诸如开服关服之类的运维命令，又可实现提供给客服人员的查询玩家信息的接口，也可以辅助管理游戏进程，实现动态修改游戏逻辑的黑科技(热更新)。总体来说，GM工具类似于游戏的金手指，可以提供各种“作弊操作”和游戏管理操作。</p>
+<ul>
+<li><strong>热更新</strong></li>
+</ul>
+<p>对于一个上线产品项目来说，热更新为维持项目的稳定健康提供了坚强的保障。小到策划数据的修改，代码bug的修改，大到动态扩展游戏业务功能。试想一下，没有热更新机制，如果需要修改程序的一个小bug，都不得不踢人停服维护。这样的事情来多一发，恐怕老玩家都被撵走了。比较有意思的是，我先前的一个项目，每次更新当日，一定少不了代码热更或者数据热更，两年里的每一个星期都是如此，从无例外。可见热更新的重要性了。关于热更新的机制及方法，我的博客里有两篇文章可以参考。</p>
+<ul>
+<li><strong>防挂</strong></li>
+</ul>
+<p>做游戏后台与做web后台，关于防挂的防御思想是一致的。不管客户端发什么请求上来，即使是客户端已通过自己的验证，服务端都需要对请求参数进行有效性验证。总不能说，客户端说可以兑换100个物品，服务端什么验证都不用，就给角色加了100个物品。一定要有这样的思想，客户端完全可以通过修改包数据（加密只能提高破解难度不能杜绝）来自定义请求参数，服务端直接处理来自客户端请求的接口方法一定要有完善的参数验证机制。写的方法能否防得住挂，是区分一个初级业务狗和资深业务狗的重要标志。</p>
+<ul>
+<li><strong>用户数据持久化</strong></li>
+</ul>
+<p>玩家的数据需要保存到数据库，如果一下线数据就被重置，那么玩家每天练级还有什么意义。比较主流的数据持久方式有两种，一种是针对每一个功能模块都建一张表，只要有一个userId作为外健能关联到User主表即可；另外一种是不区别逻辑分表，对User类的所有依赖实体（包括实体及其递归依赖），全部映射成字符串或者二进制。两种做法都有优缺点。逻辑分表的优点是模块分层定位清晰、可读性强、容易通过sql修正玩家数据等；缺点是新建模块必须手动建表，实体字段必须增加表属性才能完成持久化。实体映射的优点是，只需一张表即可完成全部数据的持久化、新建属性实体或字段不需要额外修改表结构；缺点是可读性差，如果存为二进制的话更无可读性可言，而且修复玩家数据只能通过修改程序内存而不能直接执行sql语句。</p>
+<p>另外一方面，由于数据库连接的资源非常可贵，不可能玩家每一个请求都需要load用户表。一般都是玩家登录的时候就将玩家相关的用户表全部load进内存。服务端有一个定时器检测，当玩家在一段时间内没有发请求上来，认为该玩家已经下线，相应的数据再回写到数据库。这样实现的话，对数据库的压力就变小了很多，而且在很短的时候内频繁上线下线也不会触发多次读取数据库。</p>
+<ul>
+<li><strong>游戏更新与维护</strong></li>
+</ul>
+<p>手游的更新节奏是比较频繁的，每周一更，每两周一更，最长的周期应该是每个月一更了。很多游戏喜欢把更新时间设在深夜或者凌晨，目的是想避开高峰时期，争取更长的开放时间，这可苦了我们这些做游戏的人了。无数次晚上加班到两三点或者早上6点就得赶往公司，往事不堪回首。游戏的服务器一般都是部署在Linux系统，所以常见的Linux命令都会熟悉。</p>
+<ul>
+<li><strong>结束语</strong></li>
+</ul>
+<p>最后，写给即将走进游戏服务端大坑的朋友们的心里话。游戏开发这个职位虽然外表华丽，个中的辛苦与苦逼只有局中人才能理解。如果两年后发现自己还在辛勤写着活动业务逻辑，从未碰过大型功能玩法（例如跨服赛事，战斗同步等），那你应该好好思考一下，自己是否适合继续从事游戏开发，或者这家公司值不值得你继续留下来。如果有志往资深游戏开发的路走下去，建议研究一下分布式游戏开发。毕竟，这年头，分布式还是很前沿，逼格很高的玩意。</p>
+<h2 id="_22">游戏服务端框架之网关</h2>
+<ul>
+<li><strong><a href="https://so.csdn.net/so/search?q=网关&amp;spm=1001.2101.3001.7020">网关</a>介绍</strong></li>
+</ul>
+<p>游戏服务器的网关，主要是用于管理手机客户端会话（包括建立与移除），负责接收来自手机客户端的请求协议，以及主动推送服务端的响应包。</p>
+<p>在单一进程服务端<a href="https://so.csdn.net/so/search?q=架构&amp;spm=1001.2101.3001.7020">架构</a>里，网关跟游戏业务处理是在同一个进程里。为了提高通信吞吐量，一些服务端架构将网关作为一个独立进程。这种模式下，客户端请求全部由网关接收，再通过网关转发给服务端；另一方面，服务端下发的消息，也只能通过网关推送到客户端。由于只有客户端跟网关是一对一的socket连接，网关到服务端只需创建若干socket就可以完成全部通信任务，大大提高了服务端的负载能力。</p>
+<ul>
+<li><a href="https://blog.csdn.net/littleschemer/article/details/73555975#t1">mina服务端代码示例</a></li>
+<li><a href="https://blog.csdn.net/littleschemer/article/details/73555975#t2">消息编解码</a></li>
+<li><a href="https://blog.csdn.net/littleschemer/article/details/73555975#t3">私有协议栈定义</a></li>
+<li><a href="https://blog.csdn.net/littleschemer/article/details/73555975#t4">消息体序列化与反序列化</a></li>
+<li><a href="https://blog.csdn.net/littleschemer/article/details/73555975#t5">编码器设计</a></li>
+<li><a href="https://blog.csdn.net/littleschemer/article/details/73555975#t6">解码器设计</a></li>
+</ul>
+<h2 id="springmvc">游戏服务端框架之模仿SpringMvc实现消息路由</h2>
+<ul>
+<li><strong>经典web项目的<a href="https://so.csdn.net/so/search?q=三层架构&amp;spm=1001.2101.3001.7020">三层架构</a></strong></li>
+</ul>
+<p>经典web开发项目通常采用三层架构来组织代码。典型的，第一层为表现层，通常使用<a href="https://so.csdn.net/so/search?q=MVC&amp;spm=1001.2101.3001.7020">MVC</a>模式；第二层为业务逻辑层，该层主要是各种service业务操作类；第三层则为数据访问层，通过dao层对数据表进行增删查改操作。</p>
+<ul>
+<li><strong>游戏项目的三层架构</strong></li>
+</ul>
+<p>类似的，我们的游戏项目也可以采用上面的三层架构。在命名方面，我们部分借鉴了<a href="https://so.csdn.net/so/search?q=SpringMvc&amp;spm=1001.2101.3001.7020">SpringMvc</a>的命名，使用Controller注解对应MVC模式的控制器，使用RequestMapper注解对应的消息处理者（类似于web的http url地址）。网关层收到玩家请求后，将消息分发到对应控制器的指定方法处理者。控制器只用于控制业务流程，具体的业务逻辑将交由业务逻辑层service（游戏项目常用Manager来命名）。</p>
+<ul>
+<li><strong>使用控制器处理对应业务模块的请求消息</strong></li>
+</ul>
+<p>从前面的Message抽象消息的定义可以看出，每一个请求消息包含有一个模块id，一个模块（一个相对独立的游戏功能模块）映射到唯一的控制器；每一个消息包含一个cmd类型，一个cmd类型就代表该功能模块一个子操作。
+模块控制器与cmd业务处理method的一对多关系模型如下：
+<img alt="img" src="https://img-blog.csdn.net/20170628213916173?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGl0dGxlc2NoZW1lcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /></p>
+<p>从上面的模型图可以看出，对于给定的模块号+给定的cmd类型，可以找到唯一的M</p>
+<h2 id="_23">游戏服务端框架之业务线程模型</h2>
+<ul>
+<li><strong>请求消息绑定线程策略的选择</strong></li>
+</ul>
+<p>在上一篇文章中，我们看到，消息是直接在网络框架的io线程中处理的。这样做有一个非常严重的缺陷，如果业务处理比较耗时，那么io线程接受消息的速度就会下降，严重影响io的<a href="https://so.csdn.net/so/search?q=吞吐量&amp;spm=1001.2101.3001.7020">吞吐量</a>。</p>
+<p>典型的，我们应该另起<a href="https://so.csdn.net/so/search?q=线程池&amp;spm=1001.2101.3001.7020">线程池</a>，专门用于异步处理玩家的请求消息。</p>
+<p>在我之前的一篇文章（<a href="http://blog.csdn.net/littleschemer/article/details/51223653">游戏服务端线程模型——无锁处理玩家请求</a>），谈到可以通过某种映射，将玩家的请求分发到特定的线程进行处理，这样可以避免同一个玩家的请求需要进行线程同步。</p>
+<p>在那篇文章，我们采用的映射策略是——将玩家的角色id与工作线程总数进行求模映射，这种模型其实是一种简单的策略。在极端的情况下，会造成非常多的玩家请求在同一条线程上（登录的玩家id不具有负载均衡性）。</p>
+<p>采用什么映射策略，跟游戏本身的类型关联非常大。</p>
+<p>举个例子，如果游戏的类型是一款MMORPG（大型多人在线游戏），场景地图非常大，游戏的战斗发生在服务端，pvp同步策略采用状态同步。这样的战斗方案为了减少锁竞争，往往要求同一张地图的所有玩家请求在一条线程上。特别的，由于战斗发生在服务端，怪物的行为，场景定时任务的执行，也应保证在同一条线程上。所以，这类游戏的请求消息映射策略往往跟场景id挂钩。</p>
+<p>另外一些游戏类型，比如休闲游戏，或者虽然是rpg游戏，但战斗发生在客户端（服务端只做检验），映射策略跟场景没关系，只需保证负载均衡即可。</p>
+<p>本文以第二种类型做演示。</p>
+<h2 id="_24">游戏服务端框架之配置与玩家数据库设计</h2>
+<ul>
+<li><strong>策划数据库的概念</strong></li>
+<li><strong>用户数据库的概念</strong></li>
+<li><strong>数据库ORM方案</strong></li>
+<li><strong>配置数据库的设计</strong></li>
+</ul>
+<h2 id="guava">游戏服务器框架之使用Guava构建缓存系统</h2>
+<ul>
+<li><strong>缓存的作用与应用场景</strong></li>
+</ul>
+<p>缓存，在项目中的应用非常之广泛。诸如这样的场景，某些对象计算或者获取的代码比较昂贵，并且在程序里你不止一次要用到这些对象，那么，你就应该使用缓存。</p>
+<p>缓存跟java的CoucurrentMap很类似，但青出于蓝胜于蓝。CoucurrentMap的特点是，当你往它里面放元素的时候，你需要自己手动去把它移除。而缓存的最大特点是，你无须手动去移除缓存里的元素，而是通过某些移除策略，如果超时或者内存空间紧张等等。</p>
+<p>本文主要使用Google的guava工具库来构建我们的缓存系统。</p>
+<p>首先说一下我们的缓存系统需要达到的两个目标。</p>
+<p>第一，在获取某个对象时，如果对象已在缓存里则直接返回；否则，自动从数据库读取并加入到缓存，并返回给用户接口。</p>
+<p>第二，当对象长时间没有被查询命中的话，自己将对象从缓存里移除。</p>
+<h2 id="gm">游戏服务器框架之GM金手指的设计</h2>
+<p>玩过单机游戏的朋友，应该对金山游侠这个软件很熟悉把。小时候嫌刷怪升级非常辛苦，很多时候都是直接用金山游侠来修改游戏的经验或者等级内存，直接把角色调得很牛逼。</p>
+<p>游戏开发也非常需要这些可以修改玩家数据的“金手指”。在游戏设计里，它有个更加专业的名称，叫ＧＭ（GameMaster）命令。</p>
+<p>有了ＧＭ命令，我们就看好很方便让角色快速升级或者直接获取极品道具。当然，只要是数据，都可以有对应的ＧＭ命令，只要项目有需要。</p>
+<p>下面，我们就来看一下ＧＭ系统的一种实现方式。</p>
+<p>假设我们需要有一种指令，比如输入playerLv加一个数字表示要达到的等级，只要服务端受到这条指令，就直接将当前角色升到目标等级。不同的ＧＭ命令，指令的前缀和参数都是不同的，也就是说，每个指令都有自己固定的格式。在Java里，我们可以用正则表达式来定义这样的格式。</p>
+<h2 id="_25">游戏服务端框架之使用事件驱动解决业务高耦合</h2>
+<ul>
+<li><strong>事件驱动的作用与目标</strong>
+  假设这样的业务需求：游戏服务器希望在玩家升级时触发多种效果。例如玩家升级后，各种属性都会提高，开启新的系统玩法，学习新的技能……入门程序员写出来的代码可能是这样——</li>
+</ul>
+<pre><code class="language-java">
+private void handleRoleUpgrade(Object role){  
+        if(meetUpgradeCondition(role)){//满足升级条件  
+            RoleManager.getInstance().upgradeAttribution(role);//属性提升  
+            SkillManager.getInstance().learnNewSkill(role);//学会新技能  
+            //其他一堆业务  
+        }  
+} 
+</code></pre>
+<p>可以看出，玩家升级后，所有跟升级挂钩的业务都要集中在一起，依次被处理。这样写出来的代码耦合度非常高。一旦有新的业务加入，这里就要继续插代码。</p>
+<p>为了达到解耦的效果，我们引入了事件驱动模型。</p>
+<p>当玩家触发了升级这个动作，我们完全可以把“升级”这个动作包装成一个事件，任何对这个事件感兴趣的“观察者”就可以捕捉并执行相应的逻辑。</p>
+<p>我们希望我们的事件驱动模型能够满足以下几个要求：</p>
+<p>1.当触发某个动作时，将动作包装成事件并进行分发，所有与之相关的监听器自动感应事件的发生；</p>
+<p>2.同一个事件可以被多个监听器响应；</p>
+<p>3.一个监听器可以同时监听多个事件;</p>
+<p>4.事件可以选择同步执行，也可以选择异步执行。</p>
+<ul>
+<li><strong>事件驱动的代码实现</strong></li>
+</ul>
+<p>下面开始我们的编码逻辑</p>
+<p>1.首先，我们定义”事件“这个抽象概念（GameEvent）。注意，事件有一个基类方法标识是否同步执行。</p>
+<pre><code class="language-java">
+/**
+ * 监听器监听的事件抽象类
+ */
+public abstract class GameEvent {
+
+    /** 创建时间 */
+    private long createTime;
+    /** 事件类型 */
+    private final EventType eventType;
+
+    public GameEvent(EventType evtType) {
+        this.createTime = System.currentTimeMillis();
+        this.eventType  = evtType;
+    }
+
+    public long getCreateTime() {
+        return this.createTime;
+    }
+
+    public EventType getEventType() {
+        return this.eventType;
+    }
+
+    /**
+     * 是否在消息主线程同步执行
+     * @return
+     */
+    public boolean isSynchronized() {
+        return true;
+    }
+
+}
+</code></pre>
+<p>2.为了区分各种事件，我们定义一个表示事件类型的枚举器（EventType.java）</p>
+<pre><code class="language-java">public enum EventType {
+
+    /** 升级事件 */
+    LEVEL_UP;
+
+}
+</code></pre>
+<p>3.在游戏业务里，很多事件都是绑定角色的，所以定义一个跟玩家关系密切的玩家事件（PlayerEvent.java）</p>
+<pre><code class="language-java">/**
+ * 玩家事件抽象类
+ */
+public abstract class PlayerEvent extends GameEvent {
+
+    /** 玩家id */
+    private final long playerId;
+
+    public PlayerEvent(EventType evtType, long playerId) {
+        super(evtType);
+        this.playerId = playerId;
+    }
+
+    public long getPlayerId() {
+        return this.playerId;
+    }
+}
+</code></pre>
+<p>４.定义一个注解（Listener.java），标识”监听器“</p>
+<pre><code class="language-java">@Documented
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Listener {
+
+}
+</code></pre>
+<p>５.定义事件分发器（EventDispatcher），该分发器拥有以下作用：</p>
+<p>绑定事件与事件监听者；</p>
+<p>分发事件，若为同步事件，则在当前的业务主线程执行，若为异步事件，则放到独立线池异步执行。</p>
+<pre><code class="language-java">public class EventDispatcher {
+
+    private static EventDispatcher instance = new EventDispatcher();
+
+    private EventDispatcher() {
+        new NameableThreadFactory(&quot;event-dispatch&quot;).newThread(new EventWorker()).start();
+    };  
+
+    public static EventDispatcher getInstance() {
+        return instance;
+    }
+
+    /** 事件类型与事件监听器列表的映射关系 */
+    private final Map&lt;EventType, Set&lt;Object&gt;&gt; observers = new HashMap&lt;&gt;(); 
+    /** 异步执行的事件队列 */
+    private LinkedBlockingQueue&lt;GameEvent&gt; eventQueue = new LinkedBlockingQueue&lt;&gt;();
+
+    /**
+     * 注册事件监听器
+     * @param evtType
+     * @param listener
+     */
+    public void registerEvent(EventType evtType, Object listener) {  
+        Set&lt;Object&gt; listeners = observers.get(evtType);  
+        if(listeners == null){  
+            listeners = new CopyOnWriteArraySet&lt;&gt;();  
+            observers.put(evtType, listeners);  
+        }  
+        listeners.add(listener);  
+    }  
+
+    /**
+     * 分发事件
+     * @param event
+     */
+    public void fireEvent(GameEvent event) {  
+        if(event == null){  
+            throw new NullPointerException(&quot;event cannot be null&quot;);  
+        }  
+        //如果事件是同步的，那么就在消息主线程执行逻辑
+        if (event.isSynchronized()) {
+            triggerEvent(event);
+        } else {
+        //否则，就丢到事件线程异步执行
+            eventQueue.add(event);
+        }
+
+    }  
+
+    private void triggerEvent(GameEvent event) {
+        EventType evtType = event.getEventType();  
+        Set&lt;Object&gt; listeners = observers.get(evtType);  
+        if(listeners != null){  
+            listeners.forEach(listener-&gt;{
+                try{  
+                    ListenerManager.INSTANCE.fireEvent(listener, event);
+                }catch(Exception e){  
+                    LoggerUtils.error(&quot;triggerEvent failed&quot;, e);;  //防止其中一个listener报异常而中断其他逻辑  
+                }  
+            });
+        }  
+    }
+
+    private class EventWorker implements Runnable {
+        @Override
+        public void run() {
+            while(true) {
+                try {
+                    GameEvent event = eventQueue.take();
+                    triggerEvent(event);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+}
+</code></pre>
+<p>６.分发器只是绑定了事件与其监听器，并没有说明，这个事件由其监听器的哪个方法监听。为了达到方法级别的绑定，我们引入另一个注解（EventHandler.java）。</p>
+<pre><code class="language-java">/**
+ * 事件处理者
+ * @author kingston
+ */
+@Documented
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface EventHandler {
+
+    /** 绑定的事件类型列表 */
+    public EventType[] value();
+
+}
+</code></pre>
+<p>也就是说，监听器由Listener注解标识，该监听器要监听多个事件，那么就在每一个事件的执行者方法加一个EventHandler注解。如果看过之前的文章，那篇关于使用Controller, RequestMapper来自动映射玩家消息与业务执行者。就会发现，Listerner与ListenerHandler所发挥的作用，跟之前是完全一样的。</p>
+<p>7.由于一个监听器可以同时监听多个事件，为了精确找到具体的业务执行者，我们必须将监听器与事件类型作为联合主键，缓存这样一个映射关系。key=listener_eventType, value=listenerMethod。所以，我们又加入一个工具类(ListenerManager.java)</p>
+<pre><code class="language-java">public enum ListenerManager {
+
+    INSTANCE;
+
+    private Map&lt;String, Method&gt; map = new HashMap&lt;&gt;();
+
+    private final String SCAN_PATH = &quot;com.kingston.game&quot;;
+
+    public void initalize() {
+        Set&lt;Class&lt;?&gt;&gt; listeners = ClassScanner.getClasses(SCAN_PATH, new ClassFilter() {
+            @Override
+            public boolean accept(Class&lt;?&gt; clazz) {
+                return clazz.getAnnotation(Listener.class) != null;
+            }
+        });
+
+        for (Class&lt;?&gt; listener: listeners) {
+            try {
+                Object handler = listener.newInstance();
+                Method[] methods = listener.getDeclaredMethods();
+                for (Method method:methods) {
+                    EventHandler mapperAnnotation = method.getAnnotation(EventHandler.class);
+                    if (mapperAnnotation != null) {
+                        EventType[] eventTypes = mapperAnnotation.value();
+                         for(EventType eventType: eventTypes) {
+                             EventDispatcher.getInstance().registerEvent(eventType, handler);
+                             map.put(getKey(handler, eventType), method);
+                         }
+                    }
+                }
+            }catch(Exception e) {
+                LoggerUtils.error(&quot;&quot;, e);
+            }
+        }
+    }
+
+    /**
+     * 分发给具体监听器执行
+     * @param handler
+     * @param event
+     */
+    public void fireEvent(Object handler,GameEvent event) {
+        try {
+            Method method = map.get(getKey(handler, event.getEventType()));
+            method.invoke(handler, event);
+        } catch (Exception e) {
+            LoggerUtils.error(&quot;&quot;, e);
+        }
+
+    }
+
+    private String getKey(Object handler, EventType eventType) {
+        return handler.getClass().getName() + &quot;-&quot; + eventType.toString();
+    }
+}
+</code></pre>
+<p>至此，事件驱动器的全部代码就完成了。</p>
+<ul>
+<li><strong>事件驱动模拟的测试案例</strong></li>
+</ul>
+<p>我们直接将引子的场景作为测试吧，当玩家升级时，就会触发学习一个新技能。
+１.申明事件类型，EventType.LEVEL_UP
+２.申明事件监听器(Listener)与执行事件的方法(ListenerHandler)</p>
+<pre><code class="language-java">@Listener
+public class SkillListener {
+
+    @EventHandler(value=EventType.LEVEL_UP)
+    public void onPlayerLevelup(EventPlayerLevelUp levelUpEvent) {
+        System.err.println(getClass().getSimpleName()+&quot;捕捉到事件&quot;+levelUpEvent);
+    }
+
+}
+</code></pre>
+<p>3.测试代码，服务启动时，直接抛出一个升级事件</p>
+<pre><code>    //启动socket服务
+    try{
+        new SocketServer().start();
+    }catch(Exception e) {
+        LoggerUtils.error("ServerStarter failed ", e);
+    }
+
+    Player player = PlayerManager.getInstance().get(10000L);
+    EventDispatcher.getInstance().fireEvent(new EventPlayerLevelUp(EventType.LEVEL_UP,
+            player.getId(), 2));
+</code></pre>
+<p>4.SkillListener直接捕捉到升级事件，输出如下</p>
+<p><code>java
+  SkillListener捕捉到事件EventPlayerLevelUp [upLevel=2, playerId=2815129724291645440, EventType=LEVEL_UP]</code></p>
+<p>到这里，关于事件驱动模型的实现就介绍完毕了。</p>
+<h2 id="_26">游戏服务端框架之客户端协议组合下发</h2>
+<ul>
+<li><strong>背景</strong></li>
+</ul>
+<p>很多时候，客户端一个请求过来，服务端可能需要发多个响应消息。典型地，当客户端请求加载登录加载资源完成，服务端需要推送非常多的消息。功能模块越多，消息也越多。这个时候，可能就需要对下发的客户端协议进行优化。
+个人理解，针对这种情况，比较好的优化方式是整合多个小消息一起下发。也就是说，<strong>对于多个消息，我们不直接一个一个下发，而是把多个消息看作一个特殊的消息组合下发</strong>。</p>
+<ul>
+<li>
+<p><strong>多包组合的优点</strong></p>
+</li>
+<li>
+<p>省流量。由于每个消息都会一些包头，几个消息一起下发也只需要一个包头。</p>
+</li>
+<li>
+<p>防止客户端解包降帧。客户端每帧拆包的数量是有限的，瞬间拆多个包看起来就会卡。</p>
+</li>
+<li>
+<p>缓解服务端io线程压力。服务端推送消息一般是异步线程处理的，包数量越少，io线程就不会太繁忙。</p>
+</li>
+</ul>
+<p>当然，组合包的应用场合，应该是整合多个小的消息。如果单独的消息体信息量大，那么就没必要整合了。</p>
+<ul>
+<li><strong>代码设计</strong></li>
+</ul>
+<p>对于我们的服务端<a href="https://so.csdn.net/so/search?q=框架&amp;spm=1001.2101.3001.7020">框架</a>，加上一个组合包，代码也很少。
+首先，由于每个消息都带有模块号，类型id，还有消息体，我们有必要抽象出这个整体概念，也是为了传输数据方便。</p>
+<h2 id="redis">游戏服务端框架之使用Redis实现跨服排行榜</h2>
+<ul>
+<li><strong>跨服排行榜</strong></li>
+</ul>
+<p>游戏里为了刺激玩家的攀比心理，经常有各种各样的排行榜。排行榜又可以分为本服排行榜以及跨服排行榜。</p>
+<p>简单说来，本服排行榜上的记录来自本服的玩家，而跨服排行榜上的记录是来自所有服务器前N名玩家。通常，跨服排行榜含金量更大，奖励也更为丰富。从技术上而言，实现起来也更为麻烦。</p>
+<p>典型地，实现跨服排行榜有一下几种思路。</p>
+<ul>
+<li><strong>取其中某个服务器作为中心服，用来收集各服排行榜数据并进行广播;</strong></li>
+<li><strong>使用独立进程，例如web后台，向各个服务拉取排行榜数据;</strong></li>
+<li><strong>利用Redis的SortedSet，由Redis自己实现排序</strong></li>
+</ul>
+<p>本文详细介绍如何使用Redis实现跨服排行榜</p>
+<ul>
+<li><strong>Redis集群的简单用法</strong></li>
+</ul>
+<p>Redis是一个Key-Value的缓存数据库。这里不做过多介绍。为了提高IO效率，最新的Redis支持集群服务。官方的Redis是不支持Windows环境，所以本文开发环境是在Linux Ubuntu上。Redis的java客户端实现是Jedis。下面的对RedisCluster的简单封装，包括对Redis的各种数据操作。</p>
+<h2 id="_27">游戏服务端框架之跨服匹配服</h2>
+<p>如今的手游世界，如果没搞个跨服赛事，都不好意思说它是一个手游了。</p>
+<p>说到跨服，就不得不说下匹配服了。比如一个跨服<a href="https://so.csdn.net/so/search?q=天梯赛&amp;spm=1001.2101.3001.7020">天梯赛</a>事，需要满足不同服的玩家能够同屏ＰＫ。为了能够把实力接近的玩家作为对手，我们需要一个独立的匹配服来收集数据，然后进行房间分配。匹配服，也是跨服赛设计的基础。</p>
+<p>典型的匹配服通信层我们可以采用http,也可以采用<a href="https://so.csdn.net/so/search?q=socket&amp;spm=1001.2101.3001.7020">socket</a>。本文将采用http作为游戏服与匹配服的通信层。选择http方式，我们可以搭个tomcat服务，非常方便。当然，如果不使用tomcat的话，我们也可以使用mina或者netty本身的http服务。</p>
+<p>设计思路也非常简单，有点像游戏服的业务处理器。我们需要做到，对于不同的请求，我们都绑定一个方法与之对应。而对于数据的编解码，由于匹配服的通信数据一般都比较短，我们直接用json进行序列化即可。</p>
+<p>下面，开始我们的编码。</p>
+<ul>
+<li><strong>搭建mina的http服务</strong></li>
+</ul>
+<p>在前面游戏后台设计中，我们已经看到如何使用mina搭建http服务了。</p>
+<h2 id="_28">游戏服务器之防御式开发</h2>
+<p>游戏服务端承担着游戏复杂业务逻辑实现，玩家数据持久化等重要作用。作为一个合格的服务端业务狗，我们有必要遵守一些好的防御手段，让自己的代码少踩些坑。或者当出现了bug，能够在第一时间进行抢救。</p>
+<p>下边一些开发原则是我的经验总结，欢迎补充，不喜轻喷o(^_^)o</p>
+<ul>
+<li><strong>检查玩家请求数据的有效性</strong></li>
+</ul>
+<p>不管是做web后端，还是游戏后端开发，我们都要检查客户端请求数据的有效性。举个栗子，假设玩家在商店买了一个道具XX，数量为100。对于上传到服务端的参数，例如所购买的道具id和购买数量，我们需要重点检查购买数量参数。总不能玩家说要买100个，但是玩家的金币只能购买10个，服务端就傻傻地给了玩家100个道具吧！
+有经验的程序员总是不厌其烦地告诉新手程序员，必须对传入函数的参数进行有效性检测。类似地，我们也必须对玩家的各种请求参数进行检测。很多外挂工具可以直接模拟游戏上一次发包内容，甚至通过对数据的分析进行参数篡改。所以，我们对于直接处理用户请求消息的逻辑方法，应该进行相关有效性检查。</p>
+<ul>
+<li><strong>重视行为日志</strong></li>
+</ul>
+<p>策划童鞋的脑洞很活跃，有时一些业务流程性非常强，要达到目标往往需要多个步骤有序地完成。我们做开发的，在面对一些强流程性或者数据比较重要的逻辑，一定不要吝啬留下行为日志。打多点日志，出了问题，即使测试人员无法重现，我们也可以根据日志以及代码逻辑发现问题。
+当然，打日志也是有技巧的。由于日志是给开发人员自己调试排错的，我们没必要像写作文一样下笔有神，我们只要打印一些关键的行为字眼</p>
+<h2 id="javajavascript">java游戏服务器之使用Javascript脚本</h2>
+<p>JavaScript，一开始只是作为浏览器<a href="https://so.csdn.net/so/search?q=表单验证&amp;spm=1001.2101.3001.7020">表单验证</a>的“玩具语言”。发展至今，已能胜任各种舞台。nodejs，es6等等，奠定了其作为后端语言的地位。</p>
+<p>在<a href="https://so.csdn.net/so/search?q=JVM&amp;spm=1001.2101.3001.7020">JVM</a>里，我们也可以直接使用javascript代码，因为jdk已默认绑定其实现。由于拥有动态语言灵活的特点，我们可以用来作很多有趣的事情。在游戏服务端开发，我们越来越多可以看到它的身影。</p>
+<p>下面我们就来看下javascript在游戏服务器里的应用。</p>
+<ul>
+<li><strong>用作公式计算器</strong></li>
+</ul>
+<p>数值是游戏的灵魂，很多游戏其实玩的就是数据。所以游戏里有各种各样的公式计算，最常见的就是玩家战斗力的计算。如果我们把游戏的数值公式硬性写进代码里，那么当策划需要在程序运行过程中修改公式的话，我们就要热更代码了。但如果我们把公式作为数据配置，那么策划只需要重载下数据表，成本就低很多。要在游戏里运行公式的话，用java写一套基于栈的公式计算器也是可以实现的，但比较麻烦。最简单的，莫过于使用javascript这个神器了。代码如下：</p>
+<h2 id="_29">手游服务端框架之合区工程</h2>
+<p>如今的游戏服务器运营策略一般为“滚服模式”。简单来说，就是运营商不停的开新区，不活跃的旧区就进行合区。这样一来，运营商既可以降低服务器硬件配置，缓解大服人数压力，也可以利用新区拉活跃猛赚一笔。</p>
+<p>“滚服模式”免不了对旧服务器进行合区，今天我们就来介绍下游戏服务器的合区工程。</p>
+<p>需要先说明的是，由于服务器不同，选择的数据库实现也有多种。游戏数据库最常用的选择方案是mysql，或者<a href="https://so.csdn.net/so/search?q=Mongodb&amp;spm=1001.2101.3001.7020">Mongodb</a>。本文以mysql作为例子。</p>
+<ul>
+<li><strong>合区对运营商的意义</strong></li>
+</ul>
+<p>运营意义：符合“滚服盈利模式”，把各个不活跃的大区里可怜的几个活跃人数聚合在一起，提高玩家在线率，拉活跃才可以盈利。</p>
+<p>运维意义：部分老区活跃玩家非常少，但却占用独立的游戏服务器资源，浪费硬件资源。合区可以减少机器成本。</p>
+<ul>
+<li><strong>合区的技术理论基础</strong></li>
+</ul>
+<p>合区的本质，其实是把归属于不同数据库的所有数据表进行整表合并。数据库间的schema是完全一样的，只是表数据内容不同。表数据能够进行合并，前提条件需要满足表主键id互不重合。</p>
+<p>一般地，我们以区服id进行划分，实现分布式id生成策略。</p>
+<p>打个比方，我们id使用64位的long类型。将long型数据的高16位表示区服ID，可以容纳2^16=65536个区服容量；将long型的低48位用于id的自增长，可以容纳2^ 48个id。这种划分策略对于一个游戏的整个运营生命周期来说是完全足够的。</p>
+<ul>
+<li><strong>合区流程</strong></li>
+</ul>
+<p>一个完整的合区</p>
+<h2 id="_30">游戏服务端框架之代码热部署</h2>
+<p>对于一个部署在生产环境的游戏项目来说，我们希望当代码出现bug的时候，可以不用重启游戏进程而达到动态修改代码的目的——</p>
+<p>这就是代码热部署！</p>
+<p>我们先来看一下，不同编程语言是如何实现代码热部署的。</p>
+<p>使用Javascript写过网页的童鞋们都清楚，修复代码后直接刷新一下浏览器，就可以执行最新的脚本；游戏客户端脚本Lua也是如此，在游戏运行过程中可以动态卸载已加载的文件再重新加载，神不知鬼不觉就把bug修复了；Erlang在游戏服务端应用也相当广泛，函数式语言尽可能不使用全局性变量，状态都是用函数参数保存，天然无状态的特性使得代码热部署变得相当简单……</p>
+<h2 id="_31">游戏服务器框架之关于玩家数据的解决方案</h2>
+<p>游戏系统的数据可以分为两大类。一类是由策划童鞋配置的玩法规则，称为策划数据或配置数据；一类是保存玩家或公共信息的数据，称为用户数据。一般说来，策划数据只能由程序读取而不能修改，而用户数据则增删查改都会涉及。</p>
+<p>对待玩家数据的严谨态度，无论怎么重视都不为过。玩家数据，正如游戏系统的血液。只有保证玩家的数据安全，才能留得住玩家的玻璃心。如果玩家今天历尽艰难险阻，耗尽所有rp刷到一件极品装备，明天上线发现装备不见了，肯定会跑到客服大吵大闹。</p>
+<p>游戏服务端一般采用的数据库是关系型数据库，用mysql就足够了。当然，也有少数游戏公司采用MongoDb。</p>
+<p>本文将从数据<a href="https://so.csdn.net/so/search?q=持久层&amp;spm=1001.2101.3001.7020">持久层</a>框架的选择、数据表结构的设计以及数据入库模型三个方面，讨论相关解决方案。</p>
+<ul>
+<li><strong>关于数据的持久层方案</strong></li>
+</ul>
+<p>以前做web的时候，持久层一般都采用诸如mybatics或hibernate等ORM<a href="https://so.csdn.net/so/search?q=框架&amp;spm=1001.2101.3001.7020">框架</a>。游戏后端需要保存玩家及公共数据，持久层框架也可以采用mybatics等。</p>
+<p>总体来看，游戏项目对数据库操作的要求比较低。一般都是对单表进行增删查改，很少有联表的操作。因此，很多公司都会有自己沉淀的一套持久层框架。例如有公司利用JDBC的ResultSetMetaData元数据获取列信息，然后与实体bean的field进行映射，将数据表的每一列跟对应的bean属性对应起来。当数据需要入库的时候，就调用bean对应的所有getter方法拼装成insert或update语句；读取数据则调用bean对应的所有setter方法，将数据表记录注入到实体里。这种方法是我见到的最有意思的持久化方案。也有一些小项目甚至直接使用jdbc进行数据库操作。</p>
+<ul>
+<li><strong>关于玩家数据表的设计方案</strong></li>
+</ul>
+<h2 id="orm_1">手游服务端框架之自定义orm持久化工具</h2>
+<p>前面一篇文章<a href="http://blog.csdn.net/littleschemer/article/details/53037275">手游服务端框架之关于玩家数据的解决方案</a>，介绍了当今游戏服务端对玩家数据进行持久化的两种方案。一种是将玩家数据通过json等格式统一打包成字符串或二进制流；另一种是根据模块功能拆分，一个模块一张用户表。</p>
+<p>今天的主题就是介绍如何通过<a href="https://so.csdn.net/so/search?q=orm&amp;spm=1001.2101.3001.7020">orm</a>来简化上面所说的第二种持久化方式。</p>
+<p>ORM(关系对象映射),简单来说,就是将oop世界里的对象与关系型数据库里的表记录进行映射。如果玩家数据的持久化是根据功能模块来拆分的话，那么随着游戏功能的增多，用户表的数量也会越来越多。如果对于每一张表，都需要编写对应的CRUD sql语句，那开发效率是非常低下的。但使用了orm<a href="https://so.csdn.net/so/search?q=框架&amp;spm=1001.2101.3001.7020">框架</a>，对于每一个需要进行持久化的玩家数据对象，都不再需要手动编写sql语句，这无疑是非常爽的。</p>
+<p>至于为什么不使用Mybatics或者<a href="https://so.csdn.net/so/search?q=Hibernate&amp;spm=1001.2101.3001.7020">Hibernate</a>这种成熟强大的ORM框架，而是选择自己造轮子设计。这里有个原因，一般游戏业务都是对单表进行增删查改（甚至不用删除），也很少需要对多张表进行联合查询。所以自己手写一套简易的orm工具即可，还可以灵活整合缓存系统。</p>
+<h2 id="_32">游戏服务端之查看生产环境的内存数据</h2>
+<ul>
+<li><strong>背景</strong></li>
+</ul>
+<p>生产环境项目排查问题的过程中，有时强烈希望查看<a href="https://so.csdn.net/so/search?q=内存&amp;spm=1001.2101.3001.7020">内存</a>中的一些数据，却苦于没有办法将这些值输入到终端或日志中。</p>
+<p>期望寻找一种优雅的方式，能快速实现目标。</p>
+<ul>
+<li><strong>传统方式</strong></li>
+</ul>
+<p>比较暴力的手段可能是这样的，在代码中加入打印日志的语句，然后将整个class类放到生产环境进行热部署。这或许算得上重量级操作吧。</p>
+<ul>
+<li>
+<p><strong>脚本方式</strong></p>
+</li>
+<li>
+<p><strong>线上诊断利器</strong></p>
+</li>
+</ul>
+<h2 id="jmx">游戏服务端之使用JMX监控游戏进程</h2>
+<p>游戏服务器运行过程中，我们希望能够对游戏里各种资源进行监控。比如，查看在线玩家总人数，查看<a href="https://so.csdn.net/so/search?q=内存&amp;spm=1001.2101.3001.7020">内存</a>使用情况，统计请求消息数量等等。这种问题归结起来就是，我们希望查看游戏进程的内存数据。</p>
+<p>前边有一篇文章<a href="http://blog.csdn.net/littleschemer/article/details/52089873"> （查看生产环境的内存数据</a>)，介绍如果通过加载类文件或使用javascript脚本查看内存数据。但这篇文章并没有介绍如何让游戏进程执行我们外部的代码，这属于跨进程通信的范畴，总体来说也是比较复杂的。</p>
+<p>现在，我打算介绍另外一种黑科技，让监控游戏服务器更加方便快捷。</p>
+<p>我们使用的工具叫做JMX(Java Management Extentesions)，简单来说，就是对运行中的服务器进行各种资源监控的工具。</p>
+<p>有了JMX，我们可以轻易查看游戏进程里的各种资源，甚至触发各种管理接口。</p>
+<h2 id="_33">游戏服务端之屏蔽字检测</h2>
+<p>游戏中经常需要检测玩家的昵称或者聊天内容是否包含敏感词组。</p>
+<p>一般来说，检测的算法都是直接利用<a href="https://so.csdn.net/so/search?q=正则表达式&amp;spm=1001.2101.3001.7020">正则表达式</a>进行全字匹配。抛开正则效率差强人意来说，正则算法无法处理拆字情况。举个例子来说，假设"马克思"是一个敏感字，玩家直接输入”马克思“肯定会被检测出来，但假设玩家输入的是”马1克2思3“，这种在敏感字中间随意穿插其他文字，正则则无能为力了。除非对每一个敏感字，都建立类似”马<em>克</em>思“之类的正则表达式，这样下来效率就更加低下了。</p>
+<p>因此，本文将设计另外一种算法，争取以较高的速度完成屏蔽字检测。</p>
+<ul>
+<li><strong>算法思路如下：</strong></li>
+</ul>
+<p>1.读取敏感字词库，将每一个敏感字的第一个字母保存到hash结构的key，若遇到同一个起始文字有多个相关的敏感字，则将这类敏感字保存在一个list集合，数据结构为Map<Character,List\<String>></p>
+<p>2.遍历待测试的文字内容，若当前字符在敏感字索引找得到，则取当前字符以及随后的若干文字组成检测单元。若检测单元包含敏感词组的全部内容，则表示发现敏感文字。</p>
+<p>这里有一个问题，就是需要确定当前索引字符组合其后的多少文字构成检测单元。总不能一篇800字的文章，前两个字是”马克“，最后一个文字是”思“，就说这篇文字包含敏感字”马克思“吧  ==。 ==</p>
+<h2 id="_34">游戏服务器框架之跨服</h2>
+<p>如今的游戏开发，不搞个跨服玩法都不好意思说在做游戏了（当然，也跟游戏类型有关，一些轻度休闲游戏可以排除在外）。跨服玩法的设计，可以进一步激发玩家追求高战力的虚荣心，也可以汇聚玩家数量，避免单服日活跃低呈现死服现象。</p>
+<p>不同服务器的玩家，由于数据不在同一个进程里，所以无法直接交互。跨服设计的目标，就是将不在同一个游戏进程的玩家拉到同一个服务器进程。</p>
+<p>对于服务器1的玩家A和服务器2的玩家B，我们有两张方案将他们聚集到同一个服务器。</p>
+<p>方案一：将服务器1的玩家A拉到服务器2。此种方案有一个明显的弊端，游戏业务代码需要时刻判断目标玩家是服务器原始玩家，还是跨服过来的玩家。</p>
+<p>方案二：将服务器1的玩家A和服务器2的玩家B拉到除了服务器1和2以外的其他服务器，这样的服务器可以是中立战斗服务器，也可以是普通的游戏服务器。综合架构设计和业务需求而定。</p>
+<h2 id="_35">几种常见的跨服玩法拓扑结构</h2>
+<p>一，不同游戏服的玩家进入中立服务器进行战斗，例如跨服天梯类玩法。</p>
+<p>游戏服有很多个节点，中心服务器也有很多节点。只要保证对战的双方同时进入同一个中心服游戏进程即可。</p>
+<p><img alt="img" src="https://img-blog.csdnimg.cn/20201212204425232.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpdHRsZXNjaGVtZXI=,size_16,color_FFFFFF,t_70" /></p>
+<p>二，若干个游戏服组成一个社区，全部服务器</p>
+<h2 id="ai">游戏服务器之AI设计——有限状态机</h2>
+<p>游戏AI
+游戏世界里有各种各样的AI行为，例如怪物砍人，玩家自动挂机等等。一个游戏好不好玩，很重要一点就是游戏的AI质量，毕竟PVE占玩家游戏时间很大比重。当然，游戏AI设计难度非常大，我们看到的大部分游戏里的怪物都是傻乎乎的，无非都是填充属性拼数值而已，很难与单机游戏的AI相提并论。虽然拿不出手，但还是要有的，毕竟需求摆在这里。</p>
+<p>假设有这样的简易场景</p>
+<p>场景里的一只怪物平时就在洞口巡逻。当遇到敌人的时候，如果比对方强大，就揍敌人；如果比敌人弱，就绕道逃跑。</p>
+<h2 id="id">游戏服务器框架之分布式id生成器</h2>
+<ul>
+<li><strong>背景</strong></li>
+</ul>
+<p>在现实社会，我们通用身份证来唯一确定某一个人的身份。</p>
+<p>在游戏世界里，我们也用id来<a href="https://so.csdn.net/so/search?q=唯一索引&amp;spm=1001.2101.3001.7020">唯一索引</a>某个对象。小到一个道具&amp;</p>
+<ul>
+<li><strong>分布式id生成器</strong></li>
+<li><strong>方案一 持久化id当前值</strong></li>
+<li><strong>方案二 雪花算法</strong></li>
+</ul>
+<h2 id="_36">游戏服务端框架之本服实时排行榜</h2>
+<ul>
+<li><strong>设计背景</strong></li>
+</ul>
+<p>在<a href="https://blog.csdn.net/littleschemer/article/details/78167445">游戏服务端框架之使用Redis实现跨服排行榜</a>这篇文章里，讲述了如何使用Redis设计一个全服排行榜工具。</p>
+<p>本文主要介绍如何实现一个本服的实时刷新排行榜。 </p>
+<p>常规的排行榜设计，为了减少计算的工作量，一般采取定时刷新。也就是说，当</p>
+<ul>
+<li><strong>知识储备</strong></li>
+<li>
+<p><strong>数据结构封装</strong></p>
+</li>
+<li>
+<p><strong>排行榜设计</strong></p>
+</li>
+</ul>
+<h2 id="csv">游戏服务端框架之csv配置格式</h2>
+<ul>
+<li><strong>背景</strong></li>
+</ul>
+<p>游戏策划大佬一般采用excel工具来管理游戏里的数值配置。excel内置的公式以及<a href="https://so.csdn.net/so/search?q=可视化&amp;spm=1001.2101.3001.7020">可视化</a>操作，对数值大佬来说是非常方便的工具。但对于服务器来说，Excel不是唯一的格式。典型的说，服务端很少直接将Excel文件作为数据源，服务器设计更喜欢选择将Excel导入数据库，或者将Excel文件转为CSV格式。</p>
+<p>CSV格式相对于Excel格式来说，它属于纯文本格式，体积小，更方便程序解析。</p>
+<p>本文介绍如何对CSV格式的配置表进行映射，转换成程序支持的Bean。</p>
+<ul>
+<li><strong>CSV格式</strong></li>
+</ul>
+<p>CSV格式使用逗号作为分隔符，理论上来说，程序可以使用逗号对每一行的内容进行分割。但假设单元格本身包含逗号，csv就会将该字符串外部自动包裹一层双引号，或者遇上json这种格式，解析的难度就非常大了。幸运的是，apache提供了csv的解析工具库。</p>
+<p>最新的maven仓库地址</p>
+<pre><code class="language-XML">&lt;!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-csv&lt;/artifactId&gt;
+    &lt;version&gt;1.8&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>使用该工具，可以非常方便解析csv格式文件。如果文件第一行表示标题，工具也可以直接把表头内容读取出来。但是遇到一些自定义的csv工具，则需要程序自行处理了。例如，对于这样的csv文件内容。（第一行是注释，第</p>
+<h2 id="starter">游戏服务器之使用starter自动配置数据仓库组件</h2>
+<p>前面<a href="https://mp.csdn.net/editor/html/115792906">游戏服务端框架之csv配置格式</a>介绍服务端程序如何快速读取csv配置数据。</p>
+<p>本文继续介绍如何使用springbootstarter打造优雅的配置数据一站式服务。</p>
+<p>首先，我们的配置读取API应该是这样的，支持三种模式的数据访问</p>
+<pre><code class="language-java">/**
+ * 配置读取仓库（只读）
+ */
+public interface DataRepository {
+
+    /**
+     * 根据主键读取指定文件的配置数据
+     * @param clazz
+     * @param id
+     * @param &lt;E&gt;
+     * @return
+     */
+    &lt;E&gt; E queryById(Class&lt;E&gt; clazz, Object id);
+
+    /**
+     * 读取指定文件的所有配置数据
+     * @param clazz
+     * @param &lt;E&gt;
+     * @return
+     */
+     &lt;E&gt; List&lt;E&gt; queryAll(Class&lt;E&gt; clazz) ;
+
+
+    /**
+     * 根据索引读取指定文件的配置数据
+     * @param clazz
+     * @param name
+     * @param index
+     * @param &lt;E&gt;
+     * @return
+     */
+    &lt;E&gt; List&lt;E&gt; queryByIndex(Class&lt;E&gt; clazz, String name, Object index);
+}
+</code></pre>
+<h2 id="_37">漫谈分布式游戏服务器</h2>
+<ul>
+<li><strong><a href="https://so.csdn.net/so/search?q=分布式&amp;spm=1001.2101.3001.7020">分布式</a>的意义</strong></li>
+</ul>
+<p>游戏服务器为什么要设计成分布式？很简单的原因，为了支持服务器有更多的玩家同时在线。这里的同时在线，是要求玩家能一起交互，而不是简单的在平行世界独立游戏。</p>
+<p>如果游戏是单进程架构，受限于cpu和内存的限制，一个进程是不可能支持太多人同时在线的，总会达到一个瓶颈无法突破。PCU（Peak concurrent users），术语代表最高同时在线玩家人数。PCU的上限，跟游戏本身类型，程序架构，机器性能强相关。</p>
+<ul>
+<li><strong>分布式的难点</strong></li>
+</ul>
+<p>游戏能否设计成分布式，首先应该考虑的是游戏的类型是否能做成无状态的。</p>
+<p>简单来说，就是玩家的游戏行为，主要是副本玩法，无论在哪个服务器进行，都能愉快无感获得比赛结果。像“王者荣耀”这种moba类玩法，天生就非常适合分布式设计。因为玩家一旦匹配成功，只要保证同一场比赛的玩家都进入同一个战场服即可。又或者像一些卡牌玩法，虽然不是主打全服匹配，但个人副本，本服组队副本，也是可以设计成分布式战斗。</p>
+<p>对于MMORPG类型的游戏，首先遇到的拦路虎来自于策划童鞋的脑洞大开。现在的游戏跨服玩法，满大街都是这样的套路。要么把几个生态接近的游戏服绑定为第一个大区，大区内有公共副本玩法；要么以战盟为单位设计军团玩法，寻求范围更为广泛的跨服联盟队伍；要么就是把类似“王者荣耀”的moba玩法融合到游戏里，实现全服匹配。各种跨服玩家大概也就这么几种，若干年内，策划也没法玩出花来。像这种把几个游戏组成一个社区的世界服玩法，本身就是有状态的。也就是说，社区内的玩家就只能进入目标服务器进行游戏，在一个</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" class="btn btn-neutral float-left" title="Addressable使用心得"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
