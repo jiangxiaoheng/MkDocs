@@ -107,6 +107,36 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#_6">第三方登录与支付</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">可扩展性游戏机制建模</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">实现模式：进度模板</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_9">一种模式，多种应用</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_10">案例:七日登录奖励</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_11">案例: 闯关关卡</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_12">案例: 仓库</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_13">案例: 装备强化</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_14">服务端 运行时 代码 参考</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nakama-unity">Nakama Unity客户端指南</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sql-storage">通过 SQL 更新 Storage 对象 (不推荐)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nakama_1">Nakama 功能</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_15">创建排行榜</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rpc">Rpc 函数, 云代码注册</a>
+    </li>
+        </ul>
+    </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../Nakama%20%E9%83%A8%E7%BD%B2/">Nakama 部署</a>
@@ -769,7 +799,7 @@ func BanUserRPC(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runti
 </code></pre>
 <h2 id="_6">第三方登录与支付</h2>
 <p>简介: 微信 QQ 手机 邮件 微博等第三方登录; 微信支付, 支付宝, 银联, Apple等第三方支付</p>
-<h1 id="_7">可扩展性游戏机制建模</h1>
+<h2 id="_7">可扩展性游戏机制建模</h2>
 <p><a href="https://heroiclabs.com/docs/zh/nakama/concepts/storage/modeling/">Nakama: 可扩展性建模 | Heroic Labs Documentation</a></p>
 <p>简介: 与其定期检查给定玩家、团队或物品可能经历的更改, 不如等待并响应真正发生的事件。这有点类似于 <strong>事件驱动的编程</strong> 范例：服务器的作用类似于主循环，会触发回调功能。</p>
 <p>此方法可降低服务器成本，最大限度降低复杂性并提高游戏的稳健性，因为：</p>
@@ -1061,7 +1091,75 @@ PpcStageChallenge(ctx, logger, db, nk, payload)(string, error){
     // 返回response
 }
 </code></pre>
-<h2 id="_12">服务端 运行时 代码 参考</h2>
+<h3 id="_12">案例: 仓库</h3>
+<ul>
+<li><strong>collection:</strong> <code>economy</code></li>
+<li><strong>key:</strong> <code>inventory</code></li>
+</ul>
+<pre><code class="language-json">// 使用对象方便查找, 而不是数组, 使用数组会让你遍历每个条目
+{
+    &quot;道具库&quot;: {
+        &quot;护盾&quot;: {
+            &quot;count&quot;: 20
+        },
+        &quot;磁铁&quot;: {
+            &quot;count&quot;: 15
+        },
+        &quot;飞行&quot;: {
+            &quot;count&quot;: 66
+        }
+    },
+    &quot;材料库&quot;: {
+        &quot;item_A&quot;: {
+            &quot;数量&quot;: 40,
+            &quot;拥有_时间&quot;: 1636888665
+        },
+        &quot;item_B&quot;: {
+            &quot;count&quot;: 0,
+            &quot;owned_time&quot;: 1636888665
+        },
+        &quot;item_C&quot;: {
+            &quot;count&quot;: 24,
+            &quot;owned_time&quot;: 1636888665
+        }
+    },
+    &quot;装备库&quot;: {
+        &quot;16cafe3c-3ea7-4fb2-8d74-4bab45304762&quot;: {
+            &quot;编号&quot;: 1001,
+            &quot;等级&quot;: 10,
+            &quot;拥有_时间&quot;: 1636888665
+        },
+        &quot;2e1ac665-ffd8-4014-a83e-b28e34b4b2ac&quot;: {
+            &quot;ID&quot;: 1001,
+            &quot;level&quot;: 1,
+            &quot;owned_time&quot;: 1636888665
+        }
+    }
+}
+</code></pre>
+<h3 id="_13">案例: 装备强化</h3>
+<pre><code class="language-go">// 获取储存对象方法
+getInventoryObj() (*api.StorageObject, error) {}
+// 强化方法
+func RpcUpgrade()(string, error){
+    userID, _ := ctx.Value(runtime.RUNTIME_CTX_USER_ID).(string) // 玩家ID
+    inventoryObj, _ := getInventoryObj() // 调用功能方法 获取储存对象
+    equip := inventoryObj.装备库[payload.instanceID] // payload.instanceID 客户端发送的唯一ID
+    changeset := map[string]int64 {&quot;coins&quot;: tables.TbItem.Get(equip.ID).upgradeCost[equip.level],} // 升级费用
+    // 强化成功率判断
+    if tables.TbItem.Get(equip.ID).upgradeWeight[equip.level] {
+        UPDATE storage SET value = jsonb_set(value, '{装备库,instanceID,level}', to_jsonb((value-&gt;'装备库'-&gt;'instanceID'-&gt;'level')::INT + 1)) WHERE collection = 'economy' AND user_id = '&lt;some_user_id&gt;' AND key = 'inventory'; // Sql 更新储存库 (不推荐)
+        _, _, err := nk.WalletUpdate(ctx, userID, changeset, map[string]interface{}{}, false) // 更新钱包
+        if err != nil { return &quot;扣钱失败&quot;, errInternalError }
+        return &quot;强化成功&quot;, nil
+    } else {
+        _, _, err := nk.WalletUpdate(ctx, userID, changeset, map[string]interface{}{}, false) // 更新钱包
+        if err != nil { return &quot;扣钱失败&quot;, errInternalError }
+        return &quot;强化失败&quot;, nil
+    }
+}
+</code></pre>
+<h2 id="_14">服务端 运行时 代码 参考</h2>
 <p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/authoritative-write/">Nakama: 授权存储 | Heroic Labs Documentation</a></p>
 <p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/user-metadata/">Nakama: 更新用户元数据 | Heroic Labs Documentation</a></p>
 <p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/authoritative-read/">Nakama: 游戏内授权物品 | Heroic Labs Documentation</a></p>
@@ -1070,8 +1168,32 @@ PpcStageChallenge(ctx, logger, db, nk, payload)(string, error){
 <p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/banning-users/">Nakama: 封禁用户 | Heroic Labs Documentation</a></p>
 <h2 id="nakama-unity">Nakama Unity客户端指南</h2>
 <p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/unity/">Nakama: Unity/.Net | Heroic Labs Documentation</a></p>
+<h2 id="sql-storage">通过 SQL 更新 Storage 对象 (不推荐)</h2>
+<p>更新 JSON 对象中的单个字段可以通过自定义 SQL 查询来实现，使用 Lua/JavaScript 中的运行时提供的函数或 Go 中的句柄。<code>*sql.DB</code>
+例如，如果我有以下存储对象：</p>
+<ul>
+<li><strong>collection:</strong> <code>economy</code></li>
+<li><strong>key:</strong> <code>inventory</code></li>
+<li><strong>owner_id:</strong> <code>&lt;some_user_id&gt;</code></li>
+</ul>
+<pre><code class="language-json">{
+   &quot;consumables&quot;:{
+      &quot;item_A&quot;:{
+         &quot;count&quot;:3
+      },
+      &quot;item_B&quot;:{
+         &quot;count&quot;:10
+      }
+   }
+}
+</code></pre>
+<p>假设我们想在单个操作中将“item_B”计数增加 1，可以通过以下自定义 SQL 查询来实现：</p>
+<pre><code class="language-java">UPDATE storage SET value = jsonb_set(value, '{consumables,item_B,count}', to_jsonb((value-&gt;'consumables'-&gt;'item_B'-&gt;'count')::INT + 1)) WHERE collection = 'economy' AND user_id = '&lt;some_user_id&gt;' AND key = 'inventory';
+</code></pre>
+<p>可以找到 jsonb 类型列操作的完整参考<a href="https://www.postgresql.org/docs/12/functions-json.html">这里</a>.</p>
+<p>除非绝对需要，否则我们不鼓励任何人编写自定义 SQL，我们提供的 API 可确保读取/写入数据库时的最佳性能，我们无法保证在自定义编写的 SQL 中也是如此。对于大多数用例来说，可能不需要通过节省读取来提高性能;或者从代码可维护性的角度来看值得。</p>
 <h2 id="nakama_1">Nakama 功能</h2>
-<h3 id="_13">创建排行榜</h3>
+<h3 id="_15">创建排行榜</h3>
 <pre><code class="language-typescript">let InitModule: nkruntime.InitModule = function (ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, initializer: nkruntime.Initializer) {
 
     let id = 'global_best';
