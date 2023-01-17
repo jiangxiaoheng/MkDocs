@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Unity项目组织目录结构 - My Docs</title>
+    <title>Unity 项目组织目录结构 - My Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Unity\u9879\u76ee\u7ec4\u7ec7\u76ee\u5f55\u7ed3\u6784";
+        var mkdocs_page_name = "Unity \u9879\u76ee\u7ec4\u7ec7\u76ee\u5f55\u7ed3\u6784";
         var mkdocs_page_input_path = "Unity\u9879\u76ee\u7ec4\u7ec7\u76ee\u5f55\u7ed3\u6784.md";
         var mkdocs_page_url = null;
       </script>
@@ -43,6 +43,59 @@
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Unity</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Unity%20%E9%80%8F%E8%A7%86%E9%95%9C%E5%A4%B4%20FOV%20%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97/">Unity 透视镜头 FOV 角度计算</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../unity%20%E5%AD%A6%E4%B9%A0%E8%A1%A8/">unity 学习表</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Unity 项目组织目录结构</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">前言</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-unity">1: Unity项目的几个基本原则</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1">原则(1):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2">原则(2):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3">原则(3)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4">原则(4)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5">原则(5)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6">原则(6)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-unity">2: Unity项目的一级目录结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1_1">1级目录结构如下:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3_1">3: 重要一级目录结构子目录结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-assetspackage">1: AssetsPackage目录如何分类?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-scripts">2: Scripts 目录如何分类?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-editor">3: Editor 目录如何分类?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-assetbundles">4: AssetBundles输出目录结构</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">最后</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/">Unity 中数据存储的方法</a>
+                  </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">Addressable使用心得</a>
@@ -105,66 +158,6 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Unity%20%E9%80%8F%E8%A7%86%E9%95%9C%E5%A4%B4%20FOV%20%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97/">Unity 透视镜头 FOV 角度计算</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../unity%20%E5%AD%A6%E4%B9%A0%E8%A1%A8/">unity 学习表</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Unity项目组织目录结构</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">前言</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#1-unity">1: Unity项目的几个基本原则</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1">原则(1):</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2">原则(2):</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3">原则(3)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4">原则(4)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5">原则(5)</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#6">原则(6)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#2-unity">2: Unity项目的一级目录结构</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1_1">1级目录结构如下:</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#3_1">3: 重要一级目录结构子目录结构</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-assetspackage">1: AssetsPackage目录如何分类?</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-scripts">2: Scripts 目录如何分类?</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-editor">3: Editor 目录如何分类?</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-assetbundles">4: AssetBundles输出目录结构</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">最后</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/">Unity中数据存储的方法</a>
-                </li>
-              </ul>
-              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../VMware%20%E8%99%9A%E6%8B%9F%E6%9C%BA/">VMware 虚拟机</a>
                 </li>
               </ul>
@@ -194,7 +187,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Unity项目组织目录结构</li>
+          <li>Unity &raquo;</li>
+      <li>Unity 项目组织目录结构</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -272,7 +266,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/" class="btn btn-neutral float-left" title="UnityWebRequest 与 Web 服务器通讯"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/" class="btn btn-neutral float-right" title="Unity中数据存储的方法">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/" class="btn btn-neutral float-right" title="Unity 中数据存储的方法">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

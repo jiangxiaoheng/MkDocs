@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Unity中数据存储的方法 - My Docs</title>
+    <title>Unity 中数据存储的方法 - My Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Unity\u4e2d\u6570\u636e\u5b58\u50a8\u7684\u65b9\u6cd5";
+        var mkdocs_page_name = "Unity \u4e2d\u6570\u636e\u5b58\u50a8\u7684\u65b9\u6cd5";
         var mkdocs_page_input_path = "Unity\u4e2d\u6570\u636e\u5b58\u50a8\u7684\u65b9\u6cd5.md";
         var mkdocs_page_url = null;
       </script>
@@ -43,6 +43,39 @@
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Unity</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../Unity%20%E9%80%8F%E8%A7%86%E9%95%9C%E5%A4%B4%20FOV%20%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97/">Unity 透视镜头 FOV 角度计算</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../unity%20%E5%AD%A6%E4%B9%A0%E8%A1%A8/">unity 学习表</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Unity%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Unity 项目组织目录结构</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Unity 中数据存储的方法</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#playerprefs">PlayerPrefs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-playerprefs">1. PlayerPrefs是什么？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-playerprefs">2. PlayerPrefs有什么用？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-playerprefs">3. PlayerPrefs如何用？</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-playerprefs">4. PlayerPrefs数据存在哪里？</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">二进制方法</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#json">Json</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#xml">XML存储</a>
+    </li>
+    </ul>
+                  </li>
               </ul>
               <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">Addressable使用心得</a>
@@ -105,46 +138,6 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Unity%20%E9%80%8F%E8%A7%86%E9%95%9C%E5%A4%B4%20FOV%20%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97/">Unity 透视镜头 FOV 角度计算</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../unity%20%E5%AD%A6%E4%B9%A0%E8%A1%A8/">unity 学习表</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../Unity%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Unity项目组织目录结构</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Unity中数据存储的方法</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#playerprefs">PlayerPrefs</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#1-playerprefs">1. PlayerPrefs是什么？</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2-playerprefs">2. PlayerPrefs有什么用？</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3-playerprefs">3. PlayerPrefs如何用？</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4-playerprefs">4. PlayerPrefs数据存在哪里？</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_1">二进制方法</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#json">Json</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#xml">XML存储</a>
-    </li>
-    </ul>
-                </li>
-              </ul>
-              <ul>
                 <li class="toctree-l1"><a class="reference internal" href="../VMware%20%E8%99%9A%E6%8B%9F%E6%9C%BA/">VMware 虚拟机</a>
                 </li>
               </ul>
@@ -174,7 +167,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Unity中数据存储的方法</li>
+          <li>Unity &raquo;</li>
+      <li>Unity 中数据存储的方法</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -1407,8 +1401,8 @@ public interface DataRepository {
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Unity%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" class="btn btn-neutral float-left" title="Unity项目组织目录结构"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../VMware%20%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="btn btn-neutral float-right" title="VMware 虚拟机">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../Unity%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" class="btn btn-neutral float-left" title="Unity 项目组织目录结构"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" class="btn btn-neutral float-right" title="Addressable使用心得">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -1434,7 +1428,7 @@ public interface DataRepository {
       <span><a href="../Unity%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../VMware%20%E8%99%9A%E6%8B%9F%E6%9C%BA/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
