@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Nakama 部署 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Nakama \u90e8\u7f72";
+        var mkdocs_page_input_path = "Nakama \u90e8\u7f72.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">Addressable使用心得</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../C%23%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">C# 设计模式</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nakama%20%E5%BF%85%E8%A6%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/">Nakama 必要功能实现</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Nakama 部署</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#runtime">Runtime (云代码)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">初始化项目</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">其他文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">部署文件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#docker">使用 Docker 运行模块</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">补充</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%20%E9%80%8F%E8%A7%86%E9%95%9C%E5%A4%B4%20FOV%20%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97/">Unity 透视镜头 FOV 角度计算</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unity%20%E5%AD%A6%E4%B9%A0%E8%A1%A8/">unity 学习表</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Unity项目组织目录结构</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/">Unity中数据存储的方法</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VMware%20%E8%99%9A%E6%8B%9F%E6%9C%BA/">VMware 虚拟机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7%20Luban/">配置工具 Luban</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/">游戏开发基础框架</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Nakama 部署</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="nakama">Nakama 部署</h1>
+<p>使用概述</p>
+<h2 id="runtime">Runtime (云代码)</h2>
+<p>语言选择: Go Lua TypeScript </p>
+<p>简介: 将一些逻辑交给服务器处理, 就需要使用到 <strong>Runtime</strong> ! 当然如果你只想要 <strong>Nakama</strong> 存储由玩家提交上来的数据(作弊风险高), 就不需要该功能;</p>
+<p>我们就选择 <strong>TypeScript</strong> 吧;</p>
+<h2 id="_1">初始化项目</h2>
+<p>这些步骤将设置一个工作区来编写要由游戏服务器运行的所有项目代码。</p>
+<p>定义将成为项目工作区的文件夹名称。在本例中，我们将使用“ts-project”。</p>
+<pre><code>mkdir -p ts-project/{src,build}
+cd ts-project
+</code></pre>
+<p>使用 NPM 在项目中设置节点依赖项。安装 TypeScript 编译器。</p>
+<pre><code>npm init -y
+npm install --save-dev typescript
+</code></pre>
+<p>使用安装到项目中的 TypeScript 编译器来设置编译器选项。</p>
+<pre><code>npx tsc --init
+</code></pre>
+<p>将 Nakama 运行时类型作为依赖项添加到项目中，并配置编译器以查找类型。</p>
+<pre><code>npm i 'https://github.com/heroiclabs/nakama-common'
+
+报错, code: 128
+原因分析
+有的库有改动，不能通过git://访问了，这时我们可以改为使用https://来访问。
+解决方案
+在请求git://地址时，自动替换为https://，命令如下：
+git config --global url.&quot;https://&quot;.insteadOf git://
+备注
+如果想删除这个设置，命令如下：
+git config --global unset url.&quot;https://&quot;.insteadOf
+</code></pre>
+<p>你现在将有一个“tsconfig.json”文件，它描述了在TypeScript编译器上运行的可用选项。当您修剪掉注释掉的条目并对其进行更新后，最小文件将如下所示：</p>
+<pre><code class="language-json">{
+    // 脚本文件填入这里
+    &quot;files&quot;: [
+        &quot;./main.ts&quot;,
+    ],
+    &quot;compilerOptions&quot;: {
+        &quot;target&quot;: &quot;es5&quot;,
+        &quot;strict&quot;: true,
+        &quot;esModuleInterop&quot;: true,
+        &quot;skipLibCheck&quot;: true,
+        &quot;forceConsistentCasingInFileNames&quot;: true,
+        &quot;outFile&quot;: &quot;./build/index.js&quot;,
+        &quot;typeRoots&quot;: [
+            &quot;./node_modules&quot;
+        ],
+    }
+}
+</code></pre>
+<p>这样就完成了设置，您的项目应类似于以下布局：</p>
+<pre><code>.
+├── build
+├── node_modules
+│   ├── nakama-runtime
+│   └── typescript
+├── src
+├── docker-compose.yml
+├── Dockerfile
+├── local.yml
+├── main.ts
+├── package-lock.json
+├── package.json
+└── tsconfig.json
+</code></pre>
+<h2 id="_2">其他文件</h2>
+<p><strong>main.ts</strong> <strong>主目录</strong></p>
+<pre><code class="language-typescript">function InitModule(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, initializer: nkruntime.Initializer) {
+  logger.info('服务端部署完成! TypeScript模块部署完成!');
+}
+
+// Reference InitModule to avoid it getting removed on build
+!InitModule &amp;&amp; InitModule.bind(null);
+</code></pre>
+<p><strong>local.yml</strong></p>
+<pre><code class="language-yml">console:
+  max_message_size_bytes: 409600
+logger:
+  level: &quot;DEBUG&quot;
+runtime:
+  js_entrypoint: &quot;build/index.js&quot;
+session:
+  token_expiry_sec: 7200 # 2 hours
+socket:
+  max_message_size_bytes: 4096 # reserved buffer
+  max_request_size_bytes: 131072
+</code></pre>
+<h2 id="_3">部署文件</h2>
+<p><strong>Dockerfile</strong></p>
+<pre><code class="language-dockerfile">FROM node:alpine AS node-builder
+
+WORKDIR /backend
+
+COPY package*.json ./
+RUN npm install --registry=https://registry.npm.taobao.org # 注释 很重要, 因为网络环境很容易就会卡住不动, 换国内镜像解决
+
+COPY tsconfig.json ./
+COPY *.ts ./
+RUN npx tsc
+
+FROM registry.heroiclabs.com/heroiclabs/nakama:3.14.0
+
+COPY --from=node-builder /backend/build/*.js /nakama/data/modules/build/
+COPY --from=node-builder /backend/*.js /nakama/data/modules/
+COPY local.yml /nakama/data/ #注释 一个大坑,映射路径需要和docker-compose.yml中entrypoint:下,命令路径一致
+</code></pre>
+<p><strong>docker-compose.yml</strong></p>
+<pre><code class="language-yml">version: '3'
+services:
+  postgres:
+    command: postgres -c shared_preload_libraries=pg_stat_statements -c pg_stat_statements.track=all
+    environment:
+      - POSTGRES_DB=nakama
+      - POSTGRES_PASSWORD=localdb
+    expose:
+      - &quot;8080&quot;
+      - &quot;5432&quot;
+    image: postgres:12.2-alpine
+    ports:
+      - &quot;5432:5432&quot;
+      - &quot;8080:8080&quot;
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  nakama:
+    build: .
+    volumes:
+      - ./:/nakama/data
+    depends_on:
+      - postgres
+    entrypoint:
+      - &quot;/bin/sh&quot;
+      - &quot;-ecx&quot;
+      - &gt;
+        /nakama/nakama migrate up --database.address postgres:localdb@postgres:5432/nakama &amp;&amp;
+        exec /nakama/nakama --config /nakama/data/local.yml --database.address postgres:localdb@postgres:5432/nakama        
+    expose:
+      - &quot;7349&quot;
+      - &quot;7350&quot;
+      - &quot;7351&quot;
+    healthcheck:
+      test: [&quot;CMD&quot;, &quot;curl&quot;, &quot;-f&quot;, &quot;http://localhost:7350/&quot;]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    links:
+      - &quot;postgres:db&quot;
+    ports:
+      - &quot;7349:7349&quot;
+      - &quot;7350:7350&quot;
+      - &quot;7351:7351&quot;
+    restart: unless-stopped
+
+volumes:
+  data:
+</code></pre>
+<h2 id="docker">使用 Docker 运行模块</h2>
+<p>运行和修改 Nakama，请运行：</p>
+<pre><code>docker-compose up
+使用 Compose 命令构建和运行您的应用; 如果你想在后台执行该服务可以加上 -d 参数
+
+docker-compose build
+修改文件后使用该命令, 构建（重新构建）项目中的服务容器; (首先是暂停运行中的应用); --force-rm：删除构建过程中的临时容器。
+
+docker-compose down
+停止和删除容器、网络、卷、镜像。
+</code></pre>
+<p>如果要显式运行数据库架构迁移，请发出以下命令：</p>
+<pre><code>docker run heroiclabs/nakama migrate up
+当前是系统自动迁移
+</code></pre>
+<p>创建排行榜报错</p>
+<pre><code>TypeError: expects sort order to be 'asc' or 'desc', 
+因为: 枚举指向的字符串不为'asc' or 'desc';
+const enum SortOrder {
+    ASCENDING = 'ascending',
+    DESCENDING = 'descending',
+}
+解决办法
+直接使用字符串,会提示代码错误类型不一致
+// @ts-ignore 注释会忽略下一行中产生的所有错误. 标注原因. 慎用
+</code></pre>
+<h2 id="_4">补充</h2>
+<pre><code>如果您使用的 Go 版本是 1.13 及以上 （推荐）
+    go env -w GO111MODULE=on
+    go env -w GOPROXY=https://goproxy.cn,direct
+
+如果将go env -w GO111MODULE=on设为on, 则会使用1.13的mod包特性,下载的包不会在src目录下
+参考我这篇文章:关于go get 以后下载的包不在src下而在pkg的源头并且不可以import(Goland Modules模块的使用)
+</code></pre>
+<p>解决Golang使用过程中go get 下载github项目慢或无法下载</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Nakama%20%E5%BF%85%E8%A6%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" class="btn btn-neutral float-left" title="Nakama 必要功能实现"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Nginx/" class="btn btn-neutral float-right" title="Nginx">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Nakama%20%E5%BF%85%E8%A6%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Nginx/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

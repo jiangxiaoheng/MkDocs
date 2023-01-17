@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Unity项目组织目录结构 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Unity\u9879\u76ee\u7ec4\u7ec7\u76ee\u5f55\u7ed3\u6784";
+        var mkdocs_page_input_path = "Unity\u9879\u76ee\u7ec4\u7ec7\u76ee\u5f55\u7ed3\u6784.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">Addressable使用心得</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../C%23%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">C# 设计模式</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nakama%20%E5%BF%85%E8%A6%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/">Nakama 必要功能实现</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nakama%20%E9%83%A8%E7%BD%B2/">Nakama 部署</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%20%E9%80%8F%E8%A7%86%E9%95%9C%E5%A4%B4%20FOV%20%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97/">Unity 透视镜头 FOV 角度计算</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unity%20%E5%AD%A6%E4%B9%A0%E8%A1%A8/">unity 学习表</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Unity项目组织目录结构</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">前言</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#1-unity">1: Unity项目的几个基本原则</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1">原则(1):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2">原则(2):</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3">原则(3)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4">原则(4)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5">原则(5)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6">原则(6)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#2-unity">2: Unity项目的一级目录结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1_1">1级目录结构如下:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#3_1">3: 重要一级目录结构子目录结构</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-assetspackage">1: AssetsPackage目录如何分类?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-scripts">2: Scripts 目录如何分类?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-editor">3: Editor 目录如何分类?</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-assetbundles">4: AssetBundles输出目录结构</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">最后</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/">Unity中数据存储的方法</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VMware%20%E8%99%9A%E6%8B%9F%E6%9C%BA/">VMware 虚拟机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7%20Luban/">配置工具 Luban</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/">游戏开发基础框架</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Unity项目组织目录结构</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="unity">Unity项目组织目录结构</h1>
+<h2 id="_1"><strong>前言</strong></h2>
+<p>组织好项目的目录结构，是维护项目的很重要的一个点，我们学习别人源码，了解别人的设计思路都是从目录结构开始，一个清晰的目录结构，对项目开发维护，项目管理来说非常的重要，目录维护的好，大家在一起工作很愉快，目录维护的不好，有可能会把项目搞的乱七八糟。</p>
+<blockquote>
+<p>今天我们一起来看看Unity架构师是如何维护自己的目录结构的，再看看有几个是和你相同的。</p>
+</blockquote>
+<h2 id="1-unity"><strong>1: Unity项目的几个基本原则</strong></h2>
+<h4 id="1">原则(1):</h4>
+<p><strong>不在场景里面除启动节点以外的任何节点。</strong>Unity 提供方便的场景编辑器，好像我们拖拉带拽，直接往场景里面搭建游戏场景，然后来做场景切换，这个我们在开放项目的时候是不提倡的。这样做有两个缺点:<strong>A:</strong>不方便多人同时编辑场景后的代码提交与合并, 如果有冲突更麻烦。<strong>B:</strong> 不方便打空包,节点都在场景，打包时,节点依赖的资源都会被打包进去。<strong>C:</strong> 方便维护，维护复杂的场景，谁维护过谁知道。</p>
+<h4 id="2">原则(2):</h4>
+<p><strong>不要在节点或预制体上直接挂与逻辑相关的代码组件。</strong>这个很好理解，如果我们直接在节点or预制体上挂代码组件，代码极难维护，如果我们要搜索哪些代码在哪些地方调用，根本就无法通过搜索查到，如果一个一个节点，一个一个预制体的点开找，这样维护起来非常麻烦, 也不方便资源更新与代码热更。</p>
+<h4 id="3">原则(3)</h4>
+<p>不要直接拖动节点,组件, 资源到代码逻辑组件的属性编辑器上。比如直接给Button组件挂响应函数等，<strong>原则2</strong>可以保证<strong>原则(3)</strong>不会出现，但是我还是要强调一下。</p>
+<p>理由是不方便维护代码，和多人协作开发与提交。</p>
+<h4 id="4">原则(4)</h4>
+<p>运行的时候只有一个场景，所有的内容代码控制。</p>
+<blockquote>
+<p>场景里面不允许放内容，那么做场景切换也就没有意义了，所以我们只有一个运行时的场景。所有的内容，我们都要通过代码来生成出来，这样，搜索代码，维护代码就能看到整个完整的游戏逻辑。其他的场景可以用来编辑地图，编辑角色等。编辑好后生成一个一个的资源预制体。所以我们项目里面一个运行时的空场景，以及其他资源编辑器关卡编辑的场景，而这些是编辑资源地图而用，不会被打包进去。</p>
+</blockquote>
+<h4 id="5">原则(5)</h4>
+<p>使用纯AssetsBundle来管理整个资源的加载与卸载, 不使用Resouces机制。</p>
+<blockquote>
+<p>为什么不使用Resources, 机制来加载与卸载资源呢？Resources机制不方便资源更新，不方便打空包, Resources下的所有资源以及相关依赖都会被打包进去。Resources也不方便资源更新, 所以干脆使用纯AssetsBundle来做资源的加载与卸载，方便打空包，同时也方便资源更新。如果不打空包，只要把打包出来的ab包放到StreammingAssets目录下，这个目录下的所有的资源都会打包进去，到时候到这里来读取ab包就可以了。</p>
+</blockquote>
+<h4 id="6">原则(6)</h4>
+<p>第三方的资源与插件的目录结构要统一放到一个文件夹下。</p>
+<blockquote>
+<p>我们完成一个Unity项目会经常需要用到Unity插件，而Unity插件在开发的时候，从自己的角度出发，所以目录结构可能和我们的项目目录结构理念维护不一致，所以我们要整理第三方插件, 还有可能包含代码。</p>
+</blockquote>
+<h2 id="2-unity"><strong>2: Unity项目的一级目录结构</strong></h2>
+<h4 id="1_1">1级目录结构如下:</h4>
+<blockquote>
+<p>AssetsPackages:所有的游戏资源，都存放到这个目录下。Editor: 框架与项目编辑器扩展代码。Scenes: 所有的游戏场景，包括运行场景,地图编辑场景,角色编辑场景,特效编辑场景。Scripts: 所有游戏的代码，含框架与游戏逻辑代码。3rd: 第三方插件存放的位置。SteammingAssets: 用来存放打包以后的ab资源包，这样ab包能打入安装包。</p>
+</blockquote>
+<p><img alt="img" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8dd5f8d886aa4b70b50319f34e606053~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp" /></p>
+<h2 id="3_1"><strong>3: 重要一级目录结构子目录结构</strong></h2>
+<h4 id="1-assetspackage">1: AssetsPackage目录如何分类?</h4>
+<p>AssetsPackage里面存放所有的资源，资源如何分类有决定了打ab包的时候的资源管理等，所以我们尽可能的要把资源按照功能来分类放好，那么我这边会把AssetsPackage分成一下主要的子目录。</p>
+<blockquote>
+<p>AssetsPackage/GUI: 存放每个UI界面的GUI的图片等相关。AssetsPackage/Sounds: 存放游戏的音乐与音效 AssetsPackage/Maps: 存放游戏的地图场景，可以在里面再继续分关卡。AssetsPackage/Charactors: 存放角色动画等相关资源。AssetsPackage/Effects: 存放粒子特效等相关资源 AssetsPackage/Excels: 存放游戏中配置文件的表格数据。</p>
+</blockquote>
+<p><img alt="img" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/68a84246d0d44f07af08524f52a447c6~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp" /></p>
+<h4 id="2-scripts">2: Scripts 目录如何分类?</h4>
+<blockquote>
+<p>Scripts是代码的主体维护的文件夹，这个文件夹的分类其实非常的重要，我这边是这样分类的。Scripts/3rd : 用来存放纯粹的第三方的C#代码，不是插件，比如protobuf for C#等 Scripts/Game: 用来存放游戏逻辑代码 Scripts/Utils: 用来存放游戏工具类的代码, 比如单例，MD5, SHA1 Scripts/Managers: 用来存放主要的管理模块代码(资源管理，网络模块，声音模块等) Scripts/AssetsBundle: 与Ab资源包管理更新相关的代码。……</p>
+</blockquote>
+<p><img alt="img" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3c92ca7636ac452890fb1227e626ed3b~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp" /></p>
+<h4 id="3-editor">3: Editor 目录如何分类?</h4>
+<p>Editor是编辑器扩展代码所放的目录，我这边是按照功能和扩展的模块来分类放好对应的编辑器扩展代码，如下:</p>
+<blockquote>
+<p>Editor/AssetBundle: 编辑器扩展ab包自动化打包管理，版本管理，等编辑器相关代码; Editor/Common: 一些编辑器扩展的公用代码。Editor/ExcelBuild: 表格处理工具代码; Editor/PackageBuild: 打包时候的工具代码 …</p>
+</blockquote>
+<p><strong>你有哪些编辑器扩展的工具和功能分类放到Editor目录下。</strong></p>
+<p><img alt="img" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71524bfc95e34389a85fb9a979a709cf~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp" /></p>
+<h4 id="4-assetbundles">4: AssetBundles输出目录结构</h4>
+<p>整个项目，都采用AssetsBundle资源管理模式，所以打出的AssetsBundle包也会有一个对应的目录结构，这个目录结构，不放在Unity项目的Assets文件夹中，而是放到和Assets文件夹同级的位置，如图:</p>
+<p><img alt="img" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6e398da5f02c4544af35421804c8c3a8~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp" /></p>
+<blockquote>
+<p>每个平台，每个渠道的ab包是不一样的，所以，在AssetsBundle里面我们要分渠道分平台来打包。所以在AssetBundles路径下，先分了平台，再分渠道。AssetBundles/Android/xxxx平台 AssetBundles/iOS/xxxx平台</p>
+</blockquote>
+<p><img alt="img" src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a42f85ec0c604e34bf4aef4d405721ba~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp" /></p>
+<p><strong>当然这些最好制作AssetBundles打包工具的时候都能自动完成。</strong></p>
+<h2 id="_2"><strong>最后</strong></h2>
+<p>今天的Unity框架目录结构分类与管理，就给大家介绍到这里，主要是介绍管理项目目录结构的一些理念，与你的项目有多少是吻合的呢？</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/" class="btn btn-neutral float-left" title="UnityWebRequest 与 Web 服务器通讯"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/" class="btn btn-neutral float-right" title="Unity中数据存储的方法">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

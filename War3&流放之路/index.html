@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Linux语句命令 - My Docs</title>
+    <title>War3&流放之路 - My Docs</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Linux\u8bed\u53e5\u547d\u4ee4";
-        var mkdocs_page_input_path = "Linux\u8bed\u53e5\u547d\u4ee4.md";
+        var mkdocs_page_name = "War3\u0026\u6d41\u653e\u4e4b\u8def";
+        var mkdocs_page_input_path = "War3\u0026\u6d41\u653e\u4e4b\u8def.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -76,44 +76,8 @@
                 <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
                 </li>
               </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Linux语句命令</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#cd">cd</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ls">ls</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#touch">touch</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#mkdir">mkdir</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#rm">rm</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#cp">cp</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#mv">mv</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#rmdir">rmdir</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#vim">vim</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#cat">cat</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#chmod">chmod</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#chown">chown</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#ps">ps</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#kill">kill</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#init">init</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#su">su</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#-t">-t</a>
-    </li>
-    </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
                 </li>
               </ul>
               <ul>
@@ -190,7 +154,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-      <li>Linux语句命令</li>
+      <li>War3&流放之路</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -199,175 +163,335 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="linux">Linux 语句命令</h1>
-<h2 id="cd">cd</h2>
-<p>返回上一级目录</p>
-<pre><code>cd ..
-</code></pre>
-<p>返回上上级目录</p>
-<pre><code>cd ../../
-</code></pre>
-<p>进入目录下指定目录</p>
-<pre><code>cd documents/file/
-</code></pre>
-<p>返回家目录</p>
-<pre><code>cd ~
-</code></pre>
-<p>返回上个所在目录</p>
-<pre><code>cd -
-</code></pre>
-<p>进入绝对路径</p>
-<pre><code>cd /root/*/*/
-</code></pre>
-<h2 id="ls">ls</h2>
-<p>展示当前目录文件(文件包括文件夹)</p>
-<pre><code>ls
-</code></pre>
-<p>检视目录文件全部信息(包括权限rwx,文件大小,文件时间信息)</p>
-<pre><code>ls -l
-</code></pre>
-<p>列出文件的同时查看文件的大小</p>
-<pre><code>ls -lh
-</code></pre>
-<p>显示全部文件包括隐藏文件</p>
-<pre><code>ls -a
-</code></pre>
-<p>ls帮助文档</p>
-<pre><code>ls --help
-</code></pre>
-<h2 id="touch">touch</h2>
-<p>创建文件,加入后缀更好识别,不加也可</p>
-<pre><code>touch file.py
-</code></pre>
-<p>同时创建多个文件</p>
-<pre><code>touch file2.py file3.py file4.py
-</code></pre>
-<h2 id="mkdir">mkdir</h2>
-<p>创建文件夹dir</p>
-<pre><code>mkdir dir/
-</code></pre>
-<p>创建dir目录以及在dir目录下创建dir2目录</p>
-<pre><code>mkdir dir/dir2/
-</code></pre>
-<h2 id="rm">rm</h2>
-<p>移除文件file</p>
-<pre><code>rm file
-</code></pre>
-<p>谨慎 移除目录下所以文件</p>
-<pre><code>rm *
-</code></pre>
-<p>询问是否移除(y/n)</p>
-<pre><code>rm -i *
-</code></pre>
-<p>逐句询问是否移除file1 file2 file3</p>
-<pre><code>rm -i file1 file2 file3
-</code></pre>
-<p>大于3个文件才会询问</p>
-<pre><code>rm -I *
-</code></pre>
-<p>递归删除dir文件夹(包括内部所以文件)</p>
-<pre><code>rm -r dir/
-</code></pre>
-<h2 id="cp">cp</h2>
-<p>复制文件。如果fileCopy已经存在,会被file复制内容重新覆盖</p>
-<pre><code>cp file.txt fileCopy.txt
-</code></pre>
-<p>问询是否复制(或者覆盖)(y/n)</p>
-<pre><code>cp -i file fileCopy
-</code></pre>
-<p>加入/符号,表示文件夹。将file复制到dir文件夹中</p>
-<pre><code>cp file dir/
-</code></pre>
-<p>-R递归,将dir/中所有文件复制到dir2/中, 不加-R会报错</p>
-<pre><code>cp -R dir/ dir2/
-</code></pre>
-<p>将file开头的文件,都复制到dir/目录中</p>
-<pre><code>cp file* dir/
-</code></pre>
-<p>将5结尾的文件,都复制到dir/目录中</p>
-<pre><code>cp *5 dir/
-</code></pre>
-<p>默认最后为复制到的目录, 前面为复制的文件</p>
-<pre><code>cp file1 file2 dir/
-</code></pre>
-<h2 id="mv">mv</h2>
-<p>file移动到dir/</p>
-<pre><code>mv file dir/
-</code></pre>
-<p>移动file到fileReName,相当于重命名</p>
-<pre><code>mv file fileReName
-</code></pre>
-<h2 id="rmdir">rmdir</h2>
-<p>仅可移除空文件夹</p>
-<pre><code>rmdir dir/
-</code></pre>
-<h2 id="vim">vim</h2>
-<p>vim 文本编辑器,可用于读写文件</p>
-<pre><code>vim file.py
-</code></pre>
-<h2 id="cat">cat</h2>
-<p>显示 a.py 内容,可用于读文件</p>
-<pre><code>cat a.py
-</code></pre>
-<p>将 a.py 数据放到 b.py 相当于复制</p>
-<pre><code>cat a.py &gt; b.py
-</code></pre>
-<p>a.py b.py 数据合并放到 c.py</p>
-<pre><code>cat a.py b.py &gt; c.py
-</code></pre>
-<p>将 a.py 数据补充放到 b.py 后面</p>
-<pre><code>cat a.py &gt;&gt; b.py
-</code></pre>
-<h2 id="chmod">chmod</h2>
-<p>(u或与g或与a)                       (+或-)                   (r或与w或与x)               file.py
-(用户 或与 组 或与 所有人)    (憎加 或 减少)   (读 或与 写 或与 执行)  (目标)
-权限
-(d)(rwx)(r-x)(rwx)
-(-)(rwx)(-wx)(rw-)
-有4个组成部分以括号隔开;d表示文件夹,-表示文件;r表示读;w表示写;x表示执行;
-第1个部分文件类型;第2个部分拥有者权限;第3个部分所在组权限;第4个部分其他者权限</p>
-<pre><code>chmod a+rwx file.py
-</code></pre>
-<h2 id="chown">chown</h2>
-<h2 id="ps">ps</h2>
-<p>查看进程</p>
-<pre><code>ps -aux | grep uwsgi
-</code></pre>
-<p>查看端口</p>
-<pre><code>netstat -lnp|grep 80
-</code></pre>
-<h2 id="kill">kill</h2>
-<p>杀死进程</p>
-<pre><code>kill 进程PID
-</code></pre>
-<p>强制杀死进程</p>
-<pre><code>kill 9 进程PID
-</code></pre>
-<p>查找uwsgi位置</p>
-<pre><code>find / -name uwsgi
-</code></pre>
-<h2 id="init">init</h2>
-<p>进入图形界面</p>
-<pre><code>init 5
-</code></pre>
-<p>退出图形界面</p>
-<pre><code>init 3
-</code></pre>
-<h2 id="su">su</h2>
-<p>切换用户</p>
-<pre><code>su root
-</code></pre>
-<h2 id="-t">-t</h2>
-<p>可以验证语法</p>
-<pre><code>httpd -t
-</code></pre>
+                <h1 id="war3">War3&amp;流放之路</h1>
+<h2 id="_1">场景</h2>
+<h3 id="_2">大厅(匹配)</h3>
+<table>
+<thead>
+<tr>
+<th>最大玩家数</th>
+<th>常用角色</th>
+<th>最大难度通关</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>召唤师</td>
+<td>N16</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">引导主线/序章</h3>
+<p>如:流放之路</p>
+<p>初始进入地图给一个基础武器和基础主动技能和辅助技能,引动玩家熟悉游戏; 新手关卡(引导关卡)</p>
+<p>之后根据主线推动熟悉游戏关卡,游戏玩法,奖励基础装备后毕业! 进入刷图模式,如流放之路;</p>
+<h3 id="_4">藏身处(完成序章后开启)</h3>
+<p><img alt="image-20221121001702137" src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20221121001702137.png" /></p>
+<table>
+<thead>
+<tr>
+<th>建筑</th>
+<th>祭坛</th>
+<th>技能科技</th>
+<th>地图商人</th>
+<th>铁匠铺</th>
+<th>杂货店</th>
+<th>交易行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>藏身处建筑</td>
+<td>开启地图, 生成6个传送门, 消耗传送门进入战斗地图!</td>
+<td>强化技能石/组合技能石</td>
+<td>强化地图/洗练地图</td>
+<td>强化装备/洗练装备</td>
+<td>基础商品道具出售</td>
+<td>玩家之间交易商品</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">基础功能</h3>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>属性</th>
+<th>成就</th>
+<th>签到</th>
+<th>pass</th>
+<th>天赋</th>
+<th>仓库</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>功能入口按钮</td>
+<td></td>
+<td></td>
+<td><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20221121002345723.png" alt="image-20221121002345723" style="zoom:25%;" /></td>
+<td><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20221121002402768.png" alt="image-20221121002402768" style="zoom:25%;" /></td>
+<td><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20221121002425432.png" alt="image-20221121002425432" style="zoom:25%;" /></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">战斗地图</h3>
+<p><strong>战斗地图生成:</strong></p>
+<p><strong>战斗地图释放:</strong> 所有传送门消耗完, 开启新地图</p>
+<p><strong>地图传送门:</strong> 开启地图生成6个传送门, 使用完后, 地图会被释放</p>
+<p><strong>战斗地图劵:</strong> 杂货店会出售低等级地图, 交易行可以交易地图, 地图中战斗会掉落地图;</p>
+<h2 id="_7">技能</h2>
+<p>如:流放之路, 战斗地图掉落, 商城中有概率抽取;</p>
+<p><strong>技能石</strong></p>
+<table>
+<thead>
+<tr>
+<th>近战近战技能</th>
+<th>远程攻击技能</th>
+<th>防御技能</th>
+<th>位移技能</th>
+<th>召唤技能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>裂地击</td>
+<td>火球术</td>
+<td>金钟罩</td>
+<td>无影步</td>
+<td>召唤骷髅</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>近战辅助</th>
+<th>远程辅助</th>
+<th>其他辅助</th>
+<th>召唤辅助技能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多重攻击(辅)</td>
+<td>分裂射击(辅)</td>
+<td>持续时间延长(辅)</td>
+<td>召唤生命增强(辅)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>插槽</strong></p>
+<p>如:流放之路由装备提供</p>
+<table>
+<thead>
+<tr>
+<th>装备类型</th>
+<th>武器</th>
+<th>头</th>
+<th>衣服</th>
+<th>腰带</th>
+<th>鞋</th>
+<th>手</th>
+<th>项链</th>
+<th>戒指</th>
+<th>戒指</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最大插槽</td>
+<td>6</td>
+<td>4</td>
+<td>6</td>
+<td>1</td>
+<td>4</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_8">角色</h2>
+<p>如: 流放之路; 初始提供几名角色; 每个角色有独立的等级和装备系统,不同角色适合不同流派,玩家在进入战斗地图时选择自己想要的角色(不同玩家角色可相同); 进阶角色,通过宝箱,主线,成就,或直接购买获得,进阶角色当然也更强大;</p>
+<p>补充: 召唤也许会比造成卡顿, 可以把召唤数量转化为召唤强度</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>弓箭手</th>
+<th>野蛮人</th>
+<th>阴阳师</th>
+<th>召唤师</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取方式</td>
+<td>基础</td>
+<td>基础</td>
+<td>基础</td>
+<td>商城</td>
+</tr>
+<tr>
+<td>职责类型</td>
+<td>远程射手</td>
+<td>近战输出, 近战肉盾</td>
+<td>远程输出</td>
+<td>召唤</td>
+</tr>
+<tr>
+<td>天赋代码</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>装备栏</td>
+<td>(武器)(头)(衣服)(腰带)(鞋)(手)(项链)(戒指)(戒指)</td>
+<td>(武器)(头)(衣服)(腰带)(鞋)(手)(项链)(戒指)(戒指)</td>
+<td>(武器)(头)(衣服)(腰带)(鞋)(手)(项链)(戒指)(戒指)</td>
+<td>(武器)(头)(衣服)(腰带)(鞋)(手)(项链)(戒指)(戒指)</td>
+</tr>
+<tr>
+<td>等级</td>
+<td>89</td>
+<td>1(初始)</td>
+<td>60</td>
+<td>100(MAX)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_9">游戏外功能</h2>
+<table>
+<thead>
+<tr>
+<th>地图宝箱</th>
+<th>宠物宝箱</th>
+<th>英雄宝箱</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入口</td>
+<td>(单个首抽SR; 十连首抽SSR)</td>
+<td>(单个首抽SR; 十连首抽SSR)</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>签到</th>
+<th>第一天</th>
+<th>第二天</th>
+<th>第三天</th>
+<th>第四天</th>
+<th>第五天</th>
+<th>第六天</th>
+<th>第七天</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入口</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>商城</th>
+<th>英雄</th>
+<th>皮肤</th>
+<th>宠物</th>
+<th>特权</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入口</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>地图说明</th>
+<th>评论</th>
+<th>排行榜</th>
+<th>社区攻略</th>
+<th>地图活动</th>
+<th>畅销商品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>地图活动</th>
+<th>抽奖券周常</th>
+<th>抽奖券日常</th>
+<th>地图等级奖励</th>
+<th>总结奖励</th>
+<th>登录就送</th>
+<th>抽奖券活动</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>入口</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>时装,强化,强力装备,抽奖装备,抽奖宠物,抽奖技能</p>
+<h3 id="_10">玩家交易商城</h3>
+<p>战斗地图掉落的带有 <code>可交易</code> 标签物品;</p>
+<h1 id="_11">解决</h1>
+<p>UI界面</p>
+<p>消费系统</p>
+<p>战斗地图随机</p>
+<p>技能系统</p>
+<h1 id="_12">进度安排</h1>
+<h3 id="_13">制作藏身处</h3>
+<h3 id="_14">网易对战平台相关服务研究(最好有成品地图提供研究)</h3>
+<h3 id="war3_1">war3地图生成(类似流放之路的地图生成,怪物生成)</h3>
               
             </div>
           </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="btn btn-neutral float-left" title="Linux 常用命令"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../Nakama%20%E5%BF%85%E8%A6%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" class="btn btn-neutral float-right" title="Nakama 必要功能实现">Next <span class="icon icon-circle-arrow-right"></span></a>
-    </div>
 
   <hr/>
 
@@ -389,10 +513,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../Nakama%20%E5%BF%85%E8%A6%81%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

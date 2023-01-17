@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Nakama 必要功能实现 - My Docs</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Nakama \u5fc5\u8981\u529f\u80fd\u5b9e\u73b0";
+        var mkdocs_page_input_path = "Nakama \u5fc5\u8981\u529f\u80fd\u5b9e\u73b0.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> My Docs
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Addressable%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">Addressable使用心得</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../C%23%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">C# 设计模式</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Django%2BTornado%2BNginx/">Django+Tornado+Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../django%E8%AF%AD%E5%8F%A5/">django语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../docker/">docker</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ExpressNode.Js/">ExpressNode.Js</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../HTML%EF%BC%8CCSS%E8%AF%AD%E5%8F%A5/">HTML，CSS语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Linux 常用命令</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/">Linux语句命令</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Nakama 必要功能实现</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#economy">Economy 系统</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#catalog">Catalog</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#item">Item 物品清单</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#bundles">Bundles 捆绑包</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#containers">Containers 宝箱</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#drop-tables">drop-tables 掉落表</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#stores">Stores 商店</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#current">Current</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#-">排行榜-分区排行榜-排行榜奖励</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">每日登录奖励</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">游戏外邮件系统</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">游戏内邮件系统 &amp; 通知系统 &amp; 红点系统</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">玩家创建初始化</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#banned">封号 banned 系统</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">封禁用户</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">第三方登录与支付</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nakama%20%E9%83%A8%E7%BD%B2/">Nakama 部署</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Nginx/">Nginx</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../PHP%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E2%80%94%E2%80%94Composer%20%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">PHP开发环境——Composer 的安装与使用</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Python%20%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83/">Python 虚拟环境</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../SQL%E8%AF%AD%E5%8F%A5/">SQL语句</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%20%E9%80%8F%E8%A7%86%E9%95%9C%E5%A4%B4%20FOV%20%E8%A7%92%E5%BA%A6%E8%AE%A1%E7%AE%97/">Unity 透视镜头 FOV 角度计算</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../unity%20%E5%AD%A6%E4%B9%A0%E8%A1%A8/">unity 学习表</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../UnityWebRequest%20%E4%B8%8E%20Web%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%9A%E8%AE%AF/">UnityWebRequest 与 Web 服务器通讯</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">Unity项目组织目录结构</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Unity%E4%B8%AD%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E7%9A%84%E6%96%B9%E6%B3%95/">Unity中数据存储的方法</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../VMware%20%E8%99%9A%E6%8B%9F%E6%9C%BA/">VMware 虚拟机</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E9%85%8D%E7%BD%AE%E5%B7%A5%E5%85%B7%20Luban/">配置工具 Luban</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E7%BD%91%E7%AB%99%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92/">网站部署规划</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/">游戏开发基础框架</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">My Docs</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Nakama 必要功能实现</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="nakama">Nakama 必要功能实现</h1>
+<h2 id="economy">Economy 系统</h2>
+<p><strong>策划表,目前通过 luban配置工具 和 go运行时 环境解决</strong></p>
+<p>要使用开发者控制台上传存储对象，您需要将数据构建为存储对象的 JSON 数组：</p>
+<pre><code class="language-json">[
+    {
+        &quot;collection&quot;: &quot;somecoll&quot;,
+        &quot;key&quot;: &quot;somekey&quot;,
+        &quot;permission_read&quot;: 0,
+        &quot;permission_write&quot;: 0,
+        &quot;value&quot;: {
+            &quot;somefield&quot;: &quot;somevalue&quot;
+        },
+        &quot;user_id&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;
+    }
+]
+</code></pre>
+<p>由于 Nakama 不提供通过门户或类似方式配置虚拟商品的方法，因此我们需要创建自己的配置文件来替换。</p>
+<h3 id="catalog">Catalog</h3>
+<h4 id="item">Item 物品清单</h4>
+<p><strong>属性</strong></p>
+<ul>
+<li>商品编号* </li>
+<li>标签 </li>
+<li>显示名称 </li>
+<li>描述 </li>
+<li>项目图像URI </li>
+</ul>
+<p><strong>消耗类型</strong></p>
+<ul>
+<li>[ ] 耐用</li>
+<li>[ ] 消耗品</li>
+<li>按次数</li>
+<li>按时间</li>
+</ul>
+<p><strong>选项</strong></p>
+<ul>
+<li>[ ] 可堆叠</li>
+<li>[ ] 可交易</li>
+<li>[ ] 是用于创建角色的令牌</li>
+</ul>
+<p><strong>限购</strong></p>
+<ul>
+<li>[ ] 是否限购, 限购数量</li>
+</ul>
+<p><strong>价格</strong></p>
+<pre><code></code></pre>
+<p><strong>表格</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th>消耗</th>
+<th>default-null</th>
+<th>选型</th>
+<th></th>
+<th>限购 default-false</th>
+<th>价格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编号*</td>
+<td>名称</td>
+<td>描述</td>
+<td>标签</td>
+<td>图像URI</td>
+<td>耐用</td>
+<td>消耗,次数,时间</td>
+<td>可堆叠</td>
+<td>可交易</td>
+<td>是否限购 限购数量</td>
+<td>价格</td>
+</tr>
+<tr>
+<td><strong>string</strong></td>
+<td><strong>string</strong></td>
+<td><strong>string</strong></td>
+<td><strong>[string]</strong></td>
+<td><strong>string</strong></td>
+<td><strong>bool</strong></td>
+<td><strong>{string,int}</strong></td>
+<td><strong>bool</strong></td>
+<td><strong>bool</strong></td>
+<td><strong>bool,int</strong></td>
+<td><strong>{string,int}</strong></td>
+</tr>
+<tr>
+<td>item001</td>
+<td>短剑</td>
+<td>一把生锈的短剑</td>
+<td>sword</td>
+<td>http://</td>
+<td>true</td>
+<td></td>
+<td>false</td>
+<td>true</td>
+<td>true,2</td>
+<td>gold-99</td>
+</tr>
+<tr>
+<td>item002</td>
+<td>血瓶</td>
+<td>可以补充血量</td>
+<td>agentia</td>
+<td>http://</td>
+<td></td>
+<td>1, null, null</td>
+<td>true</td>
+<td>false</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>JSON</strong></p>
+<pre><code class="language-json">{
+    &quot;Item&quot;: [
+        {
+            &quot;ItemId&quot;: &quot;character001&quot;, // 编号*
+            &quot;DisplayName&quot;: &quot;短剑&quot;, //名称
+            &quot;Description&quot;: &quot;一把生锈的短剑&quot;, // 描述
+            &quot;Tags&quot;: [
+                &quot;sword&quot;,
+                &quot;equipment&quot;,
+                &quot;equipmentable&quot;
+            ], // 标签
+            &quot;ItemImageUrl&quot;: null, // 图像URL
+            &quot;Durable&quot;: true, // 耐用
+            &quot;Consumable&quot;: {
+                &quot;UsageCount&quot;: null, // 消耗数量
+                &quot;UsagePeriod&quot;: null, // 消耗周期
+                &quot;UsagePeriodGroup&quot;: null // 消耗时间类型 秒 分 时 天 周 月 年
+            }, // 消耗品
+            &quot;IsStackable&quot;: false, // 可堆叠
+            &quot;IsTradable&quot;: true, // 可交易
+            &quot;IsLimitedEdition&quot;: false, // 是否限购
+            &quot;InitialLimitedEditionCount&quot;: 0, // 初始限量数量
+            &quot;VirtualCurrencyPrices&quot;: {
+                &quot;Gold&quot;: 250
+            }, // 虚拟货币售价
+            &quot;RealCurrencyPrices&quot;: {} // 真实货币售价
+        }
+    ]
+}
+</code></pre>
+<h4 id="bundles">Bundles 捆绑包</h4>
+<p>填入掉落包与掉落规则</p>
+<pre><code class="language-json">{
+    &quot;ItemId&quot;: &quot;&quot;,
+    &quot;DisplayName&quot;: &quot;物品10连抽&quot;,
+    &quot;Description&quot;: &quot;物品10连抽, 必定获得1件传奇物品!&quot;,
+    &quot;VirtualCurrencyPrices&quot;: {},
+    &quot;RealCurrencyPrices&quot;: {},
+    &quot;Tags&quot;: [],
+    &quot;Consumable&quot;: {
+        &quot;UsageCount&quot;: 1,
+        &quot;UsagePeriod&quot;: null,
+        &quot;UsagePeriodGroup&quot;: null
+    },
+    &quot;Container&quot;: null,
+    &quot;Bundle&quot;: {
+        &quot;BundledItems&quot;: [],
+        &quot;BundledResultTables&quot;: [
+            &quot;传奇装备&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;,
+            &quot;装备掉落表&quot;
+        ],
+        &quot;BundledVirtualCurrencies&quot;: null
+    },
+    &quot;CanBecomeCharacter&quot;: false,
+    &quot;IsStackable&quot;: false,
+    &quot;IsTradable&quot;: false,
+    &quot;ItemImageUrl&quot;: null,
+    &quot;IsLimitedEdition&quot;: false,
+    &quot;InitialLimitedEditionCount&quot;: 0,
+},
+</code></pre>
+<h4 id="containers">Containers 宝箱</h4>
+<p>填入掉落包与掉落规则</p>
+<pre><code class="language-json">{
+      &quot;ItemId&quot;: &quot;chest001&quot;,
+      &quot;DisplayName&quot;: &quot;上锁的木质宝箱&quot;,
+      &quot;Description&quot;: &quot;上锁的木质宝箱, 需要一把木质钥匙才可打开!&quot;,
+      &quot;VirtualCurrencyPrices&quot;: {
+        &quot;GD&quot;: 999
+      },
+      &quot;RealCurrencyPrices&quot;: {},
+      &quot;Tags&quot;: [],
+      &quot;Consumable&quot;: {
+        &quot;UsageCount&quot;: 1,
+        &quot;UsagePeriod&quot;: null,
+        &quot;UsagePeriodGroup&quot;: null
+      },
+      &quot;Container&quot;: {
+        &quot;KeyItemId&quot;: &quot;木质钥匙&quot;,
+        &quot;ItemContents&quot;: [
+          &quot;equipment002&quot;
+        ], // 物品掉落
+        &quot;ResultTableContents&quot;: [
+          &quot;普通装备掉落表&quot;,
+          &quot;稀有装备掉落表&quot;,
+          &quot;传奇装备掉落表&quot;
+        ], // 掉落表掉落
+        &quot;VirtualCurrencyContents&quot;: {
+          &quot;BS&quot;: 20,
+          &quot;GD&quot;: 5000
+        } // 货币掉落
+      }, // 宝箱开启与掉落
+      &quot;Bundle&quot;: null,
+      &quot;IsStackable&quot;: true,
+      &quot;IsTradable&quot;: true,
+      &quot;ItemImageUrl&quot;: null,
+      &quot;IsLimitedEdition&quot;: false,
+      &quot;InitialLimitedEditionCount&quot;: 0,
+    },
+</code></pre>
+<h4 id="drop-tables">drop-tables 掉落表</h4>
+<p>配置掉落物品与掉落权重</p>
+<pre><code class="language-json">{
+    &quot;DropTables&quot;: [
+        {
+            &quot;TableId&quot;: &quot;稀有装备掉落表&quot;, // 掉落表ID
+            &quot;Nodes&quot;: [
+                {
+                    &quot;ResultItemType&quot;: &quot;ItemId&quot;, // 物品类型: 物品
+                    &quot;ResultItem&quot;: &quot;equipment011&quot;, // 物品ID
+                    &quot;Weight&quot;: 1 // 权重
+                },
+                {
+                    &quot;ResultItemType&quot;: &quot;ItemId&quot;,
+                    &quot;ResultItem&quot;: &quot;equipment012&quot;,
+                    &quot;Weight&quot;: 1
+                },
+                {
+                    &quot;ResultItemType&quot;: &quot;ItemId&quot;,
+                    &quot;ResultItem&quot;: &quot;equipment013&quot;,
+                    &quot;Weight&quot;: 1
+                }
+            ]
+        },
+        {
+            &quot;TableId&quot;: &quot;装备掉落表&quot;, // 掉落表ID
+            &quot;Nodes&quot;: [
+                {
+                    &quot;ResultItemType&quot;: &quot;TableId&quot;, // 物品类型: 掉落表
+                    &quot;ResultItem&quot;: &quot;普通装备&quot;, // 掉落表ID
+                    &quot;Weight&quot;: 7 // 权重
+                },
+                {
+                    &quot;ResultItemType&quot;: &quot;TableId&quot;,
+                    &quot;ResultItem&quot;: &quot;稀有装备&quot;,
+                    &quot;Weight&quot;: 2
+                },
+                {
+                    &quot;ResultItemType&quot;: &quot;TableId&quot;,
+                    &quot;ResultItem&quot;: &quot;传奇装备&quot;,
+                    &quot;Weight&quot;: 1
+                }
+            ]
+        }
+    ]
+}
+</code></pre>
+<h4 id="stores">Stores 商店</h4>
+<p>配置商品与出售价格; 高阶:分段覆盖,细分玩家商店</p>
+<h3 id="current">Current</h3>
+<p>货币系统</p>
+<pre><code class="language-json">[
+  {
+    &quot;CurrencyCode&quot;: &quot;BS&quot;, // 货币代码
+    &quot;DisplayName&quot;: &quot;宝石&quot;, // 显示名称
+    &quot;InitialDeposit&quot;: 0, // 初始存款
+    &quot;RechargeRate&quot;: 0,
+    &quot;RechargeMax&quot;: 99999999,
+    &quot;CurrencyCodeFull&quot;: &quot;BS (宝石)&quot;,
+    &quot;GameManagerClassMetadata&quot;: null
+  },
+  {
+    &quot;CurrencyCode&quot;: &quot;GD&quot;,
+    &quot;DisplayName&quot;: &quot;猪猪币&quot;,
+    &quot;InitialDeposit&quot;: 0,
+    &quot;RechargeRate&quot;: 0,
+    &quot;RechargeMax&quot;: 99999999,
+    &quot;CurrencyCodeFull&quot;: &quot;GD (猪猪币)&quot;,
+    &quot;GameManagerClassMetadata&quot;: null
+  }
+]
+</code></pre>
+<h2 id="-">排行榜-分区排行榜-排行榜奖励</h2>
+<h2 id="_1">每日登录奖励</h2>
+<pre><code class="language-go">// 为玩家获取每日奖励。如果有新的奖励，可以通过通知的方式发送给玩家
+func RpcDailyRewards(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runtime.NakamaModule, payload string) (string, error) {
+    // 初始化结构体 ,最后领取时间 初始为0
+    var d dailyReward
+    d.LastClaimUnix = 0
+
+    // 获取玩家ID
+    userID, ok := ctx.Value(runtime.RUNTIME_CTX_USER_ID).(string)
+    if !ok {
+        return &quot;&quot;, errNoUserIdFound
+    }
+
+    // 判断 载入数据 是否有效
+    if len(payload) &gt; 0 {
+        return &quot;&quot;, errNoInputAllowed
+    }
+
+    // 读取存储库 Collection:reward Key:daily
+    objects, err := nk.StorageRead(ctx, []*runtime.StorageRead{{
+        Collection: &quot;reward&quot;,
+        Key:        &quot;daily&quot;,
+        UserID:     userID,
+    }})
+    if err != nil {
+        logger.Error(&quot;StorageRead error: %v&quot;, err)
+        return &quot;&quot;, errInternalError
+    }
+
+    // 循环 提取储存库数据 获取每日奖励领取时间赋值给 d
+    for _, object := range objects {
+        switch object.GetKey() {
+        case &quot;daily&quot;:
+            if err := json.Unmarshal([]byte(object.GetValue()), &amp;d); err != nil {
+                logger.Error(&quot;Unmarshal error: %v&quot;, err)
+                return &quot;&quot;, errUnmarshal
+            }
+            break
+        }
+    }
+
+    // 声明结构体 用于每日登录奖励 默认值0
+    var resp struct {
+        CoinsReceived int64 `json:&quot;coins_received&quot;`
+    }
+    resp.CoinsReceived = int64(0)
+
+    // 如果最后一次申领是在新的一天之前授予一个新的奖励!
+    t := time.Now()                                                             // 当前时间
+    midnight := time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, time.Local) // 凌晨00:00 ,当前时区
+
+    // 如果 领取时间 是在昨天 那么奖励钱币
+    if time.Unix(d.LastClaimUnix, 0).Before(midnight) {
+        resp.CoinsReceived = 500 // 奖励钱币数额
+
+        // 更新玩家钱包
+        // 声明 changeset 键&quot;coins&quot;: 值&quot;奖励钱币数额&quot;
+        changeset := map[string]int64{
+            &quot;coins&quot;: resp.CoinsReceived,
+        }
+        // 内置更新玩家钱包方法
+        if _, _, err := nk.WalletUpdate(ctx, userID, changeset, map[string]interface{}{}, false); err != nil {
+            logger.Error(&quot;WalletUpdate error: %v&quot;, err)
+            return &quot;&quot;, errInternalError
+        }
+
+        // 内置发送通知方法
+        err := nk.NotificationsSend(ctx, []*runtime.NotificationSend{{
+            Code: 1001,
+            Content: map[string]interface{}{ // 内容
+                &quot;coins&quot;: changeset[&quot;coins&quot;],
+            },
+            Persistent: true,        //
+            Sender:     &quot;&quot;,          // Server sent. 发送者
+            Subject:    &quot;你收到了每日奖励!&quot;, // 主题
+            UserID:     userID,      // 接收者
+        }})
+        if err != nil {
+            logger.Error(&quot;NotificationsSend error: %v&quot;, err)
+            return &quot;&quot;, errInternalError
+        }
+
+        // 更新 每日奖励领取时间
+        d.LastClaimUnix = time.Now().Unix()
+
+        // 序列化 dailyReward 为 object
+        object, err := json.Marshal(d)
+        if err != nil {
+            logger.Error(&quot;Marshal error: %v&quot;, err)
+            return &quot;&quot;, errInternalError
+        }
+
+        // 声明 version
+        version := &quot;&quot;
+        // 判断 储存库不为空 则 获取当前储存库版本
+        if len(objects) &gt; 0 {
+            // Use OCC to prevent concurrent writes.
+            // 使用OCC防止并发写。
+            version = objects[0].GetVersion()
+        }
+
+        // 内置方法(没有时创建), 为用户更新每日奖励存储对象
+        _, err = nk.StorageWrite(ctx, []*runtime.StorageWrite{{
+            Collection:      &quot;reward&quot;,
+            Key:             &quot;daily&quot;,
+            PermissionRead:  1,
+            PermissionWrite: 0,              // No client write.
+            Value:           string(object), // 填入 序列化dailyReward为object
+            Version:         version,        // 填入 版本号
+            UserID:          userID,         // 玩家ID
+        }})
+        if err != nil {
+            logger.Error(&quot;StorageWrite error: %v&quot;, err)
+            return &quot;&quot;, errInternalError
+        }
+    }
+
+    // 序列化 resp 数据 用于控制台输出结果
+    out, err := json.Marshal(resp)
+    if err != nil {
+        logger.Error(&quot;Marshal error: %v&quot;, err)
+        return &quot;&quot;, errMarshal
+    }
+    logger.Debug(&quot;rpcRewards resp: %v&quot;, string(out))
+    return string(out), nil
+}
+
+</code></pre>
+<h2 id="_2">游戏外邮件系统</h2>
+<p>简介: 账号激活, 密码修改, 等等</p>
+<h2 id="_3">游戏内邮件系统 &amp; 通知系统 &amp; 红点系统</h2>
+<p>简介: nakama 中内置方法 notifications</p>
+<pre><code class="language-go">// 发送通知
+// SERVER
+subject := &quot;你获得了一个神秘物品!&quot;
+content := map[string]interface{}{
+    &quot;item_id&quot;: &quot;192308394345345&quot;,
+    &quot;item_icon&quot;: &quot;storm_bringer_sword.png&quot;
+}
+userID := &quot;user id to send to&quot;
+senderID := &quot;&quot; // Empty string for server sent.
+code := 1
+persistent := true
+
+nk.NotificationSend(ctx, userID, subject, content, code, senderID, persistent)
+</code></pre>
+<pre><code class="language-c#">// 接收通知
+// 可以为客户端连接时接收到的通知注册回调
+// CLIENT
+socket.ReceivedNotification += notification =&gt;
+{
+    Console.WriteLine(&quot;Received: {0}&quot;, notification);
+    Console.WriteLine(&quot;Notification content: '{0}'&quot;, notification.Content);
+};
+</code></pre>
+<pre><code class="language-c#">// 列出通知
+// 您可以列出用户离线时接收到的通知。这些通知在发送时被标记为“持久”。实际的逻辑取决于游戏或应用程序，但我们建议在客户端重新连接后检索通知。然后您可以在游戏或应用程序内显示 UI 以及此列表。
+// CLIENT
+var result = await client.ListNotificationsAsync(session, 10);
+foreach (var n in result.Notifications)
+{
+    Console.WriteLine(&quot;Subject '{0}' content '{1}'&quot;, n.Subject, n.Content);
+}
+</code></pre>
+<pre><code class="language-c#">// 删除通知
+// 您可以从客户端删除一条或多条通知。这有助于清除用户已读取或使用的通知，并防止旧消息的积累。删除通知后，会从系统中删除该通知的所有记录，并且无法恢复该通知。
+// CLIENT
+var notificationIds = new[] {&quot;&lt;notificationId&gt;&quot;};
+await client.DeleteNotificationsAsync(session, notificationIds);
+</code></pre>
+<p><strong>通知代码</strong></p>
+<p>对于就某些事件隐式发送的消息，服务器保留所有小于或等于 0 的代码。您只需使用大于 0 的值即可定义自己的通知代码。
+该代码有助于决定如何在 UI 中显示通知。</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>保留</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>离线或不在频道中时接收到的用户 X 的消息。</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>用户 X 想要将您添加为好友。</td>
+</tr>
+<tr>
+<td>-3</td>
+<td>用户 X 接受了您的好友邀请。</td>
+</tr>
+<tr>
+<td>-4</td>
+<td>您已被接收进 X 群组。</td>
+</tr>
+<tr>
+<td>-5</td>
+<td>用户 X 想要加入您的群组。</td>
+</tr>
+<tr>
+<td>-6</td>
+<td>您的好友 X 加入了游戏。</td>
+</tr>
+<tr>
+<td>-7</td>
+<td>到Socket的最后通知通过<a href="https://heroiclabs.com/docs/zh/nakama/getting-started/configuration/#session"><code>single_socket</code> 配置</a> 关闭。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong>
+以下是一个简单的奖励分发函数，向前十名玩家发送持久通知，让他们知道自己赢了，并将硬币添加到他们的虚拟钱包中：</p>
+<pre><code class="language-go">// SERVER
+// 分发奖励方法
+func distributeRewards(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runtime.NakamaModule, tournament *api.Tournament, end int64, reset int64) error {
+    wallets := []*runtime.WalletUpdate{} // 钱包列表
+    notifications := []*runtime.NotificationSend{} // 通知列表
+    content := map[string]interface{}{} // 内容
+    changeset := map[string]int64{&quot;coins&quot;: 100} // 变更
+    records, _, _, _, err := nk.LeaderboardRecordsList(ctx, tournament.Id, []string{}, 10, &quot;&quot;, reset) // 排行榜记录列表
+    for _, record := range records { // 循环排行榜记录列表
+        wallets = append(wallets, &amp;runtime.WalletUpdate{record.OwnerId, changeset, content}) // 更新钱包(当前ID, 变更, 内容); 添加到 wallets 列表
+        notifications = append(notifications, &amp;runtime.NotificationSend{record.OwnerId, &quot;Leaderboard winner&quot;, content, 1, &quot;&quot;, true}) // 发送通知(接收者当前ID, 主题, 内容, 通知代码, 发送者, 持久化); 添加到 notifications 列表
+    }
+    _, err = nk.WalletsUpdate(ctx, wallets, false) // 更新钱包列表
+    if err != nil {
+        logger.Error(&quot;failed to update winner wallets: %v&quot;, err)
+        return err
+    }
+    err = nk.NotificationsSend(notifications) // 发送通知列表
+    if err != nil {
+        logger.Error(&quot;failed to send winner notifications: %v&quot;, err)
+        return err
+    }
+    return nil
+}
+</code></pre>
+<h2 id="_4">玩家创建初始化</h2>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/guides/concepts/initialize-users/">Nakama: 初始化新用户 | Heroic Labs Documentation</a></p>
+<p>简介: 初始玩家数据</p>
+<p>如: 货币 体力 等级 背包 角色 宠物 装备 待补充</p>
+<h2 id="banned">封号 banned 系统</h2>
+<p>简介: 当前 nakama 有 banned 系统, 但仅仅是封禁. 没有期限时间, 封禁原因. 需要扩展</p>
+<h3 id="_5">封禁用户</h3>
+<p>该示例详细介绍了如何有效封禁用户使其无法在以后进行互动，同时退出登录并断开所有活动会话。</p>
+<pre><code class="language-go">// SERVER
+type BanUserPayload struct {
+    userId string `json:&quot;userId&quot;`
+}
+
+func BanUserRPC(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runtime.NakamaModule, payload string) (string, error) {
+    // Check the user calling the RPC has permissions depending on your criteria
+    hasPermission := true
+    if !hasPermission {
+        logger.Error(&quot;unprivileged user attempted to use the BanUser RPC&quot;)
+        return &quot;&quot;, runtime.NewError(&quot;unauthorized&quot;, 7)
+    }
+
+    // Extract the payload
+    var data BanUserPayload
+    if err := json.Unmarshal([]byte(payload), &amp;data); err != nil {
+        logger.Error(&quot;unable to deserialize payload&quot;)
+        return &quot;&quot;, runtime.NewError(&quot;invalid payload&quot;, 3)
+    }
+
+    // Ban the user
+    if err := nk.UsersBanId(ctx, []string { data.userId }); err != nil {
+        logger.Error(&quot;unable to ban user&quot;)
+        return &quot;&quot;, runtime.NewError(&quot;unable to ban user&quot;, 13)
+    }
+
+    // Log the user out
+    if err := nk.SessionLogout(data.userId, &quot;&quot;, &quot;&quot;); err != nil {
+        logger.Error(&quot;unable to logout user&quot;)
+        return &quot;&quot;, runtime.NewError(&quot;unable to logout user&quot;, 13)
+    }
+
+    // Get any existing connections by inspecting the notifications stream
+    if presences, err := nk.StreamUserList(0, data.userId, &quot;&quot;, &quot;&quot;, true, true); err != nil {
+        logger.Debug(&quot;no active connections found for user&quot;)
+    } else {
+        // For each active connection, disconnect them
+        for _, presence := range presences {
+            nk.SessionDisconnect(ctx, presence.GetSessionId(), runtime.PresenceReasonDisconnect)
+        }
+    }
+
+    return &quot;{}&quot;, nil
+}
+</code></pre>
+<h2 id="_6">第三方登录与支付</h2>
+<p>简介: 微信 QQ 手机 邮件 微博等第三方登录; 微信支付, 支付宝, 银联, Apple等第三方支付</p>
+<h1 id="_7">可扩展性游戏机制建模</h1>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/concepts/storage/modeling/">Nakama: 可扩展性建模 | Heroic Labs Documentation</a></p>
+<p>简介: 与其定期检查给定玩家、团队或物品可能经历的更改, 不如等待并响应真正发生的事件。这有点类似于 <strong>事件驱动的编程</strong> 范例：服务器的作用类似于主循环，会触发回调功能。</p>
+<p>此方法可降低服务器成本，最大限度降低复杂性并提高游戏的稳健性，因为：</p>
+<ul>
+<li>进度代码只有在直接影响一个玩家时才在服务器上运行。</li>
+<li>服务器负载的时间分布更加均匀。</li>
+<li>事件处理在更接近玩家活动的时间发生，而不是等待预定的 cron(定时器?) 作业。</li>
+<li>在游戏机制之间可以更方便地重新利用进度代码。</li>
+</ul>
+<h3 id="_8">实现模式：进度模板</h3>
+<p>实现此模型的一种模式的工作分为三个部分：</p>
+<ol>
+<li>定义静态进度：编写一个模板，定义系统进度的里程碑、奖励和默认值。</li>
+<li>进度开始：进度开始时，将模板复制到玩家的数据。</li>
+<li>玩家操作更新：每次相关事件发生时，更新玩家的进度副本。</li>
+</ol>
+<h3 id="_9">一种模式，多种应用</h3>
+<p>此方法适用于许多进度式游戏机制，包括：</p>
+<ul>
+<li>玩家、NPC 和物品晋级</li>
+<li>资源消耗与续费，例如物品降级和充能</li>
+<li>挑战、请求和成就</li>
+<li>留人激励，例如连局和每日奖励</li>
+</ul>
+<p>别碰无休无止的 cron 作业带来的麻烦，以事件为中心考虑对游戏机制建模。</p>
+<h3 id="_10">案例:七日登录奖励</h3>
+<details>
+<summary>七日登录JSON模板</summary>
+<pre><code>
+    {
+      "title":"7-day check-in challenge",
+      "progress":0,
+        "next_login_after":"1602092170", // 这个时间可以写明天的凌晨00:00,也容易判断
+      "rewards": [
+        {},
+        {},
+        {"gold":300},
+        {},
+        {},
+        {},
+        {"gold":1000,"items":["item374"]}
+      ]
+    }
+</code></pre>
+</details>
+
+<pre><code class="language-go">package main
+
+import (
+    &quot;context&quot;
+    &quot;database/sql&quot;
+    &quot;encoding/json&quot;
+    &quot;time&quot;
+
+    &quot;github.com/heroiclabs/nakama-common/api&quot;
+    &quot;github.com/heroiclabs/nakama-common/runtime&quot;
+)
+
+type JsonTemp struct {
+    Title          string `json:&quot;title&quot;`
+    Progress       int    `json:&quot;progress&quot;`
+    NextLoginAfter int64  `json:&quot;next_login_after&quot;`
+    Rewards        []struct {
+        Gold  int      `json:&quot;gold,omitempty&quot;`
+        Items []string `json:&quot;items,omitempty&quot;`
+    } `json:&quot;rewards&quot;`
+}
+
+// 获取7日奖励对象
+func getLoginStreakObject(ctx context.Context, logger runtime.Logger, nk runtime.NakamaModule, payload string) (JsonTemp, *api.StorageObject, error) {
+    var d JsonTemp
+    var s = `{
+        &quot;title&quot;:&quot;7-day check-in challenge&quot;,
+        &quot;progress&quot;:0,
+        &quot;next_login_after&quot;: 0,
+        &quot;rewards&quot;: [
+            {},
+            {},
+            {&quot;gold&quot;:300},
+            {},
+            {},
+            {},
+            {&quot;gold&quot;:1000,&quot;items&quot;:[&quot;item374&quot;]}
+        ]
+    }`
+    if err := json.Unmarshal([]byte(s), &amp;d); err != nil {
+        return d, nil, errUnmarshal
+    }
+
+    userID, ok := ctx.Value(runtime.RUNTIME_CTX_USER_ID).(string) // 获取玩家ID
+    if !ok {
+        return d, nil, errNoUserIdFound
+    }
+
+    if len(payload) &gt; 0 {
+        return d, nil, errNoInputAllowed
+    }
+
+    // 读取储存库
+    objects, err := nk.StorageRead(ctx, []*runtime.StorageRead{{
+        Collection: &quot;loginReward&quot;,
+        Key:        &quot;7DayReward&quot;,
+        UserID:     userID,
+    }})
+    if err != nil {
+        logger.Error(&quot;StorageRead error: %v&quot;, err)
+        return d, nil, errInternalError
+    }
+
+    // 提取数据
+    var o *api.StorageObject
+    for _, object := range objects {
+        switch object.GetKey() {
+        case &quot;7DayReward&quot;:
+            if err := json.Unmarshal([]byte(object.GetValue()), &amp;d); err != nil {
+                logger.Error(&quot;Unmarshal error: %v&quot;, err)
+                return d, nil, errUnmarshal
+            }
+            return d, object, nil
+        }
+    }
+
+    return d, o, nil
+}
+
+// 检查7日奖励是否过期
+func loginStreakNotExpired(d JsonTemp) bool {
+    t := time.Now()
+    midnight := time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, time.Local)
+    return time.Unix(d.NextLoginAfter, 0).Before(midnight)
+}
+
+// 两个助手函数完成后即可实现第一个RPC。此RPC将返回检查用户是否符合JSON对象资格的助手函数的值。
+func RpcCanClaimLoginStreakReward(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runtime.NakamaModule, payload string) (string, error) {
+    var resp struct {
+        CanClaimLoginStreakReward bool `json:&quot;canClaimLoginStreakReward&quot;`
+    }
+
+    loginStreakTemp, _, err := getLoginStreakObject(ctx, logger, nk, payload) // 获取上次领取时间
+    if err != nil {
+        logger.Error(&quot;Error getting daily reward: %v&quot;, err)
+        return &quot;&quot;, errInternalError
+    }
+
+    resp.CanClaimLoginStreakReward = loginStreakNotExpired(loginStreakTemp) // 传入上次领取时间 判断是否有资格领取 返回 bool
+
+    out, err := json.Marshal(resp)
+    if err != nil {
+        logger.Error(&quot;Marshal error: %v&quot;, err)
+        return &quot;&quot;, errMarshal
+    }
+
+    logger.Debug(&quot;RpcCanClaimLoginStreakReward resp: %v&quot;, string(out))
+    return string(out), nil
+}
+
+// 此RPC将确保用户有资格接收每日奖励，更新用户的钱包，发送通知，然后在存储引擎中更新用户的每日奖励。
+func RpcClaimLoginStreakReward(ctx context.Context, logger runtime.Logger, db *sql.DB, nk runtime.NakamaModule, payload string) (string, error) {
+    userID, ok := ctx.Value(runtime.RUNTIME_CTX_USER_ID).(string)
+    if !ok {
+        return &quot;&quot;, errNoUserIdFound
+    }
+
+    var resp struct {
+        Reward interface{}
+    }
+
+    loginStreakJson, loginStreakObject, err := getLoginStreakObject(ctx, logger, nk, payload) // 获取上次领取时间, 获取储存对象
+    if err != nil {
+        logger.Error(&quot;Error getting daily reward: %v&quot;, err)
+        return &quot;&quot;, errInternalError
+    }
+
+    if loginStreakNotExpired(loginStreakJson) {
+        resp.Reward = loginStreakJson.Rewards[loginStreakJson.Progress] // 响应奖励
+
+        // 奖励发放模块, 待完善
+        //changeset := map[string]int64{
+        //  &quot;coins&quot;: resp.CoinsReceived,
+        //}
+        //if _, _, err := nk.WalletUpdate(ctx, userID, changeset, map[string]interface{}{}, false); err != nil {
+        //  logger.Error(&quot;WalletUpdate error: %v&quot;, err)
+        //  return &quot;&quot;, errInternalError
+        //}
+
+        // 发送通知
+        err := nk.NotificationsSend(ctx, []*runtime.NotificationSend{{
+            Code: 1001,
+            Content: map[string]interface{}{
+                &quot;reward&quot;: loginStreakJson.Rewards[loginStreakJson.Progress],
+            },
+            Persistent: false,
+            Sender:     &quot;&quot;, // Server sent.
+            Subject:    &quot;七日登录奖励!&quot;,
+            UserID:     userID,
+        }})
+        if err != nil {
+            logger.Error(&quot;NotificationsSend error: %v&quot;, err)
+            return &quot;&quot;, errInternalError
+        }
+
+        // 更新领取时间
+        loginStreakJson.NextLoginAfter = time.Now().Unix()
+        loginStreakJson.Progress += 1 // 需要判断 7天时间 之后是移除任务 还是重置进度
+
+        // 序列化 领取时间
+        object, err := json.Marshal(loginStreakJson)
+        if err != nil {
+            logger.Error(&quot;Marshal error: %v&quot;, err)
+            return &quot;&quot;, errInternalError
+        }
+
+        version := &quot;&quot;
+        if loginStreakObject != nil {
+            // 使用 OCC 防止并发写
+            version = loginStreakObject.GetVersion()
+        }
+
+        // 更新每日奖励储存对象
+        _, err = nk.StorageWrite(ctx, []*runtime.StorageWrite{{
+            Collection:      &quot;loginReward&quot;,
+            Key:             &quot;7DayReward&quot;,
+            PermissionRead:  1,              // 所有者 只读
+            PermissionWrite: 0,              // No client write.
+            Value:           string(object), // 序列化后的领取时间
+            Version:         version,
+            UserID:          userID,
+        }})
+        if err != nil {
+            logger.Error(&quot;StorageWrite error: %v&quot;, err)
+            return &quot;&quot;, errInternalError
+        }
+    }
+
+    out, err := json.Marshal(resp)
+    if err != nil {
+        logger.Error(&quot;Marshal error: %v&quot;, err)
+        return &quot;&quot;, errMarshal
+    }
+
+    logger.Debug(&quot;RpcClaimLoginStreakReward resp: %v&quot;, string(out))
+    return string(out), nil
+}
+
+</code></pre>
+<h3 id="_11">案例: 闯关关卡</h3>
+<details>
+<summary>闯关关卡JSON模板</summary>
+<pre><code>{
+    "进度":30,     // 进度数据
+    "可挑战次数":5, // 固定数据
+    "可重置次数":2  // 根据玩家VIP等级变化
+    "闯关":[
+        {
+            "关卡":1,
+            "星星数":3,
+            "可挑战次数":2, //非持久数据
+            "可重置次数":1, //非持久数据
+            "解锁": "未解锁"
+        },
+        {
+            "关卡":2,
+            "星星数":3,
+            "可挑战次数":5, //非持久数据
+            "可重置次数":0, //非持久数据
+            "解锁": "未解锁"
+        }
+    ]
+}</code></pre>
+</details>
+
+<pre><code class="language-go">// 获取结构体 和 存储对象 并返回
+getStageObject(ctx, logger, db, nk, payload)(struct, *api.StorageObject, error){}
+
+// 检查是否过夜 并返回
+newDay(d struct)bool{}
+
+// 挑战关卡完成后, 发放奖励和通知, 更新玩家储存对象
+PpcStageChallenge(ctx, logger, db, nk, payload)(string, error){
+    if newDay(struct){
+        // 重置挑战Json模板
+    } // 有过夜就跳过重置模板
+    struct, *api.StorageObject, err := getStageObject(ctx, logger, nk, payload) // 获取结构体 和 存储对象
+    // 当前Json模板更新
+    // 奖励发放模块
+    // 发送通知模块
+    // 更新储存对象数据
+    // 更新储存对象
+    // 返回response
+}
+</code></pre>
+<h2 id="_12">服务端 运行时 代码 参考</h2>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/authoritative-write/">Nakama: 授权存储 | Heroic Labs Documentation</a></p>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/user-metadata/">Nakama: 更新用户元数据 | Heroic Labs Documentation</a></p>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/authoritative-read/">Nakama: 游戏内授权物品 | Heroic Labs Documentation</a></p>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/custom-authentication/">Nakama: 自定义身份验证 | Heroic Labs Documentation</a></p>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/group-metadata/">Nakama: 更新群组元数据 | Heroic Labs Documentation</a></p>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/snippets/banning-users/">Nakama: 封禁用户 | Heroic Labs Documentation</a></p>
+<h2 id="nakama-unity">Nakama Unity客户端指南</h2>
+<p><a href="https://heroiclabs.com/docs/zh/nakama/client-libraries/unity/">Nakama: Unity/.Net | Heroic Labs Documentation</a></p>
+<h2 id="nakama_1">Nakama 功能</h2>
+<h3 id="_13">创建排行榜</h3>
+<pre><code class="language-typescript">let InitModule: nkruntime.InitModule = function (ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, initializer: nkruntime.Initializer) {
+
+    let id = 'global_best';
+    let authoritative = false; // 是否为权威排行榜(仅允许服务端填写数据)
+    let sortOrder = 'desc'; // 升序或降序
+    let operator = nkruntime.Operator.BEST; // 排序方式; set-该值将设置为提交的分数; best-仅当提交的分数高于现有分数时, 才会更新该值; incr-该值将按提交给它的分数递增; decr-该值将因提交给它的分数而减少
+    let resetSchedule = null; // 重置周期
+    let metadata = {};  // 排行榜的元数据
+    try {
+        // @ts-ignore 注释会忽略下一行中产生的所有错误. 原因: sortOrder 无法使用字符串
+        nk.leaderboardCreate(id, authoritative, sortOrder, operator, resetSchedule, metadata);
+        logger.info('排行榜创建成功!')
+    } catch(error) {
+        // Handle error
+        logger.info('排行榜创建失败!'+ error);
+        logger.info(String(error))
+    }
+}
+</code></pre>
+<h3 id="rpc">Rpc 函数, 云代码注册</h3>
+<pre><code class="language-tsx">let InitModule: nkruntime.InitModule = function (ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, initializer: nkruntime.Initializer) {
+
+    initializer.registerRpc('healthcheck', rpcHealthcheck); // 方法注册到 main.ts 中
+}
+
+function rpcHealthcheck(ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, payload: string): string {
+    logger.info('健康检查 rpc called')
+    return JSON.stringify({ success: true })
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/" class="btn btn-neutral float-left" title="Linux语句命令"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../Nakama%20%E9%83%A8%E7%BD%B2/" class="btn btn-neutral float-right" title="Nakama 部署">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../Linux%E8%AF%AD%E5%8F%A5%E5%91%BD%E4%BB%A4/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../Nakama%20%E9%83%A8%E7%BD%B2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
